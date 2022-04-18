@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+    background-color: #ffd9b3;
+}
+
+.header {
+    background-color: #ffd9b3;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 95px;
+    padding: 0 25px;
+}
+
+.logo {
+    height: 60%;
+}
+
+.navigation-list {
+    list-style: none;
+    align-items: center;
+    display: flex;
+    gap: 60px;
+}
+
+.navigation-list-item:link,
+.navigation-list-item:visited{
+    text-decoration: none;
+    color: black;
+    font-weight: 400;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+.navigation-list-item:link,
+.navigation-list-item:visited {
+    color: red;
+}
+
+.btn {
+    background-color: #664b2f;
+    padding: 16px 38px;
+    border-radius: 15px;
+    margin-right: 55px;
+}
+
+.search-box {
+}
+
+.search-bar {
+    width: 1000px;
+}
+
+.container {
+    width: 650px;
+    height: 750px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #664b2f;
+}
+
+.top-text {
+    margin-top: 70px;
+    font-size: 50px;
+}
+
+
+/** STICKY NAVIGATION **/
+/*.sticky {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ff8000;
+    z-index: 999;
+}*/
