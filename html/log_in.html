@@ -7,7 +7,7 @@
 </head>
 <body>
 <header class="header sticky">
-    <img class="logo" alt="Composting Logo" src="/images/troll_image.png"/>
+    <img class="logo" alt="Composting Logo" src="/images/composting4.png"/>
 
     <nav class="navigation">
         <ul class="navigation-list">
@@ -19,8 +19,17 @@
     </nav>
 
     <div class="search-box">
-        <input type="text" placeholder="search">
-        <button type="submit"><img src="/images/search-icon.png" alt="search icon"></button>
+        <table class="elementsContainer">
+            <tr>
+                <td>
+                    <input type="text" class="search" placeholder="Search">
+                </td>
+                <td>
+                    <button type="submit" class="searchIcon"><img src="/images/search-icon.png" alt="search icon">
+                    </button>
+                </td>
+            </tr>
+        </table>
     </div>
 
     <a href="#" class="btn">Sign Up</a>
@@ -29,9 +38,22 @@
 
 <div class="container">
     <div class="login-signup-content">
-    <h1 class="top-text">Log In</h1>
-    <input type="text" id="email" class="input" autocomplete="off" placeholder="email">
-    <input type="text" id="password" class="input" autocomplete="off" placeholder="password">
+        <h1 class="top-text">Log In</h1>
+        <form method="post">
+            <div class="input-field">
+                <input type="text" required>
+                <span></span>
+                <label>Email</label>
+            </div>
+            <div class="input-field">
+                <input type="password" required>
+                <span></span>
+                <label>Password</label>
+            </div>
+            <div class="forgot-pass"><a href="#">Forgot your Password?</a></div>
+            <div class="log-in-btn"><a href="#" class="btn">Log In</a></div>
+            <div class="sign-up-text">Don't have an account? <a href="#">Sign Up!</a></div>
+        </form>
     </div>
 </div>
 
