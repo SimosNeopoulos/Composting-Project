@@ -14,11 +14,15 @@ body{
     padding: 0 25px;
 }
 
-.logo {
-    height: 60%;
+.logo{
+    border:none;
+    background:none;
+    cursor:pointer;
 }
-
-
+.logo img{
+    height:80px;
+    width:130px;
+}
 
 .navigation-list {
     list-style: none;
