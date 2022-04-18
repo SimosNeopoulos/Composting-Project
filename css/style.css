@@ -17,6 +17,8 @@ body{
     height: 60%;
 }
 
+
+
 .navigation-list {
     list-style: none;
     align-items: center;
@@ -24,8 +26,8 @@ body{
     gap: 60px;
 }
 
-.navigation-list-item:link,
-.navigation-list-item:visited{
+.navigation-list-item a:link,
+.navigation-list-item a:visited{
     text-decoration: none;
     color: black;
     font-weight: 400;
@@ -33,8 +35,8 @@ body{
     transition: all 0.3s;
 }
 
-.navigation-list-item:link,
-.navigation-list-item:visited {
+.navigation-list-item a:hover,
+.navigation-list-item a:active {
     color: red;
 }
 
@@ -43,6 +45,7 @@ body{
     padding: 16px 38px;
     border-radius: 15px;
     margin-right: 55px;
+    text-decoration: none;
 }
 
 .search-box {
