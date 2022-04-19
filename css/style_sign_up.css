@@ -151,13 +151,13 @@ form .input-field{
 }
 
 .input-field input:focus ~ label,
-.input-field input:valid ~ label {
+.input-field input:not(:placeholder-shown) ~ label {
     top: -5px;
     color: #2691d9;
 }
 
 .input-field input:focus ~ span::before,
-.input-field input:valid ~ span::before {
+.input-field input:not(:placeholder-shown) ~ span::before {
     width: 100%;
 }
 
