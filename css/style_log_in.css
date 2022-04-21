@@ -169,7 +169,7 @@ form .input-field{
     position: absolute;
     top: 40px;
     left: 0;
-    width: 0%;
+    width: 0;
     height: 2px;
     transition: .3s;
     background: #236f21;
