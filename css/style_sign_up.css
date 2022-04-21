@@ -1,13 +1,22 @@
+html {
+    height: 100%;
+}
+
 body{
     margin: 0;
     font-family: sans-serif;
-    background-color: #ffd9b3;
-    padding-bottom: 40px;
-    /*background: linear-gradient()*/
+    color: #243e16;
+    min-height: 100%;
+    background-color: #a5d2a4;
+    /*background-image: url("/images/green-branches_1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;*/
 }
 
 .header {
-    background-color: #ffd9b3;
+    background: none;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,35 +38,53 @@ body{
     list-style: none;
     align-items: center;
     display: flex;
-    gap: 60px;
+    gap: 80px;
 }
 
 .navigation-list-item a:link,
 .navigation-list-item a:visited{
     text-decoration: none;
-    color: black;
-    font-weight: 400;
-    font-size: 16px;
-    transition: all 0.3s;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    color: #243e16;
+    font-weight: 500;
+    font-size: 20px;
+    transition: all 0.2s;
 }
 
 .navigation-list-item a:hover,
 .navigation-list-item a:active {
-    color: red;
+    font-size: 23px;
 }
 
-.btn {
-    background-color: #ff6600;
+.btn,
+.btn:link,
+.btn:visited{
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
+    background-color: #236f21;
+    color: #fff;
+    font-size: 1.1rem;
     padding: 16px 38px;
-    border-radius: 15px;
+    border-radius: 10px;
     text-decoration: none;
+}
+
+.btn-acc {
+    transition: all .3s;
+}
+
+.btn-acc:hover,
+.btn-acc:active {
+    color: #236f21;
+    background-color:#fff;
 }
 
 /* search */
 .search-box {
-    width: 230px;
-    height: 30px;
-    border: 2px solid #2980b9;
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    width: 250px;
+    height: 35px;
+    border: none;
     padding: 2px 10px;
     border-radius: 50px;
 }
@@ -91,31 +118,29 @@ body{
 }
 
 .container {
-    width: 650px;
-    height: 720px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px;
-    /*padding: 10px;*/
+    width: 550px;
+    height: 880px;
+    margin: auto;
     border-radius: 15px;
-    background-color: #664b2f;
+    background-color: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 5px 20px 7px rgba(0, 0, 0, 0.3);
 }
 
 .container form {
-    padding: 0 130px;
+    padding: 0 90px;
     box-sizing: border-box;
 }
 
 .top-text {
     text-align: center;
-    padding: 50px 0 20px 0;
+    padding: 70px 0 20px 0;
     font-size: 50px;
 }
 
 form .input-field{
     position: relative;
     border-bottom: 2px solid #adadad;
-    margin: 30px 0;
+    margin: 60px 0;
 }
 
 .input-field input {
@@ -144,16 +169,16 @@ form .input-field{
     position: absolute;
     top: 40px;
     left: 0;
-    width: 100%;
+    width: 0;
     height: 2px;
     transition: .3s;
-    background: #7e7e7e;
+    background: #236f21;
 }
 
 .input-field input:focus ~ label,
 .input-field input:not(:placeholder-shown) ~ label {
     top: -5px;
-    color: #2691d9;
+    color: #236f21 ;
 }
 
 .input-field input:focus ~ span::before,
@@ -163,30 +188,44 @@ form .input-field{
 
 .forgot-pass {
     text-align: center;
-    margin: 60px 0;
+    margin: 70px 0;
 }
 
-.container a:link,
-.container a:visited{
+.forgot-pass a:link,
+.log-in-text a:link,
+.forgot-pass a:visited,
+.log-in-text a:visited{
     font-weight: 400;
     font-size: 16px;
     transition: all 0.2s;
 }
 
-.container a:hover,
-.container a:active {
+.forgot-pass a:hover,
+.log-in-text a:hover,
+.forgot-pass a:active,
+.log-in-text a:active {
     text-decoration: none;
-    color: red;
+    color: #236f21;
+    font-weight: bold;
 }
 
 .sign-up-btn {
     text-align: center;
-    margin: 70px 0;
+    margin: 70px auto;
+    width: fit-content;
+    transition: all .2s;
 }
 
-.sign-up-text {
+.sign-up-btn:hover,
+.sign-up-btn:active {
+    color: #fff;
+    background-color:#236f21;
+    transform: scale(1.1) perspective(1px)
+}
+
+.log-in-text {
     text-align: center;
-    margin: 50px 0;
+    margin: 70px 0;
 }
 
 /** STICKY NAVIGATION **/
