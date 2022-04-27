@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style_sign_up.css">
+    <link rel="stylesheet" href="/css/general.css">
 
     <title>Composting Log In</title>
 </head>
 <body>
+
+<div class="head-page"></div>
+
 <header>
     <button type="submit"
             onclick="location.href='https://www.youtube.com/shorts/iVX5C_VQ5NA?&ab_channel=Avatar%3ATheLastAirbender'"
@@ -42,40 +46,37 @@
 
 
 </header>
-
-<div class="head-page"></div>
-
-<div class="form-container">
+<div class="form-container container-height">
     <div class="login-signup-content">
         <h1 class="top-text">Sign Up</h1>
         <form method="post">
             <div class="input-field">
-                <input type="text" placeholder=" " required>
+                <input type="text" placeholder=" " id="sign-up-username" required>
                 <span></span>
                 <label>Username</label>
             </div>
             <div class="input-field">
-                <input type="email" placeholder=" " required>
+                <input type="email" placeholder=" " id="sign-up-email" required>
                 <span></span>
                 <label>Email</label>
             </div>
             <div class="input-field">
-                <input type="text" placeholder=" " required>
+                <input type="text" placeholder=" " id="sign-up-address" required>
                 <span></span>
                 <label>Address</label>
             </div>
             <div class="input-field">
-                <input type="password" placeholder=" " required>
+                <input type="password" placeholder=" " id="sign-up-password" required>
                 <span></span>
                 <label>Password</label>
             </div>
             <div class="input-field">
-                <input type="tel" placeholder=" ">
+                <input type="tel" placeholder=" " id="sign-up-tel">
                 <span></span>
                 <label>Phone number</label>
             </div>
             <div class="btn-space">
-                <button name="submit-btn" type="submit" class="submit-btn">
+                <button onclick="signUpClick()" name="submit-btn" type="submit" class="submit-btn">
                     Sign Up
                 </button>
             </div>

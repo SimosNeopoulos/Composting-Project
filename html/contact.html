@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style_contact.css">
+    <link rel="stylesheet" href="/css/general.css">
     <title>Composting Contact Page</title>
 </head>
 <body>
-<header class="header sticky">
+
+<div class="head-page"></div>
+
+<header>
     <button type="submit"
             onclick="location.href='https://www.youtube.com/shorts/iVX5C_VQ5NA?&ab_channel=Avatar%3ATheLastAirbender'"
             class="logo"><img src="/images/composting.png" alt="search icon">
@@ -34,35 +38,37 @@
             </tr>
         </table>
     </div>
+    <div class="btn-container">
+        <a href="sign_up.html" class="btn btn-acc">Sign Up</a>
+    </div>
 
-    <a href="sign_up.html" class="btn btn-acc">Sign Up</a>
 
 </header>
 
 <div class="container">
-    <div class="form-container">
+    <div class="contact-container">
         <form method="post">
             <div class="input-field">
-                <input type="text" placeholder=" " required>
+                <input type="text" placeholder=" " id="contact-name" required>
                 <span></span>
                 <label>Full Name</label>
             </div>
             <div class="input-field">
-                <input type="email" placeholder=" " required>
+                <input type="email" placeholder=" " id="contact-email" required>
                 <span></span>
                 <label>Email</label>
             </div>
             <div class="input-field">
-                <input type="text" placeholder=" " required>
+                <input type="text" placeholder=" " id="contact-subject" required>
                 <span></span>
                 <label>Subject</label>
             </div>
             <div class="input-field-message">
-                <textarea type="text" placeholder=" " required></textarea>
+                <textarea type="text" placeholder=" " id="contact-message" required></textarea>
                 <label>Message</label>
             </div>
             <div class="btn-space">
-                <button name="submit-btn" type="submit" class="submit-btn">
+                <button onclick="contactClick()" name="submit-btn" type="submit" class="submit-btn">
                     Send
                 </button>
             </div>
@@ -75,5 +81,6 @@
     </div>
 </div>
 
+<script type="text/javascript" src="../java_script/script.js"></script>
 </body>
 </html>

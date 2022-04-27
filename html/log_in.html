@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style_log_in.css">
+    <link rel="stylesheet" href="/css/general.css">
     <title>Composting Log In</title>
 </head>
 <body>
-<header class="header sticky">
+
+<div class="head-page"></div>
+
+<header>
     <button type="submit"
             onclick="location.href='https://www.youtube.com/shorts/iVX5C_VQ5NA?&ab_channel=Avatar%3ATheLastAirbender'"
             class="logo"><img src="/images/composting.png" alt="search icon">
@@ -35,26 +39,27 @@
             </tr>
         </table>
     </div>
-
-    <a href="sign_up.html" class="btn btn-acc">Sign Up</a>
+    <div class="btn-container">
+        <a href="sign_up.html" class="btn btn-acc">Sign Up</a>
+    </div>
 
 </header>
-<div class="form-container">
+<div class="form-container container-height">
     <h1 class="top-text">Log In</h1>
     <form method="post">
         <div class="input-field">
-            <input type="email" placeholder=" " required>
+            <input type="email" placeholder=" " id="log-in-email" required>
             <span></span>
             <label>Email</label>
         </div>
         <div class="input-field">
-            <input type="password" placeholder=" " required>
+            <input type="password" placeholder=" " id="log-in-password" required>
             <span></span>
             <label>Password</label>
         </div>
         <div class="forgot-pass"><a href="#">Forgot your Password?</a></div>
         <div class="btn-space">
-            <button name="submit-btn" type="submit" class="submit-btn">
+            <button onclick="logInClick()" name="submit-btn" type="submit" class="submit-btn">
                 Log In
             </button>
         </div>
@@ -63,5 +68,6 @@
         </div>
     </form>
 </div>
+<script type="text/javascript" src="../java_script/script.js"></script>
 </body>
 </html>
