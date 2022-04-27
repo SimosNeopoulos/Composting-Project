@@ -117,7 +117,7 @@ body{
     color:#2980b9;
 }
 
-.container {
+.form-container {
     width: 550px;
     height: 680px;
     margin: auto;
@@ -126,7 +126,7 @@ body{
     box-shadow: 0 5px 20px 7px rgba(0, 0, 0, 0.3);
 }
 
-.container form {
+.form-container form {
     padding: 0 90px;
     box-sizing: border-box;
 }
@@ -188,7 +188,8 @@ form .input-field{
 
 .forgot-pass {
     text-align: center;
-    margin: 70px 0;
+    margin-top: 70px;
+    margin-bottom: 60px;
 }
 
 .forgot-pass a:link,
@@ -220,12 +221,36 @@ form .input-field{
 .log-in-btn:active {
     color: #fff;
     background-color:#236f21;
-    transform: scale(1.1) perspective(1px)
+
 }
 
 .sign-up-text {
     text-align: center;
-    margin: 70px 0;
+    margin: 55px 0;
+}
+
+.btn-space {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn {
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
+    background-color: #236f21;
+    width: 135px;
+    height: 54px;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    transition: all .3s;
+}
+
+.submit-btn:hover,
+.submit-btn:active {
+    transform: scale(1.1);
+    cursor: pointer;
 }
 
 /** STICKY NAVIGATION **/

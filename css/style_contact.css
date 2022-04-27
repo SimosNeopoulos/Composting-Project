@@ -1,13 +1,22 @@
+html {
+    height: 100%;
+}
+
 body{
     margin: 0;
     font-family: sans-serif;
-    background-color: #ffd9b3;
-    padding-bottom: 40px;
-    /*background: linear-gradient()*/
+    color: #243e16;
+    min-height: 100%;
+    background-color: #a5d2a4;
+    /*background-image: url("/images/green-branches_1.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;*/
 }
 
 .header {
-    background-color: #ffd9b3;
+    background: none;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,35 +38,53 @@ body{
     list-style: none;
     align-items: center;
     display: flex;
-    gap: 60px;
+    gap: 80px;
 }
 
 .navigation-list-item a:link,
 .navigation-list-item a:visited{
     text-decoration: none;
-    color: black;
-    font-weight: 400;
-    font-size: 16px;
-    transition: all 0.3s;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    color: #243e16;
+    font-weight: 500;
+    font-size: 20px;
+    transition: all 0.2s;
 }
 
 .navigation-list-item a:hover,
 .navigation-list-item a:active {
-    color: red;
+    font-size: 23px;
 }
 
-.btn {
-    background-color: #ff6600;
+.btn,
+.btn:link,
+.btn:visited{
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
+    background-color: #236f21;
+    color: #fff;
+    font-size: 1.1rem;
     padding: 16px 38px;
-    border-radius: 15px;
+    border-radius: 10px;
     text-decoration: none;
+}
+
+.btn-acc {
+    transition: all .3s;
+}
+
+.btn-acc:hover,
+.btn-acc:active {
+    color: #236f21;
+    background-color:#fff;
 }
 
 /* search */
 .search-box {
-    width: 230px;
-    height: 30px;
-    border: 2px solid #2980b9;
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    width: 250px;
+    height: 35px;
+    border: none;
     padding: 2px 10px;
     border-radius: 50px;
 }
@@ -76,7 +103,6 @@ body{
     padding: 3px 7px;
     border-radius: 50px;
     font-size: 18px;
-    /*font-family: "Nunito";*/
     color: #424242;
     font-weight: 500;
 }
@@ -91,31 +117,44 @@ body{
 }
 
 .container {
+    background: none;
+    display: flex;
+}
+
+.container-image {
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+    background-image: url("../images/letter.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-container {
     width: 500px;
     height: 680px;
     margin-left: 10%;
     margin-top: 6%;
-    /*padding: 10px;*/
     border-radius: 15px;
     background: none;
-    /*background-color: #664b2f;*/
 
 }
 
-.container form {
-    padding: 0 40px;
+.form-container form {
+    padding: 0 ;
     box-sizing: border-box;
 }
 
 form .input-field{
     position: relative;
-    border-bottom: 2px solid #adadad;
-    margin: 60px 0;
+    border-bottom: 2px solid #fff;
+    margin: 45px 0;
 }
 
 form .input-field-message {
     position: relative;
-    margin: 60px 0;
+    margin: 55px 0;
 }
 
 .input-field input {
@@ -132,7 +171,7 @@ form .input-field-message {
     position: absolute;
     top: 50%;
     left: 5px;
-    color: #adadad;
+    color: #fff;
     transform: translateY(-50%);
     font-size: 16px;
     pointer-events: none;
@@ -144,16 +183,16 @@ form .input-field-message {
     position: absolute;
     top: 40px;
     left: 0;
-    width: 100%;
+    width: 0;
     height: 2px;
     transition: .3s;
-    background: #7e7e7e;
+    background: #236f21;
 }
 
 .input-field input:focus ~ label,
 .input-field input:not(:placeholder-shown) ~ label {
     top: -5px;
-    color: #2691d9;
+    color: #236f21;
 }
 
 .input-field input:focus ~ span::before,
@@ -167,23 +206,27 @@ form .input-field-message {
 }
 
 .input-field-message textarea {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 310px;
-    min-width: 580px;
+    min-height: 220px;
+    min-width: 460px;
     resize: none;
-    border: 2px solid grey;
-    border-radius: .25rem;
+    border: 2px solid #fff;
+    border-radius: 7px;
     outline: none;
     background: none;
     padding: 20px;
+    transition: all .3s;
+}
+
+.input-field-message textarea:focus,
+.input-field-message textarea:not(:placeholder-shown) {
+    border: 2px solid #236f21;
 }
 
 .input-field-message textarea::-webkit-scrollbar {
-    width: 1em;
+    width: .9em;
 }
 
 .input-field-message textarea::-webkit-scrollbar-track {
@@ -193,16 +236,17 @@ form .input-field-message {
 .input-field-message textarea::-webkit-scrollbar-thumb {
     background-color: darkgrey;
     outline: 1px solid slategrey;
+    border-radius: 15px;
 }
 
 .input-field-message label {
     position: absolute;
-    color: grey;
+    color: #fff;
     left: 1rem;
     top: .8rem;
     padding: 0 .5rem;
     cursor: text;
-    background-color: #ffd9b3;
+    background-color: #a5d2a4;
     transition: top 200ms ease-in,
                 left 200ms ease-in,
                 font-size 200ms ease-in;
@@ -214,4 +258,36 @@ form .input-field-message {
     top: -.5rem;
     font-size: .9rem;
     left: .8rem;
+    color: #236f21;
+}
+
+/*.submit-btn {
+    display: flex;
+    justify-content: center;
+    width: 16px;
+}*/
+
+.btn-space {
+    display: flex;
+    justify-content: center;
+}
+
+.submit-btn {
+    box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
+    background-color: #236f21;
+    width: 145px;
+    height: 55px;
+    color: #fff;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: none;
+    text-decoration: none;
+    transition: all .3s;
+}
+
+.submit-btn:hover,
+.submit-btn:active {
+    background-color: #fff;
+    color: #236f21;
+    cursor: pointer;
 }

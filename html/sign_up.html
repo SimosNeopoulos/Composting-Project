@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/css/style_sign_up.css">
+
     <title>Composting Log In</title>
 </head>
 <body>
-<header class="header sticky">
+<header>
     <button type="submit"
             onclick="location.href='https://www.youtube.com/shorts/iVX5C_VQ5NA?&ab_channel=Avatar%3ATheLastAirbender'"
             class="logo"><img src="/images/composting.png" alt="search icon">
     </button>
 
-    <nav class="navigation">
+    <nav>
         <ul class="navigation-list">
             <li class="navigation-list-item"><a href="#">Home</a></li>
             <li class="navigation-list-item"><a href="#">Forum</a></li>
@@ -35,11 +36,16 @@
         </table>
     </div>
 
-    <a href="log_in.html" class="btn btn-acc">Log In</a>
+    <div class="btn-container">
+        <a href="log_in.html" class="btn btn-acc">Log In</a>
+    </div>
+
 
 </header>
 
-<div class="container">
+<div class="head-page"></div>
+
+<div class="form-container">
     <div class="login-signup-content">
         <h1 class="top-text">Sign Up</h1>
         <form method="post">
@@ -64,15 +70,21 @@
                 <label>Password</label>
             </div>
             <div class="input-field">
-                <input type="tel" placeholder=" " required>
+                <input type="tel" placeholder=" ">
                 <span></span>
                 <label>Phone number</label>
             </div>
-            <div class="sign-up-btn"><a href="#" class="btn">Sign Up</a></div>
+            <div class="btn-space">
+                <button name="submit-btn" type="submit" class="submit-btn">
+                    Sign Up
+                </button>
+            </div>
             <div class="log-in-text">Already have an account? <a href="log_in.html">Log In!</a></div>
         </form>
     </div>
 </div>
+
+<script type="text/javascript" src="../java_script/script.js"></script>
 
 </body>
 </html>
