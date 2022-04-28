@@ -83,7 +83,7 @@ form .input-field-message {
     top: 0;
     left: 0;
     min-height: 220px;
-    min-width: 410px;
+    min-width: 92%;
     resize: none;
     border: 2px solid grey;
     border-radius: 7px;

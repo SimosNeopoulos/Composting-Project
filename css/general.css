@@ -35,7 +35,7 @@ a:active {
 
 header {
     position: fixed;
-    background: none;
+    background-color: rgba(209, 243, 175, 0.88);
     left: 0;
     top: 0;
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.3);
@@ -62,14 +62,17 @@ header.sticky-header {
 /**********   **********/
 
 /** LOGO **/
+.logo-container {
+    width: 8%;
+}
+
 .logo{
     border:none;
     background:none;
     cursor:pointer;
 }
 .logo img{
-    height:80px;
-    width:130px;
+    width: 100%;
 }
 
 /**********/

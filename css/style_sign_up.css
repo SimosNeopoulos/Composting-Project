@@ -1,3 +1,8 @@
+body {
+    background: url("../images/green-branches_1.jpg");
+    background-size: cover;
+}
+
 .container-height {
     height: 750px;
 }
