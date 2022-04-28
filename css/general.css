@@ -34,7 +34,7 @@ a:active {
 }
 
 header {
-    position: fixed;
+    position: sticky;
     background-color: rgba(209, 243, 175, 0.88);
     left: 0;
     top: 0;
@@ -50,7 +50,7 @@ header {
 
 /** STICKY NAVIGATION **/
 header.sticky-header {
-    position: fixed;
+    position: sticky;
     top: 0;
     bottom: 0;
     width: 100%;
