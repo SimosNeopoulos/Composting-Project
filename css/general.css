@@ -261,5 +261,73 @@ header.sticky-header {
 .input-field input:not(:placeholder-shown) ~ span::before {
     width: 100%;
 }
+/************ FOOTER ************/
 
+footer{
+    background: #000000;
+    height: auto;
+    width: 100%;
+    font-family: "Open Sans";
+    color: #fff;
+}
+.footer-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.footer-content h3{
+    font-size: 40px;
+    font-weight: 400;
+    text-transform: capitalize;
+    line-height: 3rem;
+}
+
+.footer-content p{
+    max-width: 700px;
+    margin: 2px auto;
+    line-height: 5px;
+    font-size: 20px;
+}
+
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem 2rem 2rem 0;
+}
+.socials li{
+    margin: 0 10px;
+}
+.socials a{
+    text-decoration: none;
+    color: #fff;
+}
+.socials a i{
+    font-size: 1.1rem;
+    transition: color .4s ease;
+}
+.socials a:hover i{
+    color: #73ea67;
+}
+
+.footer-bottom{
+    background: #000;
+    width: 100vw;
+    padding: 2px 0;
+    text-align:center;
+}
+.footer-bottom p{
+    font-size: 14px;
+    word-spacing: 3px;
+    text-transform: capitalize;
+}
+.footer-bottom span{
+    text-transform: uppercase;
+    opacity: .4;
+    font-weight: 200;
+}
 /****************************************************/
