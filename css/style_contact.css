@@ -1,28 +1,23 @@
-.container {
-    background: none;
-    display: flex;
-}
-
-.container-image {
-    display: block;
-    max-width: 80%;
-    max-height: 80%;
-    background-image: url("../images/letter.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
+body {
+    background: url("../images/green-wall.jpg");
     background-size: cover;
 }
 
 .contact-container {
     width: 450px;
     height: 750px;
-    margin-left: 10%;
-    margin-top: 50px;
+    margin: auto;
     border-radius: 15px;
     padding: 0 70px;
     background-color: rgba(255, 255, 255, 0.98);
     box-shadow: 0 5px 20px 7px rgba(0, 0, 0, 0.3);
 
+}
+
+.contact-text {
+    text-align: center;
+    padding: 40px 0 10px 0;
+    font-size: 40px;
 }
 
 .contact-container form {
@@ -80,9 +75,10 @@ form .input-field-message {
 
 .input-field-message textarea {
     position: relative;
+    font-size: 15px;
     top: 0;
     left: 0;
-    min-height: 220px;
+    min-height: 150px;
     min-width: 92%;
     resize: none;
     border: 2px solid grey;
