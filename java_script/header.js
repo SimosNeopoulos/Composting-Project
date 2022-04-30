@@ -1,8 +1,25 @@
 let appHeader = `
-    <div class="logo-container">
-        <a class="logo" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
-            <img src="/images/composting.png" alt="search icon">
-        </a>
+    <div id="side-nav">
+        <span class="closeNav" onclick="closeNav()">&#10006</span>
+        <a href="#">Home</a>
+        <a href="#">Forum</a>
+        <a href="#">Learn More</a>
+        <a href="../html/contact.html">Help</a>
+    </div>
+    
+    <div class="icon-nav">
+        <div class="phone-nav">
+            <button class="nav-btn" onclick="openNav()">
+                <span class="menu-icon">&#9776;</span>
+<!--                <ion-icon class="menu-icon" name="menu-outline"></ion-icon>-->
+            </button>
+        </div>
+    
+        <div class="logo-container">
+            <a class="logo" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+                <img src="/images/composting.png" alt="search icon">
+            </a>
+        </div>
     </div>
 
     <nav class="navigation">

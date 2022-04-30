@@ -28,11 +28,6 @@ a:active {
 
 /************ MAIN NAVIGATION ************/
 
-.head-page {
-    background: none;
-    height: 95px;
-}
-
 header {
     position: sticky;
     background-color: rgba(209, 243, 175, 0.88);
@@ -60,8 +55,14 @@ header.sticky-header {
 /**********   **********/
 
 /** LOGO **/
-.logo-container {
+.icon-nav {
     width: 8%;
+    min-width: 100px;
+}
+
+.logo-container {
+    width: 100%;
+    min-width: 100px;
 }
 
 .logo{
@@ -85,8 +86,9 @@ header.sticky-header {
     padding: 0;
     align-items: center;
     display: flex;
-    gap: 20%/*80px*/;
+    gap: 20%;
 }
+
 
 .navigation-list-item a:link,
 .navigation-list-item a:visited{
@@ -102,13 +104,16 @@ header.sticky-header {
 .navigation-list-item a:active {
     font-size: 23px;
 }
+
+
 /*************************/
 
 /********* SEARCH ***********/
 .search-box {
     box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
     background-color: white;
-    width: 250px;
+    width: 15%;
+    max-width: 250px;
     height: 35px;
     border: none;
     padding: 2px 10px;
@@ -195,6 +200,105 @@ header.sticky-header {
 .submit-btn:active {
     transform: scale(1.1);
     cursor: pointer;
+}
+
+.phone-nav {
+    display: none;
+}
+
+#side-nav {
+    display: none;
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    transition: .4s ease-in;
+    background: hsl(0, 0%, 100%, .1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+#side-nav a {
+    display: block;
+    padding: 4px;
+    margin: 100px auto;
+    font-size: 25px;
+    text-decoration: none;
+}
+
+#side-nav .closeNav {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+@media(max-width: 1275px) {
+    .navigation {
+        width: 40%;
+    }
+
+    .navigation-list {
+        gap: 15%;
+    }
+
+    .navigation-list-item a:link,
+    .navigation-list-item a:visited{
+        font-size: 18px;
+    }
+
+    .navigation-list-item a:hover,
+    .navigation-list-item a:active {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 900px) {
+    .navigation {
+        display: none;
+    }
+
+    .logo-container {
+        width: 8%;
+        min-width: 100px;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .icon-nav {
+        margin-left: 4%;
+        display: flex;
+        justify-content: space-between;
+        width: 20%;
+    }
+
+    .phone-nav {
+        display: flex;
+        position: center;
+    }
+
+    .nav-btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 30px;
+    }
+
+    .menu-icon {
+        width: 40px;
+        height: 40px;
+        color: #525252;
+    }
+
+    #side-nav {
+        display: block;
+    }
+
 }
 
 /*******************************/
