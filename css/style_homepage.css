@@ -38,6 +38,7 @@ body{
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
 .read-more {
+    cursor: pointer;
     position: absolute;
     left: 5%;
     top: 70%;
@@ -87,6 +88,7 @@ body{
 }
 
 .join-btn {
+    cursor: pointer;
     position: absolute;
     left: 50%;
     top: 70%;
@@ -96,8 +98,7 @@ body{
     padding: 8px 15px;
     border-radius: 5px;
     color: white;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 20px;
     text-transform: uppercase;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
@@ -123,11 +124,13 @@ body{
     flex: 1;
     display: flex;
 }
-.info-img-left{
-    width: 40%;
-    margin: 10% 5% 10% 10%;
-    border-radius: 10px;
+.info-img-left-container{
     flex: 1;
+}
+.info-img-left{
+    width: 80%;
+    margin: 20% 5% 10% 10%;
+    border-radius: 10px;
 }
 .left-text{
     flex: 1;
@@ -139,22 +142,25 @@ body{
     flex: 1;
     display: flex;
 }
-.info-img-right{
-    width: 40%;
-    margin: 10% 5% 10% 10%;
-    border-radius: 10px;
+.info-img-right-container{
     flex: 1;
+}
+.info-img-right{
+    width: 80%;
+    margin: 20% 5% 10% 10%;
+    border-radius: 10px;
 }
 .right-text{
-    padding: 10% 0%;
+    padding: 10% 0% 0% 0%;
     flex: 1;
 }
 
-li{ margin:0 0px 20px 0; vertical-align:top}
+li{ margin: 30px 0px 20px 0; vertical-align:top}
 
 .btn-more-info {
-    margin-left: 25%;
-    margin-top: 40%;
+    cursor: pointer;
+    margin-left: 20%;
+    margin-top: 10%;
     background: #236f21;
     border: 0px;
     padding: 8px 15px;
