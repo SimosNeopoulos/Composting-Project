@@ -2,7 +2,7 @@ html {
     height: 100%;
 }
 
-body{
+body {
     margin: 0;
     font-family: sans-serif;
     color: #243e16;
@@ -13,7 +13,7 @@ body{
 /***** UNDECORATED LINKS *****/
 
 a:link,
-a:visited{
+a:visited {
     transition: all .3s;
 }
 
@@ -66,12 +66,13 @@ header.sticky-header {
     min-width: 100px;
 }
 
-.logo{
-    border:none;
-    background:none;
-    cursor:pointer;
+.logo {
+    border: none;
+    background: none;
+    cursor: pointer;
 }
-.logo img{
+
+.logo img {
     width: 100%;
 }
 
@@ -92,7 +93,7 @@ header.sticky-header {
 
 
 .navigation-list-item a:link,
-.navigation-list-item a:visited{
+.navigation-list-item a:visited {
     text-decoration: none;
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
     color: #243e16;
@@ -104,10 +105,40 @@ header.sticky-header {
 .navigation-list-item a:hover,
 .navigation-list-item a:active {
     font-size: 23px;
+    color: white;
 }
 
 
 /*************************/
+
+/******** PHONE NAV LINKS ******/
+#side-nav ul {
+    list-style: none;
+    padding: 0;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+    height: 60%;
+}
+
+#side-nav ul li a {
+    text-decoration: none;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    color: #243e16;
+    font-weight: bold;
+    font-size: 18px;
+    transition: all .2s;
+}
+
+#side-nav ul li a:hover,
+#side-nav ul li a:active {
+    font-size: 20px;
+    color: white;
+}
+
+/********************************/
 
 /********* SEARCH ***********/
 .search-box {
@@ -120,16 +151,18 @@ header.sticky-header {
     padding: 2px 10px;
     border-radius: 50px;
 }
+
 .elementsContainer {
     width: 100%;
     height: 100%;
-    vertical-align:middle;
+    vertical-align: middle;
     horiz-align: center;
 }
+
 .search {
     border: none;
-    background-color:rgba(0,0,0,0);
-    outline:none;
+    background-color: rgba(0, 0, 0, 0);
+    outline: none;
     height: 90%;
     width: 93%;
     padding: 3px 7px;
@@ -141,21 +174,22 @@ header.sticky-header {
 }
 
 .searchIcon {
-    border:none;
-    background:none;
-    cursor:pointer;
+    border: none;
+    background: none;
+    cursor: pointer;
     margin: 0;
     padding: 0;
-    font-size:25px;
-    color:#2980b9;
+    font-size: 25px;
+    color: #2980b9;
 }
+
 /********************************/
 
 /*********** BUTTONS ************/
 
 .btn,
 .btn:link,
-.btn:visited{
+.btn:visited {
     box-shadow: 0 5px 10px 3px rgba(0, 0, 0, 0.3);
     background-color: #236f21;
     color: #fff;
@@ -172,7 +206,7 @@ header.sticky-header {
 .btn-acc:hover,
 .btn-acc:active {
     color: #236f21;
-    background-color:#fff;
+    background-color: #fff;
 }
 
 .btn-container {
@@ -209,35 +243,27 @@ header.sticky-header {
 
 #side-nav {
     display: none;
-    height: 100%;
-    width: 0%;
+    height: 100vh;
+    width: 0;
     position: fixed;
     top: 0;
     left: 0;
     overflow-x: hidden;
     transition: .4s ease-in;
-    background: hsl(0, 0%, 100%, .1);
+    background: rgba(209, 243, 175, 0.7);
     backdrop-filter: blur(10px);
     text-align: center;
 }
 
-#side-nav a {
-    display: block;
-    padding: 4px;
-    margin: 100px auto;
-    font-size: 25px;
-    text-decoration: none;
-}
-
 #side-nav .closeNav {
     position: absolute;
-    top: 10px;
-    left: 25px;
+    top: 4%;
+    left: 14%;
     cursor: pointer;
     font-size: 30px;
 }
 
-@media(max-width: 1275px) {
+@media (max-width: 1275px) {
     .navigation {
         width: 40%;
     }
@@ -247,7 +273,7 @@ header.sticky-header {
     }
 
     .navigation-list-item a:link,
-    .navigation-list-item a:visited{
+    .navigation-list-item a:visited {
         font-size: 18px;
     }
 
@@ -255,51 +281,6 @@ header.sticky-header {
     .navigation-list-item a:active {
         font-size: 20px;
     }
-}
-
-@media(max-width: 900px) {
-    .navigation {
-        display: none;
-    }
-
-    .logo-container {
-        width: 8%;
-        min-width: 100px;
-    }
-
-    .search-box {
-        display: none;
-    }
-
-    .icon-nav {
-        margin-left: 4%;
-        display: flex;
-        justify-content: space-between;
-        width: 20%;
-    }
-
-    .phone-nav {
-        display: flex;
-        position: center;
-    }
-
-    .nav-btn {
-        border: none;
-        background: none;
-        cursor: pointer;
-        font-size: 30px;
-    }
-
-    .menu-icon {
-        width: 40px;
-        height: 40px;
-        color: #525252;
-    }
-
-    #side-nav {
-        display: block;
-    }
-
 }
 
 /*******************************/
@@ -359,23 +340,129 @@ header.sticky-header {
 .input-field input:focus ~ label,
 .input-field input:not(:placeholder-shown) ~ label {
     top: -5px;
-    color: #236f21 ;
+    color: #236f21;
 }
 
 .input-field input:focus ~ span::before,
 .input-field input:not(:placeholder-shown) ~ span::before {
     width: 100%;
 }
+
+@media (max-width: 900px) {
+    header {
+        height: 60px;
+    }
+
+    header.sticky-header {
+        height: 55px;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .logo-container {
+        width: 8%;
+        min-width: 100px;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .btn,
+    .btn:link,
+    .btn:visited {
+        font-size: .9rem;
+        padding: 12px 22px;
+    }
+
+    .icon-nav {
+        margin-left: 4%;
+        display: flex;
+        justify-content: space-between;
+        width: 20%;
+    }
+
+    .phone-nav {
+        display: flex;
+        position: center;
+    }
+
+    .nav-btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 30px;
+    }
+
+    .menu-icon {
+        width: 40px;
+        height: 40px;
+        color: #525252;
+    }
+
+    #side-nav {
+        display: block;
+    }
+
+    .form-container {
+        width: min(80%, 400px);
+    }
+
+    .form-container form {
+        padding: 0 65px;
+    }
+
+    .btn-container {
+        margin-right: 15px;
+    }
+
+    .top-text {
+        padding: 35px 0 15px 0;
+        font-size: 40px;
+    }
+
+    .submit-btn {
+        width: 120px;
+        height: 48px;
+        font-size: .9rem;
+    }
+}
+
+@media(max-width: 500px) {
+    .top-text {
+        font-size: 35px;
+    }
+
+    .form-container form {
+        padding: 0 40px;
+    }
+
+    .submit-btn {
+        width: 100px;
+        height: 44px;
+        font-size: .9rem;
+    }
+}
+
+@media(max-width: 400px) {
+    .form-container {
+        width: 90%;
+    }
+}
+
 /************ FOOTER ************/
 
-footer{
+footer {
     background: #000000;
     height: auto;
     width: 100%;
     font-family: "Open Sans";
     color: #fff;
 }
-.footer-content{
+
+.footer-content {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -383,56 +470,63 @@ footer{
     text-align: center;
 }
 
-.footer-content h3{
+.footer-content h3 {
     font-size: 40px;
     font-weight: 400;
     text-transform: capitalize;
     line-height: 3rem;
 }
 
-.footer-content p{
+.footer-content p {
     max-width: 700px;
     margin: 2px auto;
     line-height: 5px;
     font-size: 20px;
 }
 
-.socials{
+.socials {
     list-style: none;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 3rem 2rem 2rem 0;
 }
-.socials li{
+
+.socials li {
     margin: 0 10px;
 }
-.socials a{
+
+.socials a {
     text-decoration: none;
     color: #fff;
 }
-.socials a i{
+
+.socials a i {
     font-size: 1.1rem;
     transition: color .4s ease;
 }
-.socials a:hover i{
+
+.socials a:hover i {
     color: #73ea67;
 }
 
-.footer-bottom{
+.footer-bottom {
     background: #000;
     width: 100vw;
     padding: 2px 0;
-    text-align:center;
+    text-align: center;
 }
-.footer-bottom p{
+
+.footer-bottom p {
     font-size: 14px;
     word-spacing: 3px;
     text-transform: capitalize;
 }
-.footer-bottom span{
+
+.footer-bottom span {
     text-transform: uppercase;
     opacity: .4;
     font-weight: 200;
 }
+
 /****************************************************/

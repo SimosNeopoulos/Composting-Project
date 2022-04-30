@@ -1,16 +1,13 @@
 body {
-    background: url("../images/green-wall.jpg");
+    background: url("../images/contact_image.jpg") no-repeat;
     background-size: cover;
 }
 
-.contact-container {
-    width: 450px;
+.container-height {
     height: 750px;
-    margin: auto;
-    border-radius: 15px;
-    padding: 0 70px;
-    background-color: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 5px 20px 7px rgba(0, 0, 0, 0.3);
+}
+
+.contact-container form {
 
 }
 
@@ -18,11 +15,6 @@ body {
     text-align: center;
     padding: 40px 0 10px 0;
     font-size: 40px;
-}
-
-.contact-container form {
-    padding: 0;
-    box-sizing: border-box;
 }
 
 form .input-field{
@@ -44,6 +36,47 @@ form .input-field-message {
     border: none;
     background: none;
     outline: none;
+}
+
+@media(max-width: 900px) {
+    .container-height {
+        height: 690px;
+    }
+
+    .contact-text {
+        padding: 30px 0;
+        font-size: 35px;
+    }
+
+    form .input-field{
+        margin: 35px 0;
+    }
+
+    form .input-field-message {
+        margin: 45px 0;
+    }
+}
+
+@media(max-width: 530px) {
+    .container-height {
+        height: 660px;
+    }
+
+    .contact-text {
+        padding: 15px 0;
+        font-size: 30px;
+    }
+}
+
+@media(max-width: 450px) {
+    .container-height {
+        height: 660px;
+    }
+
+    .contact-text {
+        padding: 15px 0;
+        font-size: 25px;
+    }
 }
 
 .input-field label {
@@ -78,8 +111,8 @@ form .input-field-message {
     font-size: 15px;
     top: 0;
     left: 0;
-    min-height: 150px;
-    min-width: 92%;
+    height: 150px;
+    width: 92%;
     resize: none;
     border: 2px solid grey;
     border-radius: 7px;
@@ -129,3 +162,4 @@ form .input-field-message {
     left: .8rem;
     color: #236f21;
 }
+

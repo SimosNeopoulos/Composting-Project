@@ -1,10 +1,12 @@
 let appHeader = `
     <div id="side-nav">
-        <span class="closeNav" onclick="closeNav()">&#10006</span>
-        <a href="#">Home</a>
-        <a href="#">Forum</a>
-        <a href="#">Learn More</a>
-        <a href="../html/contact.html">Help</a>
+        <ul>
+            <li><span class="closeNav" onclick="closeNav()">&#10006</span></li>
+            <li><a href="../html/homepage.html">Home</a></li>
+            <li><a href="#">Forum</a></li>
+            <li><a href="#">Learn More</a></li>
+            <li><a href="../html/contact.html">Help</a></li>
+        </ul>
     </div>
     
     <div class="icon-nav">

@@ -14,7 +14,7 @@ window.addEventListener("scroll", () => {
 
 /************ PHONE NAVIGATION **************/
 function openNav() {
-    document.getElementById("side-nav").style.width = "45%"
+    document.getElementById("side-nav").style.width = "60%"
 }
 
 function closeNav() {

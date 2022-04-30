@@ -1,5 +1,5 @@
 body {
-    background: url("../images/green-wall.jpg");
+    background: url("../images/green-wall.jpg") no-repeat;
     background-size: cover;
 }
 
@@ -16,6 +16,31 @@ form .input-field{
 .log-in-text {
     text-align: center;
     margin: 44px 0;
+}
+
+@media(max-width: 900px) {
+    form .input-field{
+        margin: 30px 0;
+    }
+
+    .container-height {
+        height: 620px;
+    }
+
+    .log-in-text {
+        margin: 40px 0;
+    }
+}
+
+@media(max-width: 500px) {
+
+    .sign-up-text {
+        font-size: .9rem;
+    }
+
+    .sign-up-text {
+        margin: 30px 0;
+    }
 }
 
 
