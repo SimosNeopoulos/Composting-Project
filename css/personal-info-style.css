@@ -1,3 +1,74 @@
-.conteiner-fluid {
-    /*display: cover;*/
+.container {
+    display: flex;
+}
+
+.profile_pic{
+    border-radius: 3%;
+    border: solid 3px #444444;
+    width: 15%;
+    background-color:rgba(209, 243, 175, 0.88) ;
+    margin-top: 5%;
+    margin-left: 10%;
+
+}
+
+.picture {
+    object-fit: cover;
+    max-width: 100%;
+}
+
+
+.edit {
+    display: flex;
+    padding-top: 10%;
+    align-items: center;
+}
+
+#edit-icon {
+   padding-top: 50%;
+}
+#edit-icon:hover{
+    cursor: pointer;
+}
+
+#upload {
+   display: none;
+    float: left;
+}
+
+#profile-header {
+
+}
+
+.profile_info {
+   margin-top: 10%;
+   margin-left: 10%;
+   align-items: center;
+   border-radius: 7%;
+   border: solid white;
+   width: 55%;
+   background-color: white;
+}
+
+h1{
+    padding-left: 10%;
+}
+
+.info-container {
+    margin-top: 5%;
+    padding: 5%;
+    display: block;
+
+}
+input {
+    border: none;
+    border-radius: 5px;
+    font-size: larger;
+    width: 270px;
+    outline: none;
+}
+
+label {
+    float: left;
+    font-size: large;
 }
