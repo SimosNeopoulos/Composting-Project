@@ -30,10 +30,6 @@
 }
 
 
-/*#edit-icon {*/
-/*   !*padding-top: 50%;*!*/
-/*}*/
-
 #edit-icon:hover{
     cursor: pointer;
 
@@ -43,38 +39,40 @@
    display: none;
 }
 
-#profile-header {
-
-}
 
 .profile_info {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
-    margin-top: 7%;
+    margin-top: 5%;
     margin-left: 10%;
-    /*margin-right: 20%;*/
     align-items: center;
-    border-radius: 7%;
+    border-radius: 3%;
     border: solid white;
     width: 30%;
-    height: 500px;
+    height: 700px;
     background-color: white;
+}
+
+.title {
+    /*background-color: #7BB79D;*/
 }
 
 h1{
     padding-left: 10%;
+
 }
 
 .info-container {
-    margin-top: 5%;
+
     padding: 5%;
     display: block;
 
 }
 input {
-    border: none;
+    border-top: none;
+    border-right: none;
+    border-left: none;
     border-radius: 5px;
     background-color: #7BB79D;
-    /*background: rgba(255, 255, 255, .40);*/
     font-size: larger;
     width: 100%;
     outline: none;
@@ -84,4 +82,7 @@ input {
 label {
     float: left;
     font-size: large;
+    width: 100%;
+    color: #243e16;
+    padding-top: 2%;
 }
