@@ -369,7 +369,7 @@ header.sticky-header {
 /************ FOOTER ************/
 
 footer{
-    background: #000000;
+    background: rgba(173, 142, 142, 0);
     height: auto;
     width: 100%;
     font-family: "Open Sans";
@@ -384,16 +384,18 @@ footer{
 }
 
 .footer-content h3{
+    color: #000000;
     font-size: 40px;
     font-weight: 400;
     text-transform: capitalize;
-    line-height: 3rem;
+    line-height: 2rem;
 }
 
 .footer-content p{
+    color: #000000;
     max-width: 700px;
     margin: 2px auto;
-    line-height: 5px;
+    line-height: 1px;
     font-size: 20px;
 }
 
@@ -402,30 +404,31 @@ footer{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 3rem 2rem 2rem 0;
+    margin: 2rem 2rem 1rem 0;
 }
 .socials li{
     margin: 0 10px;
 }
 .socials a{
     text-decoration: none;
-    color: #fff;
+    color: #000000;
 }
 .socials a i{
     font-size: 1.1rem;
     transition: color .4s ease;
 }
 .socials a:hover i{
-    color: #73ea67;
+    color: #ffffff;
 }
 
 .footer-bottom{
-    background: #000;
-    width: 100vw;
+    background: rgba(173, 142, 142, 0);
+    width: 100%;
     padding: 2px 0;
     text-align:center;
 }
 .footer-bottom p{
+    color: #000000;
     font-size: 14px;
     word-spacing: 3px;
     text-transform: capitalize;
