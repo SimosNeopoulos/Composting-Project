@@ -16,7 +16,7 @@
     <div class="subtitle">Είμαστε μία ομάδα τεσσάρων φοιτητών με μεγάλο ενδιαφέρον για το περιβάλλον και αυτή η
         ιστοσελίδα έχει δημιουργηθεί στα πλαίσια εργασίας για το μάθημα Πληροφοριακά Συστήματα Παγκόσμιου Ιστού.
     </div>
-    <button class="read-more">Μαθε περισσοτερα!</button>
+    <button class="read-more" onclick="scrollToBottom()">Μαθε περισσοτερα!</button>
 </div>
 
 <div class="join-us">
@@ -56,7 +56,7 @@
                     <li>Πρόσθεσε χώμα</li>
                     <li>Ανακάτευε συχνά</li>
                 </ol>
-                <button class="btn-more-info" onclick="window.location.href = 'log_in.html'">Μαθε περισσοτερα</button>
+                <button class="btn-more-info" onclick="window.location.href = 'info-page.html'">Μαθε περισσοτερα</button>
             </div>
         </div>
     </div>
@@ -86,3 +86,9 @@
 <script type="text/javascript" src="../java_script/script.js"></script>
 </body>
 </html>
+<script>
+    function scrollToBottom() {
+        window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+    }
+    history.scrollRestoration = "manual";
+</script>
