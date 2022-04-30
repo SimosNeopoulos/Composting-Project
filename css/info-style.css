@@ -6,7 +6,7 @@
 
 .top-part-image {
 	width: 100%
-} 
+}
 
 
 
@@ -71,7 +71,7 @@
 	text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
 
-.info-text, ul, .links-list {
+.info-text, .links-list {
 	color: #243e16;
 	font-size: large;
 	margin-bottom: 5%;
@@ -85,7 +85,7 @@
 
 
 a {
-	color: #243e16; 
+	color: #243e16;
 }
 
 a:hover {
