@@ -1,0 +1,93 @@
+.top-part {
+	position: relative;
+	text-align: center;
+	max-width: 100%
+}
+
+.top-part-image {
+	width: 100%
+} 
+
+
+
+.about-composting-box {
+
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+	border-radius: 15px;
+	padding: 0.2%;
+	background: rgba(255, 255, 255, 1.0);
+	color: #243e16;
+	position: absolute;
+	top: 10%;
+	left: 2%;
+	right: 70%;
+}
+
+.what-is-composting-box {
+
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+	border-radius: 15px;
+	padding: 0.4%;
+	background: rgba(68, 68, 68, 0.80);
+	color: white;
+	position: absolute;
+	top: 30%;
+	left: 2%;
+	right: 60%;
+}
+
+
+.card {
+
+	padding: 1%;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+}
+
+.info, .links {
+
+	background-color: #a5d2a4;
+}
+
+
+/*large icons on main body*/
+
+.flower, .learn-more {
+
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 20%;
+	padding: 10%;
+	border: 2px solid white;
+	border-radius: 100%;
+	box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+
+.info-header, #links-header {
+	color: white;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	text-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.info-text, ul, .links-list {
+	color: #243e16;
+	font-size: large;
+	margin-bottom: 5%;
+}
+
+.images {
+	display: block;
+	max-width:100%
+}
+
+
+
+a {
+	color: #243e16; 
+}
+
+a:hover {
+	color: #236f21;
+}
