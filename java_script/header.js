@@ -24,7 +24,7 @@ let appHeader = `
 
     <nav class="navigation">
         <ul class="navigation-list">
-            <li class="navigation-list-item"><a href="#">Home</a></li>
+            <li class="navigation-list-item"><a href="../html/homepage.html">Home</a></li>
             <li class="navigation-list-item"><a href="#">Forum</a></li>
             <li class="navigation-list-item"><a href="#">Learn More</a></li>
             <li class="navigation-list-item"><a href="../html/contact.html">Help</a></li>
