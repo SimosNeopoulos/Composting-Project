@@ -1,0 +1,94 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background: url("../images/trees.jpg") fixed;
+    background-size: cover;
+
+}
+.forum-body{
+    display: flex;
+    background-color: rgba(36, 62, 22, 0.6);
+}
+.sidebar-container{
+    margin: 2%;
+    flex: 1 0 auto;
+}
+.profile-widget{
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.45);
+    margin-bottom: 5%;
+    background: white;
+    padding: 10%;
+    border-radius: 10px;
+}
+.popular-tags{
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.45);
+    background: white;
+    padding: 5%;
+    border-radius: 10px;
+}
+.main-container{
+    margin: 2%;
+    flex: 4 0 auto;
+}
+.forum-menu{
+    display: flex;
+}
+.space{
+    flex: 1 0 auto;
+    padding: 3px 20px;
+    margin: 2%;
+}
+.filter{
+    display: flex;
+    flex: 1 0 auto;
+    margin: 2%;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.45);
+    background: white;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5% 2%;
+    max-width: 250px;
+    height: 35px;
+}
+.btn-forum-filter{
+    flex: 3;
+    cursor: pointer;
+    border: none;
+    outline:none;
+    text-align: left;
+    font-size: 18px;
+    color: #424242;
+    font-weight: 500;
+    background: transparent;
+}
+.filter-arrow{
+    opacity: 80%;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    flex: 1;
+    margin: 5% 5% 5% 45%;
+}
+
+.forum-search{
+    flex: 1 0 auto;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.45);
+    background-color: white;
+    width: 15%;
+    max-width: 250px;
+    height: 35px;
+    border: none;
+    padding: 0.5% 2%;
+    margin: 2% 4% 2% 2%;
+    border-radius: 50px;
+}
+.posts{
+    list-style-type: none;
+}
+.posts li{
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.45);
+    background: white;
+    border-radius: 10px;
+    padding: 25%;
+    margin: 5% 5% 0 0;
+}
