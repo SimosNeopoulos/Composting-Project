@@ -47,8 +47,7 @@ body{
     border: 0px;
     padding: 8px 15px;
     border-radius: 5px;
-    font-size: 15px;
-    font-weight: bold;
+    font-size: 18px;
     text-transform: uppercase;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
@@ -128,13 +127,13 @@ body{
     flex: 1;
 }
 .info-img-left{
-    width: 80%;
+    width: 95%;
     margin: 20% 5% 10% 10%;
     border-radius: 10px;
 }
 .left-text{
     flex: 1;
-    padding: 10% 0%;
+    padding: 10% 0% 0% 5%;
 }
 
 /*Right info box*/
@@ -146,21 +145,32 @@ body{
     flex: 1;
 }
 .info-img-right{
-    width: 80%;
+    width: 95%;
     margin: 20% 5% 10% 10%;
     border-radius: 10px;
 }
 .right-text{
-    padding: 10% 0% 0% 0%;
+    padding: 10% 0% 0% 5%;
     flex: 1;
 }
 
+@media screen and (max-width: 900px) {
+    .info-preview{
+        display: block;
+    }
+}
+
 li{ margin: 30px 0px 20px 0; vertical-align:top}
+
+ol > li::marker {
+    font-weight: bold;
+}
 
 .btn-more-info {
     cursor: pointer;
     margin-left: 20%;
     margin-top: 10%;
+    margin-bottom: 10%;
     background: #236f21;
     border: 0px;
     padding: 8px 15px;
