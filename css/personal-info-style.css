@@ -44,29 +44,26 @@
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
     margin-top: 5%;
     margin-left: 10%;
-    align-items: center;
     border-radius: 3%;
-    border: solid white;
+    /*border: solid white;*/
     width: 30%;
     height: 700px;
     background-color: white;
 }
 
-.title {
-    /*background-color: #7BB79D;*/
-}
+
 
 h1{
     padding-left: 10%;
 
 }
 
-.info-container {
+/*.info-container {*/
+/*    padding: 5%;*/
+/*    display: block;*/
 
-    padding: 5%;
-    display: block;
+/*}*/
 
-}
 input {
     border-top: none;
     border-right: none;
@@ -74,9 +71,10 @@ input {
     border-radius: 5px;
     background-color: #7BB79D;
     font-size: larger;
-    width: 100%;
+    width: 96%;
     outline: none;
-    padding-top: 2%;
+    margin-bottom: 2%;
+
 }
 
 label {
@@ -84,5 +82,7 @@ label {
     font-size: large;
     width: 100%;
     color: #243e16;
-    padding-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+
 }
