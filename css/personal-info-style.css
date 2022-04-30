@@ -1,39 +1,46 @@
 .container {
     display: flex;
+
 }
 
 .profile_pic{
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
     border-radius: 3%;
-    border: solid 3px #444444;
     width: 15%;
-    background-color:rgba(209, 243, 175, 0.88) ;
+    background-color: white;
     margin-top: 5%;
     margin-left: 10%;
-
+    height: 50%;
 }
 
 .picture {
     object-fit: cover;
     max-width: 100%;
+    border-top-left-radius: 3%;
+    border-top-right-radius: 3%;
 }
+
 
 
 .edit {
+    background-color: #7BB79D;
     display: flex;
-    padding-top: 10%;
+    padding-left: 5%;
     align-items: center;
 }
 
-#edit-icon {
-   padding-top: 50%;
-}
+
+/*#edit-icon {*/
+/*   !*padding-top: 50%;*!*/
+/*}*/
+
 #edit-icon:hover{
     cursor: pointer;
+
 }
 
 #upload {
    display: none;
-    float: left;
 }
 
 #profile-header {
@@ -41,13 +48,16 @@
 }
 
 .profile_info {
-   margin-top: 10%;
-   margin-left: 10%;
-   align-items: center;
-   border-radius: 7%;
-   border: solid white;
-   width: 55%;
-   background-color: white;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    margin-top: 7%;
+    margin-left: 10%;
+    /*margin-right: 20%;*/
+    align-items: center;
+    border-radius: 7%;
+    border: solid white;
+    width: 30%;
+    height: 500px;
+    background-color: white;
 }
 
 h1{
@@ -63,9 +73,12 @@ h1{
 input {
     border: none;
     border-radius: 5px;
+    background-color: #7BB79D;
+    /*background: rgba(255, 255, 255, .40);*/
     font-size: larger;
-    width: 270px;
+    width: 100%;
     outline: none;
+    padding-top: 2%;
 }
 
 label {
