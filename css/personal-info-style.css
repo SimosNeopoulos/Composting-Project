@@ -1,5 +1,11 @@
+body {
+    background-image: url("../images/clover.jpg") ;
+    background-size: cover;
+}
+
 .container {
     display: flex;
+
 
 }
 
@@ -45,44 +51,71 @@
     margin-top: 5%;
     margin-left: 10%;
     border-radius: 3%;
-    /*border: solid white;*/
     width: 30%;
     height: 700px;
     background-color: white;
 }
 
+.title {
+    text-align: center;
+    padding: 3%;
+}
 
 
 h1{
-    padding-left: 10%;
 
 }
 
-/*.info-container {*/
-/*    padding: 5%;*/
-/*    display: block;*/
-
-/*}*/
+.user-data-fields {
+    display: flex;
+    margin: 5%;
+}
 
 input {
     border-top: none;
     border-right: none;
     border-left: none;
     border-radius: 5px;
-    background-color: #7BB79D;
+    background-color: rgba(123, 183, 157, 0.63);
     font-size: larger;
-    width: 96%;
+    width: 100%;
+    height: 40px;
     outline: none;
-    margin-bottom: 2%;
+    flex: 4;
+    text-align: right;
+    color: #243e16;
 
 }
 
 label {
+    flex: 2;
     float: left;
     font-size: large;
     width: 100%;
     color: #243e16;
-    margin-left: 2%;
-    margin-right: 2%;
+    height: 100%;
 
+
+
+}
+
+.save-button {
+    margin: 5%;
+}
+
+#save {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    float: right;
+    height: 50px;
+    background-color: #236f21;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 3%;
+}
+
+#save:hover{
+    background-color: #c0c0c0;
+    color: #243e16;
+    transition: all .2s;
 }

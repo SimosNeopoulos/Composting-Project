@@ -10,12 +10,12 @@
 
 </head>
 <body>
-	<header id="page-header"></header>
 
+	<header id="page-header"></header>
 	<div class="container">
 
 		<div class="profile_pic">
-			<img class="picture" src="../images/profile.png" alt="profile image!">
+			<img class="picture" src="../images/profile-circle.png" alt="profile image!">
 			<div class="edit">
 				<h3 id="edit-text"> Νεα εικόνα προφίλ;</h3>
 				<input type="file" id="upload" accept="image/*">
@@ -29,31 +29,32 @@
 				<h1 id="profile-header">Καλωσόρισες στο προφίλ σου!</h1>
 			</div>
 
-			<div>
-				<label>Όνομα χρήστη
-					<input type="text" placeholder="Username">
-				</label>
-			</div>
-			<div>
-				<label> Email
-					<input type="text" placeholder="Email">
-				</label>
+
+			<div class="user-data-fields">
+				<label>Όνομα χρήστη</label>
+				<input type="text" placeholder="Username">
 
 			</div>
-			<div>
-				<label>Διεύθυνση
-					<input type="text" placeholder="Address">
-				</label>
+			<div class="user-data-fields">
+				<label> Email</label>
+				<input type="text" placeholder="Email">
+
+
 			</div>
-			<div>
-				<label>Κωδικός πρόσβασης
-					<input type="password" placeholder="Password">
-				</label>
+			<div class="user-data-fields">
+				<label>Διεύθυνση</label>
+				<input type="text" placeholder="Address">
+
 			</div>
-			<div>
-				<label>Τηλέφωνο
-					<input type="tel" placeholder="69-99999999" pattern="69-[0-9]{8}" required>
-				</label>
+			<div class="user-data-fields">
+				<label>Κωδικός πρόσβασης </label>
+				<input type="password" placeholder="Password">
+
+			</div>
+			<div class="user-data-fields">
+				<label>Τηλέφωνο</label>
+				<input type="tel" placeholder="69-99999999" pattern="69-[0-9]{8}" required>
+
 			</div>
 
 
