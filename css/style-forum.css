@@ -38,7 +38,7 @@ body{
     padding: 3px 20px;
     margin: 2%;
 }
-.filter{
+.container{
     display: flex;
     flex: 1 0 auto;
     margin: 2%;
@@ -49,6 +49,7 @@ body{
     padding: 0.5% 2%;
     max-width: 250px;
     height: 35px;
+    position: relative;
 }
 .btn-forum-filter{
     flex: 3;
@@ -56,20 +57,49 @@ body{
     border: none;
     outline:none;
     text-align: left;
-    font-size: 18px;
+    font-size: 1.2em;
     color: #424242;
     font-weight: 500;
     background: transparent;
 }
-.filter-arrow{
-    opacity: 80%;
-    cursor: pointer;
-    width: auto;
-    height: auto;
-    flex: 1;
-    margin: 5% 5% 5% 45%;
+
+.btn-forum-filter img{
+    display: block;
+    margin-top: 0.2rem;
+    height: 18px;
+    width: 23px;
+    float: right;
 }
 
+/*-------DROPDOWN MENU--------*/
+.tabs{
+    background-color: #ffffff;
+    padding: 12px;
+    font-size: 1.2em;
+    border: none;
+    outline: none;
+    width: 250px;
+    transition: 0.3s;
+}
+.dropdown_menu{
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+    margin-top: 2.52rem;
+
+}
+.open_dropdown_menu{
+    transform: scaleY(1);
+}
+.change_container_color{
+    background: #c0bfbf;
+}
+.tabs:hover{
+    background-color: #869f7e;
+    transform: scale(1,1);
+}
+/****************************/
 .forum-search{
     flex: 1 0 auto;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.45);
