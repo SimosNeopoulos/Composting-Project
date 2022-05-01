@@ -1,6 +1,9 @@
 body {
     background-image: url("../images/clover.jpg") ;
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 
 .container {
@@ -10,7 +13,7 @@ body {
 }
 
 .profile_pic{
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
     border-radius: 3%;
     width: 15%;
     background-color: white;
@@ -30,6 +33,8 @@ body {
 
 .edit {
     background-color: #7BB79D;
+    border-bottom-left-radius: 3%;
+    border-bottom-right-radius: 3%;
     display: flex;
     padding-left: 5%;
     align-items: center;
@@ -47,12 +52,14 @@ body {
 
 
 .profile_info {
+    display: flex;
+    flex-direction: column;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
     margin-top: 5%;
     margin-left: 10%;
     border-radius: 3%;
-    width: 30%;
-    height: 700px;
+    width: 40%;
+    height: 100%;
     background-color: white;
 }
 
@@ -62,9 +69,6 @@ body {
 }
 
 
-h1{
-
-}
 
 .user-data-fields {
     display: flex;
@@ -100,7 +104,8 @@ label {
 }
 
 .save-button {
-    margin: 5%;
+    margin-right: 5%;
+    float: right;
 }
 
 #save {
@@ -111,11 +116,40 @@ label {
     color: white;
     border: none;
     border-radius: 10px;
-    padding: 3%;
+    padding: 2%;
+
 }
 
 #save:hover{
     background-color: #c0c0c0;
     color: #243e16;
     transition: all .2s;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    border-radius: 1rem;
+    border: solid 0.5rem #c0c0c0;
+    text-align: center;
+    margin: 5%;
+    background-color: #a5d2a4;
+}
+
+.links {
+    margin: 5%;
+    border-radius: 2rem;
+    font-size: 150%;
+
+}
+
+a:link {
+    text-decoration: none;
+
+}
+
+a:hover {
+
+    transition: all 0ms;
 }
