@@ -165,10 +165,25 @@ a:link {
     .profile_pic{
         margin-left: auto;
         margin-right: auto;
-        width: 30%;
+        width: 50%;
     }
     .profile_info{
         margin-left: auto;
         margin-right: auto;
+        width: 90%;
+    }
+}
+
+@media (max-width: 600px){
+
+    .container{
+        flex-direction: column;
+    }
+
+    .profile_pic{
+        width: 70%;
+    }
+    .profile_info{
+        width: 90%;
     }
 }
