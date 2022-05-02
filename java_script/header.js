@@ -3,7 +3,7 @@ let appHeader = `
         <ul>
             <li><span class="closeNav" onclick="closeNav()">&#10006</span></li>
             <li><a href="../html/homepage.html">Home</a></li>
-            <li><a href="#">Forum</a></li>
+            <li><a href="../html/forum.html">Forum</a></li>
             <li><a href="../html/learn-more.html">Learn More</a></li>
             <li><a href="../html/contact.html">Help</a></li>
         </ul>
@@ -18,7 +18,7 @@ let appHeader = `
         </div>
     
         <div class="logo-container">
-            <a class="logo" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley">
+            <a class="logo" href="../html/homepage.html">
                 <img src="/images/composting.png" alt="search icon">
             </a>
         </div>
@@ -27,7 +27,7 @@ let appHeader = `
     <nav class="navigation">
         <ul class="navigation-list">
             <li class="navigation-list-item"><a href="../html/homepage.html">Home</a></li>
-            <li class="navigation-list-item"><a href="#">Forum</a></li>
+            <li class="navigation-list-item"><a href="../html/forum.html">Forum</a></li>
             <li class="navigation-list-item"><a href="../html/learn-more.html">Learn More</a></li>
             <li class="navigation-list-item"><a href="../html/contact.html">Help</a></li>
         </ul>

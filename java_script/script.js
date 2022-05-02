@@ -55,3 +55,17 @@ function contactClick() {
 }
 
 /*********************** ************************/
+
+/***************** DROPDOWN MENU ***************/
+
+/*
+function dropdownMenu() {
+    let btn_forum_filter = document.querySelector('.btn-forum-filter');
+    let dropdown_menu = document.querySelector('.dropdown_menu');
+    let container = document.querySelector('.container');
+    btn_forum_filter.addEventListener("click",()=>{
+        dropdown_menu.classList.toggle('open_dropdown_menu');
+        container.classList.toggle('change_container_color');
+    });
+}
+*/

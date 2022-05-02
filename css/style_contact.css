@@ -3,6 +3,9 @@ body {
     background-size: cover;
 }
 
+.form-container{
+    margin-bottom: 5%;
+}
 .container-height {
     height: 750px;
 }

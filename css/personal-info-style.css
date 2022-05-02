@@ -11,6 +11,8 @@ body {
 
 }
 
+
+
 .profile_pic{
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
     border-radius: 3%;
@@ -155,3 +157,33 @@ a:link {
 
 }
 
+@media (max-width: 900px){
+
+    .container{
+        flex-direction: column;
+    }
+    .profile_pic{
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .profile_info{
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+}
+
+@media (max-width: 600px){
+
+    .container{
+        flex-direction: column;
+    }
+
+    .profile_pic{
+        width: 70%;
+    }
+    .profile_info{
+        width: 90%;
+    }
+}

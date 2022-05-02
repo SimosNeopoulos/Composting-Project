@@ -52,7 +52,7 @@ header {
 header.sticky-header {
     bottom: 0;
     height: 85px;
-    background-color: #7BB79D;
+    background-color: rgb(209, 243, 175);
     z-index: 999;
     box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.59);
 }
