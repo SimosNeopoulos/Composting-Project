@@ -167,12 +167,6 @@ body {
     flex: 1;
 }
 
-@media screen and (max-width: 900px) {
-    .info-preview {
-        display: block;
-    }
-}
-
 .ingredients-list li {
     margin: 30px 0px 20px 0;
     vertical-align: top
@@ -220,4 +214,41 @@ body {
     margin-top: 10%;
     color: white;
     text-align: center;
+}
+@media screen and (max-width: 900px) {
+    .info-preview {
+        display: block;
+    }
+    .title{
+        font-size: 18px;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+    .subtitle{
+        width: 80%;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+    .read-more{
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+    .join-us-title{
+        width: 60%;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 5px;
+    }
+    .join-btn{
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
+    .btn-more-info{
+        padding: 4px 8px;
+        border-radius: 3px;
+        font-size: 12px;
+    }
 }
