@@ -1,5 +1,5 @@
 body {
-    background: url("../images/contact_image.jpg") no-repeat;
+    background: url("../images/contact_image.jpg") no-repeat fixed;
     background-size: cover;
 }
 
