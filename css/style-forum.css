@@ -109,9 +109,8 @@ body{
     padding: 3px 20px;
     margin: 2%;
 }
-.container{
 /*MENU FILTER*/
-.filter{
+.container{
     display: flex;
     flex: 1 0 auto;
     margin: 2%;
@@ -143,6 +142,7 @@ body{
     height: 18px;
     width: 23px;
     float: right;
+    filter: invert(100%);
 }
 
 /*-------DROPDOWN MENU--------*/
@@ -168,7 +168,7 @@ body{
     transform: scaleY(1);
 }
 .change_container_color{
-    background: #c0bfbf;
+    background: rgba(165, 210, 164, 0.8);
 }
 .tabs:hover{
     background-color: #869f7e;
