@@ -12,17 +12,28 @@
 <div class="forum-body">
     <div class="sidebar-container">
         <div class="profile-widget">
-            <b>Profile</b>
+            <div class="profile-title">
+            <b>Το προφίλ μου</b>
+            </div>
+            <div class="profile-body">
+                <div class="profile-pic-container">
+                    <img class="profile-pic" src="../images/profilepicture.png">
+                </div>
+                <div class="profile-info-container">
+                    <b class="username">username: Θεοδώρα</b>
+                    <button class="btn-profile">Επισκεψου το προφιλ σου</button>
+                </div>
+            </div>
         </div>
         <div class="popular-tags">
-            <ul>
-                Popular tags
-                <li>tag</li>
-                <li>tag</li>
-                <li>tag</li>
-                <li>tag</li>
-                <li>tag</li>
-                <li>tag</li>
+            <b class="tag-title">Δημοφιλείς ετικέτες</b>
+            <ul class="tag-list">
+                <li><a href="">#banana</a></li>
+                <li><a href="">#patata</a></li>
+                <li><a href="">#kompost</a></li>
+                <li><a href="">#kadoitzampe</a></li>
+                <li><a href="">#iloveearth</a></li>
+                <li><a href="">#hello</a></li>
 
             </ul>
         </div>
@@ -32,36 +43,56 @@
         <div class="forum-menu">
             <div class="space"></div>
             <div class="filter" onclick="myFunction()">
-            <button class="btn-forum-filter" onclick="myFunction()" >Φιλτράρισμα</button>
+                <button class="btn-forum-filter" onclick="myFunction()">Φιλτράρισμα</button>
                 <img class="filter-arrow" src="../images/arrow-down.png" onclick="myFunction()">
             </div>
             <div class="forum-search">
-                    <table class="elementsContainer">
-                        <tr>
-                            <td>
-                                <input type="text" class="search" placeholder="Αναζήτηση στο forum">
-                            </td>
-                            <td>
-                                <button type="submit" class="searchIcon"><img src="/images/search-icon.png"
-                                                                              alt="search icon">
-                                </button>
-                            </td>
+                <table class="elementsContainerForum">
+                    <tr>
+                        <td>
+                            <input class="searchForum" placeholder="Αναζήτηση στο forum">
+                        </td>
+                        <td>
+                            <button type="submit" class="searchIconForum"><img src="/images/search-icon.png"
+                                                                               alt="search icon">
+                            </button>
+                        </td>
                         </tr>
                     </table>
             </div>
         </div>
         <div class="forum-posts">
-            <ul class="posts">
-                <li>Post</li>
-                <li>Post</li>
-                <li>Post</li>
-                <li>Post</li>
+            <ul id="posts" class="posts">
+                <li class="post">
+                    <div class="post-top">
+                        <div class="post-pic-container">
+                            <img class="post-pic" src="../images/profilepicture.png">
+                        </div>
+                        <b class="user">Lady Gaga</b>
+                    </div>
+                    <div class="post-body">
+                        <p class="paragraph">Καλησπέρα, έχω κάδο κομποστοποίσης και βρίσκομαι ανατολικά της Θεσσαλονίκης.
+                            Ενδιαφέρομαι να αγοράσω οικιακά απορρήματα από άτομα της γειτονιάς μου ώστε να μπορέσω να ξεκινήσω την
+                            διαδικασία καθώς ταξιδεύω συχνά και δεν έχω την ποσότητα απορρημάτων που θα επιθυμούσα.</p>
+                    </div>
+                    <div class="post-answers">
+                        <b>bottom</b>
+                    </div>
+                </li>
             </ul>
         </div>
     </div>
 
 
 </div>
+<!--<script class="loop">-->
+<!--    var i;-->
+<!--    for (i = 0; i < 10; i++) {-->
+<!--        const li = document.createElement("li");-->
+<!--        li.innerText = "post";-->
+<!--        document.getElementById("posts").appendChild(li)-->
+<!--    }-->
+<!--</script>-->
 <script type="text/javascript" src="../java_script/script.js"></script>
 </body>
 </html>
