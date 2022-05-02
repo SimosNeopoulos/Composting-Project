@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	
+	<link rel="stylesheet" type="text/css" href="../css/personal-info-style.css">
+	<link rel="stylesheet" type="text/css" href="../css/general.css">
+	<link rel="shortcut icon" href="../images/composting200.png">
+	<title>Composting!</title>
+
+</head>
+<body>
+
+	<header id="page-header"></header>
+	<div class="container">
+
+		<!--Profile pic box-->
+		<div class="profile_pic">
+			<img class="picture" src="../images/profile-circle.png" alt="profile image!">
+			<div class="edit">
+				<h3 id="edit-text"> Νεα εικόνα προφίλ;</h3>
+				<input type="file" id="upload" accept="image/*">
+				<label for="upload"><img id="edit-icon" src="../images/edit-icon.png" alt="click hear to edit"></label>
+			</div>
+
+		</div>
+
+		<!--Profile info box-->
+		<div class="profile_info">
+			<div class="title">
+				<h1 id="profile-header">Καλωσόρισες στο προφίλ σου!</h1>
+			</div>
+
+
+			<div class="user-data-fields">
+				<label>Όνομα χρήστη</label>
+				<input type="text" placeholder="Username">
+
+			</div>
+			<div class="user-data-fields">
+				<label> Email</label>
+				<input type="text" placeholder="Email">
+
+
+			</div>
+			<div class="user-data-fields">
+				<label>Διεύθυνση</label>
+				<input type="text" placeholder="Address">
+
+			</div>
+			<div class="user-data-fields">
+				<label>Κωδικός πρόσβασης </label>
+				<input type="password" placeholder="Password">
+
+			</div>
+			<div class="user-data-fields">
+				<label>Τηλέφωνο</label>
+				<input type="tel" placeholder="69-99999999" pattern="69-[0-9]{8}" required>
+
+			</div>
+
+
+			<div class="save-button">
+				<button id="save" type="button">
+					Αποθήκευση
+				</button>
+			</div>
+
+			<div class="links-container">
+				<div class="links">
+					<a href="">Τα ποστ μου</a>
+				</div>
+				<div class="links">
+					<a href="">Αποθηκευμένα ποστ</a>
+				</div>
+				<div class="links">
+					<a href="">Επαφές</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!--header script-->
+	<script defer src="../java_script/header.js"></script>
+	<script type="text/javascript" src="../java_script/script.js"></script>
+
+</body>
+</html>
