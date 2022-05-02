@@ -454,8 +454,8 @@ header.sticky-header {
 /************ FOOTER ************/
 
 footer{
-    background: rgba(173, 142, 142, 0);
-    height: auto;
+    height: 290px;
+    background-color: #a5d2a4;
     width: 100%;
     color: #fff;
 }
@@ -469,18 +469,17 @@ footer{
 
 .footer-content h3{
     color: #000000;
-    font-size: 40px;
+    font-size: 250%;
     font-weight: 400;
     text-transform: capitalize;
-    line-height: 2rem;
+    line-height: 80%;
 }
 
 .footer-content p{
     color: #000000;
-    max-width: 700px;
-    margin: 2px auto;
-    line-height: 1px;
-    font-size: 20px;
+    margin: 0.5%;
+    line-height: 20%;
+    font-size: 125%;
 }
 
 .socials{
@@ -491,7 +490,7 @@ footer{
     margin: 2rem 2rem 1rem 0;
 }
 .socials li{
-    margin: 0 10px;
+    margin: 0 15.5%;
 }
 .socials a{
     text-decoration: none;
@@ -506,14 +505,13 @@ footer{
 }
 
 .footer-bottom{
-    background: rgba(173, 142, 142, 0);
     width: 100%;
-    padding: 2px 0;
+    padding: 1% 0;
     text-align: center;
 }
 .footer-bottom p{
     color: #000000;
-    font-size: 14px;
+    font-size: 88%;
     word-spacing: 3px;
     text-transform: capitalize;
 }

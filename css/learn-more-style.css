@@ -84,3 +84,13 @@ a {
 a:hover {
     color: #236f21;
 }
+
+.footer-content h3{
+    margin-top: 2.6%;
+}
+.footer-content p{
+    margin-top: 2.1%;
+}
+.socials{
+    margin: 2rem 2rem 1.3rem 0.5rem;
+}
