@@ -9,7 +9,6 @@ body {
 .container {
     display: flex;
 
-
 }
 
 .profile_pic{
@@ -40,6 +39,11 @@ body {
     align-items: center;
 }
 
+#edit-text{
+    max-width: 80%;
+}
+
+
 
 #edit-icon:hover{
     cursor: pointer;
@@ -57,6 +61,7 @@ body {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
     margin-top: 5%;
     margin-left: 10%;
+    margin-bottom: 5%;
     border-radius: 3%;
     width: 40%;
     height: 100%;
@@ -75,7 +80,7 @@ body {
     margin: 5%;
 }
 
-input {
+.user-data-fields input {
     border-top: none;
     border-right: none;
     border-left: none;
@@ -88,6 +93,7 @@ input {
     flex: 4;
     text-align: right;
     color: #243e16;
+    padding-right: 2%;
 
 }
 
@@ -149,7 +155,3 @@ a:link {
 
 }
 
-a:hover {
-
-    transition: all 0ms;
-}
