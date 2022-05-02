@@ -1,3 +1,157 @@
-.conteiner-fluid {
-    /*display: cover;*/
+body {
+    background-image: url("../images/clover.jpg") ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
+
+.container {
+    display: flex;
+
+}
+
+.profile_pic{
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 3%;
+    width: 15%;
+    background-color: white;
+    margin-top: 5%;
+    margin-left: 10%;
+    height: 50%;
+}
+
+.picture {
+    object-fit: cover;
+    max-width: 100%;
+    border-top-left-radius: 3%;
+    border-top-right-radius: 3%;
+}
+
+
+
+.edit {
+    background-color: #7BB79D;
+    border-bottom-left-radius: 3%;
+    border-bottom-right-radius: 3%;
+    display: flex;
+    padding-left: 5%;
+    align-items: center;
+}
+
+#edit-text{
+    max-width: 80%;
+}
+
+
+
+#edit-icon:hover{
+    cursor: pointer;
+
+}
+
+#upload {
+   display: none;
+}
+
+
+.profile_info {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-bottom: 5%;
+    border-radius: 3%;
+    width: 40%;
+    height: 100%;
+    background-color: white;
+}
+
+.title {
+    text-align: center;
+    padding: 3%;
+}
+
+
+
+.user-data-fields {
+    display: flex;
+    margin: 5%;
+}
+
+.user-data-fields input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 5px;
+    background-color: rgba(123, 183, 157, 0.63);
+    font-size: larger;
+    width: 100%;
+    height: 40px;
+    outline: none;
+    flex: 4;
+    text-align: right;
+    color: #243e16;
+    padding-right: 2%;
+
+}
+
+label {
+    flex: 2;
+    float: left;
+    font-size: large;
+    width: 100%;
+    color: #243e16;
+    height: 100%;
+
+
+
+}
+
+.save-button {
+    margin-right: 5%;
+    float: right;
+}
+
+#save {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    float: right;
+    height: 50px;
+    background-color: #236f21;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 2%;
+
+}
+
+#save:hover{
+    background-color: #c0c0c0;
+    color: #243e16;
+    transition: all .2s;
+}
+
+.links-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+    border-radius: 1rem;
+    border: solid 0.5rem #c0c0c0;
+    text-align: center;
+    margin: 5%;
+    background-color: #a5d2a4;
+}
+
+.links {
+    margin: 5%;
+    border-radius: 2rem;
+    font-size: 150%;
+
+}
+
+a:link {
+    text-decoration: none;
+
+}
+
