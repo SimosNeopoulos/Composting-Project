@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/style_homepage.css">
     <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Homepage</title>
     <link rel="shortcut icon" href="../images/composting200.png">
 </head>
@@ -16,7 +17,7 @@
     <div class="subtitle">Είμαστε μία ομάδα τεσσάρων φοιτητών με μεγάλο ενδιαφέρον για το περιβάλλον και αυτή η
         ιστοσελίδα έχει δημιουργηθεί στα πλαίσια εργασίας για το μάθημα Πληροφοριακά Συστήματα Παγκόσμιου Ιστού.
     </div>
-    <button class="read-more">Μαθε περισσοτερα!</button>
+    <button class="read-more" onclick="scrollToBottom()">Μαθε περισσοτερα!</button>
 </div>
 
 <div class="join-us">
@@ -56,16 +57,39 @@
                     <li>Πρόσθεσε χώμα</li>
                     <li>Ανακάτευε συχνά</li>
                 </ol>
-                <button class="btn-more-info" onclick="window.location.href = 'log_in.html'">Μαθε περισσοτερα</button>
+                <button class="btn-more-info" onclick="window.location.href = 'info-page.html'">Μαθε περισσοτερα</button>
             </div>
         </div>
     </div>
 </div>
 
 
-<div class="footer">
+<!--<div class="footer">
     <p>Footer</p>
-</div>
+</div>-->
+
+<footer>
+    <div class="footer-content">
+        <h3><b>Composting</b></h3>
+        <p>You can also find us on our social media!</p>
+        <ul class="socials">
+            <li><a href="https://www.youtube.com/watch?v=AjWfY7SnMBI&ab_channel=CandRfun"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="https://www.youtube.com/watch?v=AjWfY7SnMBI&ab_channel=CandRfun"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://www.youtube.com/watch?v=AjWfY7SnMBI&ab_channel=CandRfun"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="https://www.youtube.com/watch?v=AjWfY7SnMBI&ab_channel=CandRfun"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2022 composting</p>
+    </div>
+</footer>
+
 <script type="text/javascript" src="../java_script/script.js"></script>
 </body>
 </html>
+<script>
+    function scrollToBottom() {
+        window.scrollTo({top: document.body.scrollHeight, behavior: 'smooth'});
+    }
+    history.scrollRestoration = "manual";
+</script>
