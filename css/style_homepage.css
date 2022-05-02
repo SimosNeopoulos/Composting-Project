@@ -1,18 +1,21 @@
-body{
+body {
     margin: 0;
     font-family: sans-serif;
     background: #a5d2a4
 }
+
 /*Homepage Who are we greeting container*/
-.homepage-container{
+.homepage-container {
     width: 100%;
     position: relative;
     text-align: center;
 }
-.image{
+
+.image {
     width: 100%;
     background-size: cover;
 }
+
 .title {
     position: absolute;
     left: 5%;
@@ -24,6 +27,7 @@ body{
     padding: 8px 15px;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
+
 .subtitle {
     position: absolute;
     left: 5%;
@@ -37,6 +41,7 @@ body{
     text-align: left;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
+
 .read-more {
     cursor: pointer;
     position: absolute;
@@ -51,7 +56,8 @@ body{
     text-transform: uppercase;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
-.read-more:hover{
+
+.read-more:hover {
     font-weight: bold;
     background: white;
     color: #236f21;
@@ -59,12 +65,13 @@ body{
 
 /*Join us widget*/
 
-.join-us{
+.join-us {
     margin: 5% 0;
     position: relative;
     text-align: center;
 }
-.join-us-image{
+
+.join-us-image {
     width: 80%;
     background-size: cover;
     border-radius: 10px;
@@ -101,17 +108,18 @@ body{
     text-transform: uppercase;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
-.join-btn:hover{
+
+.join-btn:hover {
     font-weight: bold;
     background: white;
     color: #236f21;
 }
 
 /*Info preview widget*/
-.info{
+.info {
 }
 
-.info-preview{
+.info-preview {
     display: flex;
     border-radius: 10px;
     background: white;
@@ -119,32 +127,37 @@ body{
 }
 
 /*Left info box*/
-.info-left{
+.info-left {
     flex: 1;
     display: flex;
 }
-.info-img-left-container{
+
+.info-img-left-container {
     flex: 1;
 }
-.info-img-left{
+
+.info-img-left {
     width: 95%;
     margin: 20% 5% 10% 10%;
     border-radius: 10px;
 }
-.left-text{
+
+.left-text {
     flex: 1;
     padding: 10% 0 0 5%;
 }
 
 /*Right info box*/
-.info-right{
+.info-right {
     flex: 1;
     display: flex;
 }
-.info-img-right-container{
+
+.info-img-right-container {
     flex: 1;
 }
-.info-img-right{
+
+.info-img-right {
     width: 95%;
     margin: 20% 5% 10% 10%;
     border-radius: 10px;
@@ -155,14 +168,22 @@ body{
 }
 
 @media screen and (max-width: 900px) {
-    .info-preview{
+    .info-preview {
         display: block;
     }
 }
 
-li{ margin: 30px 0 20px 0; vertical-align:top}
+.ingredients-list li {
+    margin: 30px 0px 20px 0;
+    vertical-align: top
+}
 
-ol > li::marker {
+.steps-list li {
+    margin: 30px 0px 20px 0;
+    vertical-align: top
+}
+
+::marker {
     font-weight: bold;
 }
 
@@ -181,7 +202,8 @@ ol > li::marker {
     text-transform: uppercase;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
 }
-.btn-more-info:hover{
+
+.btn-more-info:hover {
     font-weight: bold;
     background: white;
     color: #236f21;
