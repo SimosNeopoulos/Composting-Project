@@ -9,46 +9,60 @@
 </head>
 <body>
 
+<!------------ HEADER ------------->
 <header id="page-header"></header>
 <script defer src="../java_script/header.js"></script>
+<!--------------------------------->
 
+<!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
-    <div class="login-signup-content">
-        <h1 class="top-text">Sign Up</h1>
-        <form method="post">
-            <div class="input-field">
-                <input type="text" placeholder=" " id="sign-up-username" required>
-                <span></span>
-                <label for="sign-up-username">Όνομα Χρήστη</label>
-            </div>
-            <div class="input-field">
-                <input type="email" placeholder=" " id="sign-up-email" required>
-                <span></span>
-                <label for="sign-up-email">Email</label>
-            </div>
-            <div class="input-field">
-                <input type="text" placeholder=" " id="sign-up-address" required>
-                <span></span>
-                <label for="sign-up-address">Διεύθυνση</label>
-            </div>
-            <div class="input-field">
-                <input type="password" placeholder=" " id="sign-up-password" required>
-                <span></span>
-                <label for="sign-up-password">Κωδικός</label>
-            </div>
-            <div class="input-field">
-                <input type="tel" placeholder=" " id="sign-up-tel">
-                <span></span>
-                <label for="sign-up-tel">Τηλέφωνο</label>
-            </div>
-            <div class="btn-space">
-                <button onclick="signUpClick()" name="submit-btn" type="submit" class="submit-btn">
-                    Sign Up
-                </button>
-            </div>
-            <div class="log-in-text">Έχεις Λογαριασμό? <a href="log_in.html">Log In!</a></div>
-        </form>
-    </div>
+    <h1 class="top-text">Sign Up</h1>
+    <form method="post">
+        <!-------- INPUT FIELDS --------->
+        <div class="input-field">
+            <input type="text" placeholder=" " id="sign-up-username" required>
+            <span></span>
+            <label for="sign-up-username">Όνομα Χρήστη</label>
+        </div>
+
+        <div class="input-field">
+            <input type="email" placeholder=" " id="sign-up-email" required>
+            <span></span>
+            <label for="sign-up-email">Email</label>
+        </div>
+
+        <div class="input-field">
+            <input type="text" placeholder=" " id="sign-up-address" required>
+            <span></span>
+            <label for="sign-up-address">Διεύθυνση</label>
+        </div>
+
+        <div class="input-field">
+            <input type="password" placeholder=" " id="sign-up-password" required>
+            <span></span>
+            <label for="sign-up-password">Κωδικός</label>
+        </div>
+
+        <div class="input-field">
+            <input type="tel" placeholder=" " id="sign-up-tel">
+            <span></span>
+            <label for="sign-up-tel">Τηλέφωνο</label>
+        </div>
+        <!--------------------------------->
+
+        <!---------- SUBMIT BUTTON ----------->
+        <div class="btn-space">
+            <button onclick="signUpClick()" name="submit-btn" type="submit" class="submit-btn">
+                Sign Up
+            </button>
+        </div>
+        <!--------------------------------->
+
+        <!-- LOG IN LINK -->
+        <div class="log-in-text">Έχεις Λογαριασμό? <a href="log_in.html">Log In!</a></div>
+        <!----------------->
+
+    </form>
 </div>
 
 <script type="text/javascript" src="../java_script/script.js"></script>

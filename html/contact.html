@@ -9,40 +9,51 @@
 </head>
 <body>
 
+<!------------ HEADER ------------->
 <header id="page-header"></header>
 <script defer src="../java_script/header.js"></script>
+<!--------------------------------->
 
-
+<!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
     <h1 class="contact-text">Ποιό είναι το πρόβλημα;</h1>
     <form method="post">
+        <!-------- INPUT FIELDS --------->
         <div class="input-field">
             <input type="text" placeholder=" " id="contact-name" required>
             <span></span>
             <label for="contact-name">Ονοματεπώνημο</label>
         </div>
+
         <div class="input-field">
             <input type="email" placeholder=" " id="contact-email" required>
             <span></span>
             <label for="contact-email">Email</label>
         </div>
+
         <div class="input-field">
             <input type="text" placeholder=" " id="contact-subject" required>
             <span></span>
             <label for="contact-subject">Θέμα</label>
         </div>
+
         <div class="input-field-message">
             <textarea placeholder=" " id="contact-message" required></textarea>
             <label for="contact-message">Μήνυμα</label>
         </div>
+        <!--------------------------------->
+
+        <!---------- SUBMIT BUTTON ----------->
         <div class="btn-space">
             <button onclick="contactClick()" name="submit-btn" type="submit" class="submit-btn">
                 Send
             </button>
         </div>
-
+        <!--------------------------------->
     </form>
 </div>
+<!---------------------------------------->
+
 
 <script type="text/javascript" src="../java_script/script.js"></script>
 </body>
