@@ -42,9 +42,12 @@
     <div class="main-container">
         <div class="forum-menu">
             <div class="space"></div>
-            <div class="filter" onclick="myFunction()">
-                <button class="btn-forum-filter" onclick="myFunction()">Φιλτράρισμα</button>
-                <img class="filter-arrow" src="../images/arrow-down.png" onclick="myFunction()">
+            <div class="container">
+                <button class="btn-forum-filter" onclick="dropdownMenu()">Φιλτράρισμα<img class="filter-arrow" src="../images/arrow-down.png" onclick="myFunction()"></button>
+                <div class="dropdown_menu">
+                    <button class="tabs">Πιο πρόσφατο</button>
+                    <button class="tabs">Πιο κοντά</button>
+                </div>
             </div>
             <div class="forum-search">
                 <table class="elementsContainerForum">
@@ -93,6 +96,17 @@
 <!--        document.getElementById("posts").appendChild(li)-->
 <!--    }-->
 <!--</script>-->
+
+<script>
+    let btn_forum_filter = document.querySelector('.btn-forum-filter');
+    let dropdown_menu = document.querySelector('.dropdown_menu');
+    let container = document.querySelector('.container');
+    btn_forum_filter.addEventListener("click",()=>{
+        dropdown_menu.classList.toggle('open_dropdown_menu');
+        container.classList.toggle('change_container_color');
+    });
+
+</script>
 <script type="text/javascript" src="../java_script/script.js"></script>
 </body>
 </html>
