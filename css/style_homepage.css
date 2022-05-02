@@ -44,7 +44,7 @@ body{
     top: 70%;
     background: #236f21;
     color: white;
-    border: 0px;
+    border: 0;
     padding: 8px 15px;
     border-radius: 5px;
     font-size: 18px;
@@ -93,7 +93,7 @@ body{
     top: 70%;
     transform: translate(-50%, -50%);
     background: #236f21;
-    border: 0px;
+    border: 0;
     padding: 8px 15px;
     border-radius: 5px;
     color: white;
@@ -133,7 +133,7 @@ body{
 }
 .left-text{
     flex: 1;
-    padding: 10% 0% 0% 5%;
+    padding: 10% 0 0 5%;
 }
 
 /*Right info box*/
@@ -150,7 +150,7 @@ body{
     border-radius: 10px;
 }
 .right-text{
-    padding: 10% 0% 0% 5%;
+    padding: 10% 0 0 5%;
     flex: 1;
 }
 
@@ -160,7 +160,7 @@ body{
     }
 }
 
-li{ margin: 30px 0px 20px 0; vertical-align:top}
+li{ margin: 30px 0 20px 0; vertical-align:top}
 
 ol > li::marker {
     font-weight: bold;
@@ -172,7 +172,7 @@ ol > li::marker {
     margin-top: 10%;
     margin-bottom: 10%;
     background: #236f21;
-    border: 0px;
+    border: 0;
     padding: 8px 15px;
     border-radius: 5px;
     color: white;

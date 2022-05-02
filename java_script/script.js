@@ -1,12 +1,9 @@
 /********* SCRIPT FOR STICKY NAVIGATION  *********/
-
-let head = document.querySelector("header");
-
 window.addEventListener("scroll", () => {
     if (document.documentElement.scrollTop > 20) {
-        head.classList.add("sticky-header")
+        document.querySelector("header").classList.add("sticky-header")
     } else {
-        head.classList.remove("sticky-header")
+        document.querySelector("header").classList.remove("sticky-header")
     }
 });
 
@@ -36,6 +33,9 @@ function signUpClick() {
     let address = document.getElementById("log-in-address").value;
     let password = document.getElementById("log-in-password").value;
     let phone = document.getElementById("log-in-phone").value;
+    /**
+     * TODO: Complete the function
+     */
 }
 
 function signUpVerification() {
@@ -49,6 +49,9 @@ function contactClick() {
     let email = document.getElementById("contact-email").value;
     let message = document.getElementById("contact-message").value;
     let subject = document.getElementById("contact-subject").value;
+    /**
+     * TODO: Complete the function
+     */
 }
 
 /*********************** ************************/

@@ -168,7 +168,6 @@ header.sticky-header {
     padding: 3px 7px;
     border-radius: 50px;
     font-size: 18px;
-    /*font-family: "Nunito";*/
     color: #424242;
     font-weight: 500;
 }
@@ -458,7 +457,6 @@ footer {
     background: #000000;
     height: auto;
     width: 100%;
-    font-family: "Open Sans";
     color: #fff;
 }
 
