@@ -1,5 +1,5 @@
 body {
-    background: url("../images/green-wall.jpg") no-repeat;
+    background: url("../images/green-wall.jpg") no-repeat fixed;
     background-size: cover;
 }
 

@@ -1,5 +1,5 @@
 body {
-    background: url("../images/green-branches_1.jpg") no-repeat;
+    background: url("../images/green-branches_1.jpg") no-repeat fixed;
     background-size: cover;
 }
 

@@ -1,8 +1,11 @@
 body {
-    background: url("../images/contact_image.jpg") no-repeat;
+    background: url("../images/contact_image.jpg") no-repeat fixed;
     background-size: cover;
 }
 
+.form-container{
+    margin-bottom: 5%;
+}
 .container-height {
     height: 750px;
 }
@@ -13,6 +16,8 @@ body {
     font-size: 40px;
 }
 
+/*************** INPUT FIELDS ***************/
+
 form .input-field{
     position: relative;
     border-bottom: 2px solid grey;
@@ -22,47 +27,6 @@ form .input-field{
 form .input-field-message {
     position: relative;
     margin: 55px 0;
-}
-
-@media(max-width: 900px) {
-    .container-height {
-        height: 690px;
-    }
-
-    .contact-text {
-        padding: 30px 0;
-        font-size: 35px;
-    }
-
-    form .input-field{
-        margin: 35px 0;
-    }
-
-    form .input-field-message {
-        margin: 45px 0;
-    }
-}
-
-@media(max-width: 530px) {
-    .container-height {
-        height: 660px;
-    }
-
-    .contact-text {
-        padding: 15px 0;
-        font-size: 30px;
-    }
-}
-
-@media(max-width: 450px) {
-    .container-height {
-        height: 660px;
-    }
-
-    .contact-text {
-        padding: 15px 0;
-        font-size: 25px;
-    }
 }
 
 .input-field-message textarea {
@@ -120,5 +84,37 @@ form .input-field-message {
     font-size: .9rem;
     left: .8rem;
     color: #236f21;
+}
+
+/******************************************/
+
+@media(max-width: 900px) {
+    .container-height {
+        height: 660px;
+    }
+
+    .contact-text {
+        padding: 15px 0;
+        font-size: 30px;
+    }
+
+    form .input-field{
+        margin: 35px 0;
+    }
+
+    form .input-field-message {
+        margin: 45px 0;
+    }
+}
+
+@media(max-width: 450px) {
+    .container-height {
+        height: 660px;
+    }
+
+    .contact-text {
+        padding: 15px 0;
+        font-size: 25px;
+    }
 }
 
