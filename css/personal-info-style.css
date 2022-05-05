@@ -34,18 +34,22 @@ body {
 
 .edit {
     background-color: #7BB79D;
-    border-bottom-left-radius: 3%;
-    border-bottom-right-radius: 3%;
+    border-bottom-left-radius: 5%;
+    border-bottom-right-radius: 5%;
+
     display: flex;
     padding-left: 5%;
+    padding-right: 5%;
     align-items: center;
 }
 
-#edit-text{
-    max-width: 80%;
+
+#edit-icon{
+    float: right;
+    max-width: 100%;
+    color: white;
+    filter: invert(100%);
 }
-
-
 
 #edit-icon:hover{
     cursor: pointer;
@@ -136,25 +140,32 @@ label {
 
 .links-container {
     display: flex;
-    flex-direction: column;
+    /*flex-direction: column;*/
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
     border-radius: 1rem;
     border: solid 0.5rem #c0c0c0;
     text-align: center;
     margin: 5%;
-    background-color: #a5d2a4;
+    background-color: rgba(165, 210, 164, 0.7);
 }
 
 .links {
     margin: 5%;
     border-radius: 2rem;
     font-size: 150%;
+    flex: 1;
 
 }
 
 a:link {
     text-decoration: none;
 
+}
+
+.saved-posts-icon{
+    /*padding-top: 10%;*/
+    width: 15%;
+    /*object-fit: cover;*/
 }
 
 @media (max-width: 900px){
