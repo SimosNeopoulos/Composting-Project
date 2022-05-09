@@ -19,7 +19,7 @@ let appHeader = `
     
         <div class="logo-container">
             <a class="logo" href="../html/homepage.html">
-                <img src="/images/composting.png" alt="search icon">
+                <img src="../images/composting.png" alt="search icon">
             </a>
         </div>
     </div>
@@ -40,7 +40,7 @@ let appHeader = `
                     <input type="text" class="search" placeholder="Search">
                 </td>
                 <td>
-                    <button type="submit" class="searchIcon"><img src="/images/search-icon.png" alt="search icon">
+                    <button type="submit" class="searchIcon"><img src="../images/search-icon.png" alt="search icon">
                     </button>
                 </td>
             </tr>
