@@ -111,8 +111,6 @@ label {
     color: #243e16;
     height: 100%;
 
-
-
 }
 
 .save-button {
@@ -163,9 +161,20 @@ a:link {
 }
 
 .saved-posts-icon{
-    /*padding-top: 10%;*/
     width: 15%;
-    /*object-fit: cover;*/
+}
+
+@media (max-width: 1400px){
+    .profile_pic{
+        flex: 1;
+        margin-left: 5%;
+    }
+
+    .profile_info{
+        flex: 2;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
 }
 
 @media (max-width: 900px){
