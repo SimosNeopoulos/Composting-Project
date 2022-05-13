@@ -88,7 +88,7 @@ form .input-field-message {
 
 /******************************************/
 
-@media(max-width: 900px) {
+@media(max-width: 900px), (max-device-width: 900px) {
     .container-height {
         height: 660px;
     }
@@ -107,7 +107,7 @@ form .input-field-message {
     }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 450px), (max-device-width: 450px) {
     .container-height {
         height: 660px;
     }

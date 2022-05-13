@@ -11,22 +11,22 @@
 
 <!------------ HEADER ------------->
 <header id="page-header"></header>
-<script defer src="../java_script/header.js"></script>
+<script defer src="../javascript/header.js"></script>
 <!--------------------------------->
 
 <!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
     <h1 class="top-text">Log In</h1>
-    <form method="post">
+    <form action="#" id="log-in-form" method="post">
         <!-------- INPUT FIELDS --------->
         <div class="input-field">
-            <input type="email" placeholder=" " id="log-in-email" required>
+            <input type="email" placeholder=" " name="log-in-email" id="log-in-email" required>
             <span></span>
             <label for="log-in-email">Email</label>
         </div>
 
         <div class="input-field">
-            <input type="password" placeholder=" " id="log-in-password" required>
+            <input type="password" placeholder=" " name="log-in-password" id="log-in-password" required>
             <span></span>
             <label for="log-in-password">Κωδικός</label>
         </div>
@@ -38,7 +38,7 @@
 
         <!---------- SUBMIT BUTTON ----------->
         <div class="btn-space">
-            <button onclick="logInClick()" name="submit-btn" type="submit" class="submit-btn">
+            <button name="submit-btn" type="submit" class="submit-btn">
                 Log In
             </button>
         </div>
@@ -53,6 +53,6 @@
 </div>
 <!---------------------------------------->
 
-<script type="text/javascript" src="../java_script/script.js"></script>
+<script type="text/javascript" src="../javascript/script.js"></script>
 </body>
 </html>

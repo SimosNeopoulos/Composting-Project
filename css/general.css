@@ -403,7 +403,7 @@ footer{
 
 /****************************************************/
 
-@media (max-width: 1275px) {
+@media (max-width: 1275px), (max-device-width: 1275px){
     .navigation {
         width: 40%;
     }
@@ -423,7 +423,7 @@ footer{
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px), (max-device-width: 900px) {
     header {
         height: 60px;
     }
@@ -505,7 +505,7 @@ footer{
     }
 }
 
-@media(max-width: 500px) {
+@media (max-width: 500px), (max-device-width: 500px) {
     .top-text {
         font-size: 35px;
     }
@@ -521,7 +521,7 @@ footer{
     }
 }
 
-@media(max-width: 400px) {
+@media (max-width: 400px), (max-device-width: 400px) {
     .form-container {
         width: 90%;
     }
