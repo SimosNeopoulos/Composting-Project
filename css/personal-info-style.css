@@ -36,7 +36,6 @@ body {
     background-color: #7BB79D;
     border-bottom-left-radius: 5%;
     border-bottom-right-radius: 5%;
-
     display: flex;
     padding-left: 5%;
     padding-right: 5%;
@@ -48,7 +47,10 @@ body {
     float: right;
     max-width: 100%;
     color: white;
-    filter: invert(100%);
+    border: solid white;
+    padding: 2%;
+    border-radius: 100%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
 }
 
 #edit-icon:hover{
@@ -138,30 +140,41 @@ label {
 
 .links-container {
     display: flex;
-    /*flex-direction: column;*/
+    justify-content: space-evenly;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
     border-radius: 1rem;
     border: solid 0.5rem #c0c0c0;
     text-align: center;
-    margin: 5%;
+    margin: 10%;
     background-color: rgba(165, 210, 164, 0.7);
 }
 
 .links {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     margin: 5%;
     border-radius: 2rem;
     font-size: 150%;
-    flex: 1;
+
 
 }
 
 a:link {
     text-decoration: none;
-
+    padding: 2%;
 }
 
-.saved-posts-icon{
-    width: 15%;
+.link-icons{
+    border: solid white;
+    padding: 2%;
+    max-width: 25%;
+    border-radius: 100%;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.posts{
+    margin-top: 10%;
 }
 
 @media (max-width: 1400px){
@@ -174,6 +187,15 @@ a:link {
         flex: 2;
         margin-left: 5%;
         margin-right: 5%;
+    }
+    .links-container{
+        flex-direction: column;
+    }
+    .links{
+        justify-content: space-between;
+    }
+    .link-icons{
+        max-width: 10%;
     }
 }
 
@@ -206,4 +228,19 @@ a:link {
     .profile_info{
         width: 90%;
     }
+
+}
+
+@media (max-width: 400px) {
+    .profile_pic{
+        width: 83%;
+    }
+    .user-data-fields{
+        flex-direction: column;
+    }
+
+    .links{
+        font-size: 140%;
+    }
+
 }
