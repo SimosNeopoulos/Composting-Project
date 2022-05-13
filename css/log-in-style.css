@@ -24,7 +24,7 @@ form .input-field{
     margin: 55px 0;
 }
 
-@media(max-width: 900px) {
+@media(max-width: 900px), (max-device-width: 900px) {
     form .input-field{
         margin: 35px 0;
     }
@@ -43,7 +43,7 @@ form .input-field{
     }
 }
 
-@media(max-width: 500px) {
+@media(max-width: 500px), (max-device-width: 500px) {
     .container-height {
         height: 470px;
     }

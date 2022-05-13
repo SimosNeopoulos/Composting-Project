@@ -17,34 +17,34 @@
 <!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
     <h1 class="top-text">Sign Up</h1>
-    <form method="post">
+    <form action="#" id="sign-up-form" method="post">
         <!-------- INPUT FIELDS --------->
         <div class="input-field">
-            <input type="text" placeholder=" " id="sign-up-username" required>
+            <input type="text" placeholder=" " name="sign-up-username" id="sign-up-username" required>
             <span></span>
             <label for="sign-up-username">Όνομα Χρήστη</label>
         </div>
 
         <div class="input-field">
-            <input type="email" placeholder=" " id="sign-up-email" required>
+            <input type="email" placeholder=" " name="sign-up-email" id="sign-up-email" required>
             <span></span>
             <label for="sign-up-email">Email</label>
         </div>
 
         <div class="input-field">
-            <input type="text" placeholder=" " id="sign-up-address" required>
+            <input type="text" placeholder=" " name="sign-up-address" id="sign-up-address" required>
             <span></span>
             <label for="sign-up-address">Διεύθυνση</label>
         </div>
 
         <div class="input-field">
-            <input type="password" placeholder=" " id="sign-up-password" required>
+            <input type="password" placeholder=" " name="sign-up-password" id="sign-up-password" required>
             <span></span>
             <label for="sign-up-password">Κωδικός</label>
         </div>
 
         <div class="input-field">
-            <input type="tel" placeholder=" " id="sign-up-tel">
+            <input type="tel" placeholder=" " name="sign-up-tel" id="sign-up-tel">
             <span></span>
             <label for="sign-up-tel">Τηλέφωνο</label>
         </div>
@@ -52,7 +52,8 @@
 
         <!---------- SUBMIT BUTTON ----------->
         <div class="btn-space">
-            <button onclick="signUpClick()" name="submit-btn" type="button" class="submit-btn">
+<!--            id="sign-up-tel"-->
+            <button name="submit-btn" type="submit" class="submit-btn">
                 Sign Up
             </button>
         </div>
