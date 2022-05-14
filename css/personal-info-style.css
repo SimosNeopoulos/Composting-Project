@@ -162,7 +162,7 @@ label {
 
 a:link {
     text-decoration: none;
-    padding: 2%;
+    padding-bottom: 5%;
 }
 
 .link-icons{
@@ -177,7 +177,7 @@ a:link {
     margin-top: 10%;
 }
 
-@media (max-width: 1400px){
+@media (max-width: 1400px), (max-device-width: 1400px){
     .profile_pic{
         flex: 1;
         margin-left: 5%;
@@ -199,7 +199,7 @@ a:link {
     }
 }
 
-@media (max-width: 900px){
+@media (max-width: 900px), (max-device-width: 900px){
 
     .container{
         flex-direction: column;
@@ -216,7 +216,7 @@ a:link {
     }
 }
 
-@media (max-width: 600px){
+@media (max-width: 600px), (max-device-width: 600px){
 
     .container{
         flex-direction: column;
@@ -231,7 +231,7 @@ a:link {
 
 }
 
-@media (max-width: 400px) {
+@media (max-width: 400px),(max-device-width: 400px) {
     .profile_pic{
         width: 83%;
     }
@@ -243,4 +243,14 @@ a:link {
         font-size: 140%;
     }
 
+}
+
+@media (max-device-width: 350px){
+    .profile_pic{
+        width: 95%;
+    }
+
+    .links{
+        font-size: 110%;
+    }
 }
