@@ -72,11 +72,22 @@
     margin-bottom: 5%;
 }
 
-.images {
-    display: block;
-    max-width: 100%
+/*.images {*/
+/*    display: block;*/
+/*    max-width: 100%*/
+/*}*/
+.image-info{
+    background-image: url("../images/veggies.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
 }
 
+.links-image{
+    background-image: url("../images/learn-more.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 a {
     color: #243e16;
 }
@@ -93,4 +104,46 @@ a:hover {
 }
 .socials{
     margin: 2rem 2rem 1.3rem 0.5rem;
+}
+
+@media (max-width: 1900px) {
+    .about-composting-box{
+        top: 5%;
+    }
+}
+
+@media (max-width: 1520px){
+    .what-is-composting-box{
+        top: 40%;
+    }
+}
+
+@media (max-width: 1240px){
+    .about-composting-box{
+        top: 8px;
+        left: 20%;
+        right: 20%;
+    }
+
+    .what-is-composting-box{
+
+        right: 16px;
+        left: 16px;
+    }
+}
+
+@media (max-width: 910px) {
+    .about-composting-box{
+        position: relative;
+        right: 0%;
+        left: 0%;
+    }
+    .what-is-composting-box{
+        position: relative;
+        right: 0%;
+        left: 0%;
+        margin-top: 5%;
+        margin-bottom: 2%;
+    }
+
 }
