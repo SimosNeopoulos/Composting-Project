@@ -5,7 +5,7 @@ let appHeader = `
             <li><a href="../html/homepage.html">Home</a></li>
             <li><a href="../html/forum.html">Forum</a></li>
             <li><a href="../html/learn-more.html">Learn More</a></li>
-            <li><a href="../html/contact.html">Help</a></li>
+            <li><a href="../html/contact.php">Help</a></li>
         </ul>
     </div>
     
@@ -29,7 +29,7 @@ let appHeader = `
             <li class="navigation-list-item"><a href="../html/homepage.html">Home</a></li>
             <li class="navigation-list-item"><a href="../html/forum.html">Forum</a></li>
             <li class="navigation-list-item"><a href="../html/learn-more.html">Learn More</a></li>
-            <li class="navigation-list-item"><a href="../html/contact.html">Help</a></li>
+            <li class="navigation-list-item"><a href="../html/contact.php">Help</a></li>
         </ul>
     </nav>
 
