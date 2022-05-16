@@ -107,7 +107,68 @@ form .input-field-message {
     }
 }
 
-@media(max-width: 450px), (max-device-width: 450px) {
+@media (max-device-width: 650px) {
+    .container-height {
+        width: 60%;
+    }
+    .contact-text {
+        padding: 15px 0;
+        font-size: 200%;
+    }
+    .submit-btn {
+        width: 135px;
+        height: 54px;
+        font-size: 23px;
+    }
+    .input-field-message label {
+        font-size: 22px;
+    }
+    .input-field-message textarea {
+        font-size: 22px
+    }
+}
+
+@media (max-device-width: 500px) {
+    .contact-text {
+        padding: 15px 0;
+        font-size: 200%;
+    }
+    .form-container form {
+        padding:0 60px;
+    }
+
+    form .input-field {
+        margin-bottom: 28px;
+    }
+    .container-height {
+        height: 670px;
+    }
+
+}
+
+@media (max-device-width: 400px) {
+    .contact-text {
+        padding: 15px 0;
+        font-size: 200%;
+    }
+    .submit-btn {
+        width: 140px;
+        height: 54px;
+        font-size: 150%;
+    }
+    .container-height {
+        height: 670px;
+    }
+    .input-field-message label {
+        font-size: 26px;
+    }
+    .input-field-message textarea:focus ~ label,
+    .input-field-message textarea:not(:placeholder-shown) ~ label {
+        font-size: 22px;
+    }
+}
+
+@media(max-width: 450px) {
     .container-height {
         height: 660px;
     }
@@ -116,5 +177,35 @@ form .input-field-message {
         padding: 15px 0;
         font-size: 25px;
     }
+    .input-field-message textarea:focus,
+    .input-field-message textarea:not(:placeholder-shown) {
+        font-size: 30px;
+    }
 }
 
+@media (max-device-width: 335px) {
+    .container-height {
+        height: 930px;
+    }
+    form .input-field {
+        margin-bottom: 65px;
+    }
+    .contact-text {
+        padding: 25px 0;
+        font-size: 35px;
+    }
+    .input-field-message textarea {
+        width: 420px;
+        height: 300px;
+        font-size: 33px;
+    }
+    .input-field-message label {
+        font-size: 30px;
+    }
+    .input-field-message textarea:focus ~ label,
+    .input-field-message textarea:not(:placeholder-shown) ~ label {
+        font-size: 27px;
+        top: -.9rem;
+    }
+
+}

@@ -24,7 +24,26 @@ form .input-field{
     margin: 55px 0;
 }
 
-@media(max-width: 900px), (max-device-width: 900px) {
+@media(max-device-width: 900px) {
+    form .input-field{
+        margin: 35px 0;
+    }
+
+    .container-height {
+        height: 480px;
+    }
+
+    .forgot-pass {
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+
+    .sign-up-text {
+        margin: 30px 0;
+    }
+}
+
+@media(max-width: 900px) {
     form .input-field{
         margin: 35px 0;
     }
@@ -43,9 +62,43 @@ form .input-field{
     }
 }
 
-@media(max-width: 500px), (max-device-width: 500px) {
+@media (max-device-width: 750px) {
+    .forgot-pass {
+        font-size: 16px;
+        margin-top: 40px;
+        margin-bottom: 35px;
+    }
+
+    .sign-up-text {
+        font-size: 16px;
+        margin: 35px 0;
+    }
+}
+
+@media (max-device-width: 650px) {
+    .forgot-pass {
+        font-size: 18px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    form .input-field {
+        margin-bottom: 45px;
+    }
+    .sign-up-text {
+        font-size: 18px;
+        margin: 40px 0;
+    }
     .container-height {
-        height: 470px;
+        height: 530px;
+    }
+}
+
+@media (max-device-width: 500px) {
+    .container-height {
+        height: 590px;
+    }
+    form .input-field {
+        margin-bottom: 60px;
     }
 
     .forgot-pass,
@@ -54,11 +107,73 @@ form .input-field{
     }
 
     .forgot-pass {
+        font-size: 22.5px;
         margin-top: 40px;
         margin-bottom: 40px;
     }
 
     .sign-up-text {
+        font-size: 22px;
         margin: 30px 0;
+    }
+}
+
+@media(max-width: 500px) {
+    .container-height {
+        height: 580px;
+    }
+
+    .forgot-pass,
+    .sign-up-text {
+        font-size: .9rem;
+    }
+
+    .forgot-pass {
+        font-size: 26px;
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    .sign-up-text {
+        font-size: 26px;
+        margin: 30px 0;
+    }
+}
+
+@media (max-device-width: 400px) {
+    form .input-field {
+        margin-bottom: 70px;
+    }
+    .container-height {
+        height: 670px;
+    }
+    .forgot-pass {
+        font-size: 26px;
+        margin-top: 65px;
+        margin-bottom: 60px;
+    }
+
+    .sign-up-text {
+        font-size: 26px;
+        margin: 50px 0;
+    }
+}
+
+@media (max-device-width: 335px) {
+    .container-height {
+        height: 770px;
+        width: 700px;
+    }
+    .forgot-pass {
+        font-size: 30px;
+        margin-top: 65px;
+        margin-bottom: 60px;
+    }
+    form .input-field {
+        margin-bottom: 100px;
+    }
+    .sign-up-text {
+        font-size: 30px;
+        margin: 50px 0;
     }
 }
