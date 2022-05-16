@@ -59,7 +59,7 @@
         <!--------------------------------->
 
         <!-- LOG IN LINK -->
-        <div class="log-in-text">Έχεις Λογαριασμό? <a href="log_in.html">Log In!</a></div>
+        <div class="log-in-text">Έχεις Λογαριασμό? <a href="log_in.php">Log In!</a></div>
         <!----------------->
 
     </form>

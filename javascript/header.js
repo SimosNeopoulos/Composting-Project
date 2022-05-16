@@ -55,7 +55,7 @@ if (window.location.pathname.split("/").pop() === "log_in.html") {
     </div>`
 } else {
     appHeader += `<div class="btn-container">
-        <a href="../html/log_in.html" class="btn btn-acc">Log In</a>
+        <a href="../html/log_in.php" class="btn btn-acc">Log In</a>
     </div>`
 }
 
