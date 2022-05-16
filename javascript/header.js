@@ -51,7 +51,7 @@ let appHeader = `
 
 if (window.location.pathname.split("/").pop() === "log_in.html") {
     appHeader += `<div class="btn-container">
-        <a href="../html/sign_up.html" class="btn btn-acc">Sign Up</a>
+        <a href="../html/sign_up.php" class="btn btn-acc">Sign Up</a>
     </div>`
 } else {
     appHeader += `<div class="btn-container">
