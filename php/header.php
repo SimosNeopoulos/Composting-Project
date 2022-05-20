@@ -1,7 +1,4 @@
 <?php
-    include("connect.php");
-    include("classes.php");
-    include("functions");
 ?>
 <header id="page-header">
     <div id="side-nav">
@@ -51,10 +48,15 @@
         </table>
     </div>
 
-    <?php 
+    <?php
     $filePath = explode("/", $_SERVER['PHP_SELF']);
     $headerLocation = array_pop($filePath);
-    if($headerLocation == "sign_up.php"): ?>
+    if(isset($_SESSION["User"]) || true):
+    ?>
+    <div class="btn-container">
+        <a href="../html/personal-info-page.html" class="btn btn-acc">My Account</a>
+    </div>
+    <?php elseif($headerLocation == "sign_up.php"): ?>
 
     <div class="btn-container">
         <a href="../html/log_in.php" class="btn btn-acc">Log In</a>

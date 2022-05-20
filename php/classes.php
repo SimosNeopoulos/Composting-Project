@@ -7,11 +7,11 @@ class User {
     private $telephone;
 
     public function __construct($username, $email, $address, $password, $telephone) {
-        $this->$username = $username;
-        $this->$email = $email;
-        $this->$address = $address;
-        $this->$password = $password;
-        $this->$telephone = $telephone;
+        $this->username = $username;
+        $this->email = $email;
+        $this->address = $address;
+        $this->password = $password;
+        $this->telephone = $telephone;
     }
 
     public function getUsername() {
@@ -34,5 +34,4 @@ class User {
         return $this->telephone;
     }
 }
-
 ?>

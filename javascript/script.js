@@ -20,72 +20,86 @@ function closeNav() {
 
 /********************  **********************/
 
-/*********** BUTTON PRESSING EVENTS ***********/
+/********** SIGN UP EVENT LISTENERS ***********/
 
-function logInClick() {
-    let email = document.getElementById("log-in-email").value;
-    let password = document.getElementById("log-in-password").value;
-}
+    
+    
+    /** USERNAME **/
+    let signUpUsername = document.getElementById("sign-up-username");
+    signUpUsername.addEventListener("input", () => {
+        if (nameVerification(signUpUsername.value)) {
+            signUpUsername.setCustomValidity("");
+            return;
+        }
+        signUpUsername.setCustomValidity("Username must be between 4 to 16 characters start with a letter" +
+            " and to only contain alphabetic, numeric characters and '_'");
+        signUpUsername.reportValidity();
+    });
+    
+    
+    let signUpPassword = document.getElementById("sign-up-password");
+    signUpPassword.addEventListener("input", () => {
+        if (passwordVerification(signUpPassword.value)) {
+            signUpPassword.setCustomValidity("");
+            return;
+        }
+        signUpPassword.setCustomValidity("Password must be 6-16 characters long and contain at least one" +
+            " numeric and special character \"@#$%^&*\"");
+        signUpPassword.reportValidity();
+    });
 
-function signUpClick() {
-    let username = document.getElementById("sign-up-username").value;
-    let email = document.getElementById("sign-up-email").value;
-    let address = document.getElementById("sign-up-address").value;
-    let password = document.getElementById("sign-up-password").value;
-    let phone = document.getElementById("sign-up-tel").value;
+    document.getElementById("sign-up-form").addEventListener("submit", ev => {
+        let email = document.getElementById("sign-up-email").value;
+        let address = document.getElementById("sign-up-address").value;
+        let phone = document.getElementById("sign-up-tel").value;
 
-    if (!nameVerification(username)) {
-        alert("Your Username is not valid. Only alphabetic, numeric characters and '_' are acceptable.");
-        document.getElementById("sign-up-username").focus();
-        return;
-    }
+        if (!nameVerification(signUpUsername.value)) {
+            signUpUsername.setCustomValidity("");
+            signUpUsername.setCustomValidity("Username must be between 4 to 16 characters start with a letter" +
+            " and to only contain alphabetic, numeric characters and '_'");
+            signUpUsername.reportValidity();
+            ev.preventDefault();
+            return;
+        }
 
-    if (!emailVerification(email)) {
-        alert("Email already exists");
-        document.getElementById("sign-up-email").focus();
-        return;
-    }
+        if (!passwordVerification(signUpPassword.value)) {
+            signUpUsername.setCustomValidity("Username must be between 4 to 16 characters start with a letter" +
+            " and to only contain alphabetic, numeric characters and '_'");
+            signUpUsername.reportValidity();
+            ev.preventDefault();
+            return;
+        }
+        
+    });
 
-    if (!passwordVerification(password)) {
-        alert("Password not valid");
-        document.getElementById("sign-up-password").focus();
-        return;
-    }
 
-    if (!phoneVerification(phone)) {
-        alert("Phone not valid");
-        document.getElementById("sign-up-tel").focus();
-    }
-}
+/*********** LOG IN EVENT LISTENERS ***********/
+
+
+document.getElementById("log-in-form").addEventListener("submit", ev => {
+    let form = ev.target;
+    let data = new FormData(form);
+    ev.preventDefault();
+});
+
+
+/******************** ***********************/
+
+
+/*********** CONTACT EVENT LISTENERS ***********/
+
+document.getElementById("contact-form").addEventListener("submit", ev => {
+    let form = ev.target;
+    let data = new FormData(form);
+    ev.preventDefault();
+});
+
+/******************** ***********************/
 
 function nameVerification(username) {
-    let validUsername = /^[a-zA-Z0-9_]{4,16}$/.test(username);
-    let exists = false; /** TODO: check if username already exists in the database */
-    return validUsername && !exists;
-}
-
-function emailVerification(email) {
-    let validEmail = true; /** TODO: check if email already exists in the database */
-    return validEmail;
+    return /^[a-zA-Z][a-zA-Z0-9_]{4,16}$/.test(username);
 }
 
 function passwordVerification(password) {
     return /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password);
 }
-
-function phoneVerification(phone) {
-    let validPhone = true; /** TODO: check if email already exists in the database */
-    return validPhone;
-}
-
-function contactClick() {
-    let name = document.getElementById("contact-name").value;
-    let email = document.getElementById("contact-email").value;
-    let message = document.getElementById("contact-message").value;
-    let subject = document.getElementById("contact-subject").value;
-    /**
-     * TODO: Complete the function
-     */
-}
-
-/*********************** ************************/
