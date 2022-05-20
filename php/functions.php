@@ -45,7 +45,7 @@ function addAccountToDB($conn, $user) {
     $telephone = $user->getTelephone();
     $sql_query = "INSERT INTO users(username, email, address, password, telephone) VALUES ('$username', '$email', '$address', '$password','$telephone')";
     if(mysqli_query($conn, $sql_query)) {
-        if(logIn($conn, $user, false)) {
+        if(logIn($user)) {
             return true;
         } else {
             return false;
@@ -56,25 +56,24 @@ function addAccountToDB($conn, $user) {
     return false;
 }
 
-function logIn($conn, $user, $checkExistance) {
-    if($checkExistance) {
-        $email = $user->getEmail();
-        $sql_query = "SELECT email, password FROM users WHERE email = '$email'";
-        $result = mysqli_query($conn, $sql_query);
-        $rows = mysqli_num_rows($result);
-        $data = mysqli_fetch_assoc($result);
-        mysqli_free_result($result);
-        if ($rows <= 0) {
-            return false;
-        }
-        if($data["password"] != $user->getPassword()) {
-            return false;
-        }
-        
+function authenticate($conn, $email, $password) {
+    $sql_query = "SELECT * FROM users WHERE email = '$email'";
+    $result = mysqli_query($conn, $sql_query);
+    if(!$result) {
+        return null;
     }
+    $rows = mysqli_num_rows($result);
+    $data = mysqli_fetch_assoc($result);
+    mysqli_free_result($result);
+    if($rows < 1 || $data["password"] != $password) {
+        return false;
+    }
+    $user = new User($data["username"], $data["email"], $data["address"], $data["password"], $data["telephone"]);
+    return logIn($user);
+}
+
+function logIn($user) {
     $_SESSION["user"] = $user;
     return true;
 }
-
-
 ?>

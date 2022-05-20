@@ -51,7 +51,7 @@
     <?php
     $filePath = explode("/", $_SERVER['PHP_SELF']);
     $headerLocation = array_pop($filePath);
-    if(isset($_SESSION["User"]) || true):
+    if(isset($_SESSION["user"])):
     ?>
     <div class="btn-container">
         <a href="../html/personal-info-page.html" class="btn btn-acc">My Account</a>
