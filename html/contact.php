@@ -12,8 +12,7 @@
 <body>
 
 <!------------ HEADER ------------->
-<header id="page-header"></header>
-<script defer src="../javascript/header.js"></script>
+<?php require("../php/header.php")?>
 <!--------------------------------->
 
 <!------------- MAIN CONTAINER -------------->

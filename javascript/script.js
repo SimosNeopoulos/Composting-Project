@@ -22,39 +22,59 @@ function closeNav() {
 
 /********** SIGN UP EVENT LISTENERS ***********/
 
-document.getElementById("sign-up-form").addEventListener("submit", ev => {
-    let form = ev.target;
-    let data = new FormData(form);
-    ev.preventDefault();
-});
+    
+    
+    /** USERNAME **/
+    let signUpUsername = document.getElementById("sign-up-username");
+    signUpUsername.addEventListener("input", () => {
+        if (nameVerification(signUpUsername.value)) {
+            signUpUsername.setCustomValidity("");
+            return;
+        }
+        signUpUsername.setCustomValidity("Username must be between 4 to 16 characters start with a letter" +
+            " and to only contain alphabetic, numeric characters and '_'");
+        signUpUsername.reportValidity();
+    });
+    
+    
+    let signUpPassword = document.getElementById("sign-up-password");
+    signUpPassword.addEventListener("input", () => {
+        if (passwordVerification(signUpPassword.value)) {
+            signUpPassword.setCustomValidity("");
+            return;
+        }
+        signUpPassword.setCustomValidity("Password must be 6-16 characters long and contain at least one" +
+            " numeric and special character \"@#$%^&*\"");
+        signUpPassword.reportValidity();
+    });
 
-/** USERNAME **/
-let signUpUsername = document.getElementById("sign-up-username");
-signUpUsername.addEventListener("input", () => {
-    if (nameVerification(signUpUsername.value)) {
-        signUpUsername.setCustomValidity("");
-        return;
-    }
-    signUpUsername.setCustomValidity("Username must be between 4 to 16 characters start with a letter" +
-        " and to only contain alphabetic, numeric characters and '_'");
-    signUpUsername.reportValidity();
-});
+    document.getElementById("sign-up-form").addEventListener("submit", ev => {
+        let email = document.getElementById("sign-up-email").value;
+        let address = document.getElementById("sign-up-address").value;
+        let phone = document.getElementById("sign-up-tel").value;
 
+        if (!nameVerification(signUpUsername.value)) {
+            signUpUsername.setCustomValidity("");
+            signUpUsername.setCustomValidity("Username must be between 4 to 16 characters start with a letter" +
+            " and to only contain alphabetic, numeric characters and '_'");
+            signUpUsername.reportValidity();
+            ev.preventDefault();
+            return;
+        }
 
-let signUpPassword = document.getElementById("sign-up-password");
-signUpPassword.addEventListener("input", () => {
-    if (passwordVerification(signUpPassword.value)) {
-        signUpPassword.setCustomValidity("");
-        return;
-    }
-    signUpPassword.setCustomValidity("Password must be 6-16 characters long and contain at least one" +
-        " numeric and special character \"@#$%^&*\"");
-    signUpPassword.reportValidity();
-});
+        if (!passwordVerification(signUpPassword.value)) {
+            signUpUsername.setCustomValidity("Username must be between 4 to 16 characters start with a letter" +
+            " and to only contain alphabetic, numeric characters and '_'");
+            signUpUsername.reportValidity();
+            ev.preventDefault();
+            return;
+        }
+        
+    });
 
-/******************** ***********************/
 
 /*********** LOG IN EVENT LISTENERS ***********/
+
 
 document.getElementById("log-in-form").addEventListener("submit", ev => {
     let form = ev.target;
@@ -62,7 +82,9 @@ document.getElementById("log-in-form").addEventListener("submit", ev => {
     ev.preventDefault();
 });
 
+
 /******************** ***********************/
+
 
 /*********** CONTACT EVENT LISTENERS ***********/
 
@@ -81,5 +103,3 @@ function nameVerification(username) {
 function passwordVerification(password) {
     return /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password);
 }
-
-/*********************** ************************/

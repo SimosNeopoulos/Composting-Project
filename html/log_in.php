@@ -1,3 +1,28 @@
+<?php
+include("../php/functions.php");
+include("../php/connect.php");
+
+$serverError = false;
+$passwordIncorrect = false;
+do{
+    if(isset($_POST['submit-btn'])) {
+        $loggedIn = authenticate($conn, $_POST['email'], $_POST['password']);
+        if($loggedIn === null) {
+            $serverError = true;
+            break;
+        }
+
+        if(!$loggedIn) {
+            $passwordIncorrect = true;
+            break;
+        }
+        if($loggedIn)
+            header("Location: ../html/homepage.html");
+    }
+}while(false)
+
+?>
+
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -8,10 +33,13 @@
     <link rel="shortcut icon" href="../images/composting200.png">
 </head>
 <body>
-
 <!------------ HEADER ------------->
-<header id="page-header"></header>
-<script defer src="../javascript/header.js"></script>
+<?php //unset($_SESSION['user']); ?>
+<?php require("../php/header.php")?>
+
+
+
+<!-- <script defer src="../javascript/header.js"></script> -->
 <!--------------------------------->
 
 <!------------- MAIN CONTAINER -------------->
@@ -20,13 +48,13 @@
     <form action="#" id="log-in-form" method="post">
         <!-------- INPUT FIELDS --------->
         <div class="input-field">
-            <input type="email" placeholder=" " name="log-in-email" id="log-in-email" required>
+            <input type="email" name="email" placeholder=" " id="log-in-email" required>
             <span></span>
             <label for="log-in-email">Email</label>
         </div>
 
         <div class="input-field">
-            <input type="password" placeholder=" " name="log-in-password" id="log-in-password" required>
+            <input type="password" name="password" placeholder=" " id="log-in-password" required>
             <span></span>
             <label for="log-in-password">Κωδικός</label>
         </div>
@@ -46,7 +74,7 @@
 
         <!-- SIGN UP LINK -->
         <div class="sign-up-text">Δεν έχεις λογαριασμό? <a
-                href="sign_up.html">Sign Up!</a>
+                href="sign_up.php">Sign Up!</a>
         </div>
         <!------------------>
     </form>
@@ -55,4 +83,14 @@
 
 <script type="text/javascript" src="../javascript/script.js"></script>
 </body>
+<?php
+if($passwordIncorrect) {
+    echo "<script>function warning() { alert('Wrong password!'); } warning();</script>";
+}
+if($serverError) {
+    echo "<script>function warning() { alert('There was a problem with the server'); } warning();</script>";
+}
+$serverError = false;
+$passwordIncorrect = false;
+?>
 </html>
