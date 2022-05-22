@@ -14,6 +14,7 @@ image_upload.addEventListener("change", function (){
 })
 //
 
+
 let edit = document.getElementsByClassName('edit')[0];
 let userDataFields = document.getElementsByClassName('user-data-fields')[3];
 let saveButton = document.getElementsByClassName('save-button')[0];
@@ -30,10 +31,7 @@ if(flag){
 }
 
 
-function change() {
-    flag=1;
 
-}
 
 if(flag){
     document.getElementById('profile-header').textContent = 'Αυτό είναι το προφίλ μου!';
