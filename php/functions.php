@@ -76,4 +76,10 @@ function logIn($user) {
     $_SESSION["user"] = $user;
     return true;
 }
+
+function logOut() {
+    unset($_SESSION["user"]);
+    header("Location: ../html/log_in.php");
+    return true;
+}
 ?>
