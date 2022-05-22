@@ -289,6 +289,7 @@ header.sticky-header {
 }
 
 .input-field input {
+    width: 97%;
     padding: 0 5px;
     height: 40px;
     font-size: 16px;
@@ -423,7 +424,89 @@ footer{
     }
 }
 
-@media (max-width: 900px), (max-device-width: 900px) {
+@media (max-device-width: 900px) {
+    header {
+        height: 70px;
+    }
+
+    header.sticky-header {
+        height: 65px;
+    }
+
+    .navigation {
+        display: none;
+    }
+
+    .logo-container {
+        width: 8%;
+        min-width: 100px;
+    }
+
+    .search-box {
+        display: none;
+    }
+
+    .btn,
+    .btn:link,
+    .btn:visited {
+        font-size: .9rem;
+        padding: 12px 22px;
+    }
+
+    .icon-nav {
+        margin-left: 4%;
+        display: flex;
+        justify-content: space-between;
+        width: 20%;
+    }
+
+    .phone-nav {
+        display: flex;
+        position: center;
+    }
+
+    .nav-btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+        font-size: 30px;
+    }
+
+    .menu-icon {
+        width: 40px;
+        height: 40px;
+        color: #525252;
+    }
+
+    #side-nav {
+        display: block;
+    }
+
+    .form-container {
+        width: min(80%, 400px);
+    }
+
+    .form-container form {
+        padding: 0 65px;
+    }
+
+    .btn-container {
+        margin-right: 15px;
+    }
+
+    .top-text {
+        padding: 35px 0 15px 0;
+        font-size: 40px;
+    }
+
+    .submit-btn {
+        width: 110px;
+        height: 43px;
+        font-size: .9rem;
+    }
+}
+
+@media (max-width: 900px) {
     header {
         height: 60px;
     }
@@ -505,13 +588,100 @@ footer{
     }
 }
 
-@media (max-width: 500px), (max-device-width: 500px) {
+@media (max-device-width: 750px) {
+    header {
+        height: 70px;
+    }
+    header.sticky-header {
+        height: 60px;
+    }
+    .btn:link{
+        padding: 15px 31px;
+        font-size: 18px;
+    }
+    .submit-btn {
+        font-size: 18px;
+    }
+    .input-field label {
+        font-size: 19px;
+    }
+    .input-field input {
+        font-size: 18px;
+    }
+}
+
+@media (max-device-width: 650px) {
+    header {
+        height: 80px;
+    }
+    header.sticky-header {
+        height: 70px;
+    }
+    .btn:link{
+        padding: 15px 31px;
+        font-size: 20px;
+    }
+    .input-field label {
+        font-size: 22px;
+    }
+    .input-field input {
+        font-size: 21px;
+    }
+    .form-container {
+        width: 50%;
+    }
+    .submit-btn {
+        width: 130px;
+        height: 52px;
+        font-size: 20px;
+    }
+}
+
+@media (max-device-width: 500px) {
+    header {
+        height: 80px;
+    }
+    header.sticky-header {
+        height: 70px;
+    }
+    .btn:link{
+        padding: 15px 31px;
+        font-size: 22px;
+    }
+
+    .input-field input {
+        font-size: 24px;
+    }
+    .input-field label {
+        font-size: 24px;
+    }
+
+    .top-text {
+        font-size: 40px;
+    }
+
+    .form-container form {
+        padding: 1px 60px;
+    }
+
+    .submit-btn {
+        width: 135px;
+        height: 54px;
+        font-size: 22px;
+    }
+
+    .form-container {
+        width: 60%;
+    }
+}
+
+@media (max-width: 500px) {
     .top-text {
         font-size: 35px;
     }
 
     .form-container form {
-        padding: 0 40px;
+        padding: 3px 40px;
     }
 
     .submit-btn {
@@ -521,8 +691,69 @@ footer{
     }
 }
 
-@media (max-width: 400px), (max-device-width: 400px) {
+@media (max-device-width: 400px) {
+    header {
+        height: 80px;
+    }
+    header.sticky-header {
+        height: 70px;
+    }
+    .input-field input {
+        font-size: 25px;
+    }
+    .input-field label {
+        font-size: 30px;
+    }
+    .input-field input:focus ~ label,
+    .input-field input:not(:placeholder-shown) ~ label {
+        top: -10px;
+    }
+    .btn:link{
+        padding: 15px 31px;
+        font-size: 24px;
+    }
+    .form-container {
+        width: 60%;
+    }
+    .form-container form {
+        padding:1px 60px;
+    }
+}
+
+@media (max-width: 400px) {
     .form-container {
         width: 90%;
+    }
+    .container-height {
+        height: 500px;
+    }
+}
+
+@media (max-device-width: 335px) {
+    .form-container {
+        width: 80%;
+    }
+
+    .input-field input {
+        font-size: 32px;
+    }
+    .input-field label {
+        font-size: 30px;
+    }
+    .input-field input:focus ~ label,
+    .input-field input:not(:placeholder-shown) ~ label {
+        top: -20px;
+    }
+    .top-text {
+        font-size: 45px;
+    }
+    .btn:link{
+        padding: 15px 31px;
+        font-size: 28px;
+    }
+    .submit-btn {
+        width: 145px;
+        height: 73px;
+        font-size: 28px;
     }
 }
