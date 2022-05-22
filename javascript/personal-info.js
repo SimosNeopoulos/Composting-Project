@@ -1,6 +1,6 @@
 let flag = 0;
 
-/**  */
+/**  update profile photo */
 const image_upload = document.getElementById('image-upload');
 let uploaded_image = "";
 
