@@ -1,3 +1,7 @@
+<?php
+include("../php/functions.php");
+?>
+
 <!DOCTYPE html>
 <html lang="el">
 <head>
