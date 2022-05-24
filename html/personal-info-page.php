@@ -1,3 +1,10 @@
+<?php 
+
+include("functions.php");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="el">
 <head>
@@ -78,7 +85,7 @@
             </div>
             <div class="links">
                 <img src="">
-                <button type="submit" class="posts">Αποσύνδεση</button>
+                <a class="posts" href="../php/logout.php" title="logout">Αποσύνδεση</a>
             </div>
         </div>
 
@@ -107,3 +114,7 @@
 <script type="text/javascript" src="../javascript/personal-info.js"></script>
 </body>
 </html>
+
+
+
+
