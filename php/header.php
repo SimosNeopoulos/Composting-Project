@@ -54,7 +54,7 @@
     if(isset($_SESSION["user"])):
     ?>
     <div class="btn-container">
-        <a href="../html/personal-info-page.html" class="btn btn-acc">My Account</a>
+        <a href="../html/personal-info-page.php" class="btn btn-acc">My Account</a>
     </div>
     <?php elseif($headerLocation == "sign_up.php"): ?>
 

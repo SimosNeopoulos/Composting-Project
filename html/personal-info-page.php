@@ -1,8 +1,4 @@
-<?php 
-
-include("functions.php");
-
-?>
+<!-- -->
 
 
 <!DOCTYPE html>
@@ -84,7 +80,7 @@ include("functions.php");
                 <a class="posts" href="">Αποθηκευμένα ποστ</a>
             </div>
             <div class="links">
-                <img src="">
+                <img class="link-icons" src="../images/logout-icon.png" alt="Logout!">
                 <a class="posts" href="../php/logout.php" title="logout">Αποσύνδεση</a>
             </div>
         </div>
