@@ -33,18 +33,15 @@ function emailExists($conn, $email) {
     return false;
 }
 
-function signUp($conn, $user) {
-     return addAccountToDB($conn ,$user);
+function signUp($conn, $username, $email, $address, $password, $telephone) {
+     return addAccountToDB($conn, $username, $email, $address, $password, $telephone);
 }
 
-function addAccountToDB($conn, $user) {
-    $username = $user->getUsername();
-    $email = $user->getEmail();
-    $address = $user->getAddress();
-    $password = $user->getPassword();
-    $telephone = $user->getTelephone();
+function addAccountToDB($conn, $username, $email, $address, $password, $telephone) {
     $sql_query = "INSERT INTO users(username, email, address, password, telephone) VALUES ('$username', '$email', '$address', '$password','$telephone')";
     if(mysqli_query($conn, $sql_query)) {
+        $id = mysqli_insert_id($conn);
+        $user = new User($id, $username, $email, $address, $password, $telephone);
         if(logIn($user)) {
             return true;
         } else {
@@ -68,7 +65,7 @@ function authenticate($conn, $email, $password) {
     if($rows < 1 || $data["password"] != $password) {
         return false;
     }
-    $user = new User($data["username"], $data["email"], $data["address"], $data["password"], $data["telephone"]);
+    $user = new User($data["id"], $data["username"], $data["email"], $data["address"], $data["password"], $data["telephone"]);
     return logIn($user);
 }
 
@@ -82,4 +79,49 @@ function logOut() {
     header("Location: ../html/log_in.php");
     return true;
 }
+
+function getCurrentUserData(){
+
+}
+
+function displayName(){
+    if(isset($_SESSION['username'])){
+        echo $_SESSION['username'];
+    }else{
+        echo '';
+    }
+}
+
+function displayEmail(){
+    if(isset($_SESSION['email'])){
+        echo $_SESSION['email'];
+    }else{
+        echo '';
+    }
+}
+
+function dipslayAddress(){
+    if(isset($_SESSION['address'])){
+        echo $_SESSION['address'];
+    }else{
+        echo '';
+    }
+}
+
+function displayPassword(){
+    if(isset($_SESSION['password'])){
+        echo $_SESSION['password'];
+    }else{
+        echo '';
+    }
+}
+
+function displayTelephone(){
+    if(isset($_SESSION['telephone'])){
+        echo $_SESSION['telephone'];
+    }else{
+        echo '';
+    }
+}
 ?>
+

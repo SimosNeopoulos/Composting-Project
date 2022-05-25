@@ -1,31 +1,23 @@
 <?php
 include("../php/functions.php");
 include("../php/connect.php");
+
+$serverError = false;
+$nameTaken = false;
+$emailTaken = false;
 do {
     if(isset($_POST['submit-btn'])) {
         $nameTaken = nameExists($conn, $_POST['username']);
-        echo "$nameTaken";
-        if($nameTaken === null) {
-            echo "name null";/**TODO: Do something when it doesn't connect to a database*/
-            break;
-        } elseif ($nameTaken) {
-            echo "name taken";/**TODO: Do somethging when the username is taken*/
+        if($nameTaken === null || $nameTaken) {
             break;
         }
-    
 
         $emailTaken = emailExists($conn, $_POST['email']);
-        if($emailTaken === null) {
-            echo "email null";/**TODO: Do something when it doesn't connect to a database*/
-            break;
-        } elseif($emailTaken) {
-            echo "email taken";/**TODO: Do somethging when the email is taken*/
+        if($emailTaken === null || $emailTaken) {
             break;
         }
-        echo "Reached the end";
-        $user = new User($_POST["username"], $_POST["email"], $_POST["address"], $_POST["password"], $_POST["telephone"]);
-
-        if(signUp($conn, $user)) {
+        
+        if(signUp($conn, $_POST["username"], $_POST["email"], $_POST["address"], $_POST["password"], $_POST["telephone"])) {
             mysqli_close($conn);
             header('Location: ../html/homepage.html');
         }
@@ -51,7 +43,7 @@ do {
 <!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
     <h1 class="top-text">Sign Up</h1>
-    <form method="post" action="sign_up.php">
+    <form method="post" id="sign-up-form" action="sign_up.php">
         <!-------- INPUT FIELDS --------->
         <div class="input-field">
             <input type="text" name="username" placeholder=" " id="sign-up-username" required>
@@ -102,4 +94,18 @@ do {
 <script type="text/javascript" src="../javascript/script.js"></script>
 
 </body>
+<?php
+if($nameTaken) {
+    echo "<script>function warning() { alert('To username χρησιμοποιείτε ήδη!'); } warning();</script>";
+}
+if($emailTaken) {
+    echo "<script>function warning() { alert('To email χρησιμοποιείτε ήδη!'); } warning();</script>";
+}
+if($serverError) {
+    echo "<script>function warning() { alert('Υπήρξε πρόβλημα με τον server'); } warning();</script>";
+}
+$serverError = false;
+$nameTaken = false;
+$emailTaken = false;
+?>
 </html>
