@@ -74,6 +74,11 @@ function authenticate($conn, $email, $password) {
 
 function logIn($user) {
     $_SESSION["user"] = $user;
+    $_SESSION["username"] = $user->getUsername();///////////////
+    $_SESSION["email"] = $user->getEmail();
+    $_SESSION["address"] = $user->getAddress();
+    $_SESSION["password"] = $user->getPassword();
+    $_SESSION["telephone"] = $user->getTelephone();
     return true;
 }
 
@@ -82,4 +87,49 @@ function logOut() {
     header("Location: ../html/log_in.php");
     return true;
 }
+
+function getCurrentUserData(){
+
+}
+
+function displayName(){
+    if(isset($_SESSION['username'])){
+        echo $_SESSION['username'];
+    }else{
+        echo '';
+    }
+}
+
+function displayEmail(){
+    if(isset($_SESSION['email'])){
+        echo $_SESSION['email'];
+    }else{
+        echo '';
+    }
+}
+
+function dipslayAddress(){
+    if(isset($_SESSION['address'])){
+        echo $_SESSION['address'];
+    }else{
+        echo '';
+    }
+}
+
+function displayPassword(){
+    if(isset($_SESSION['password'])){
+        echo $_SESSION['password'];
+    }else{
+        echo '';
+    }
+}
+
+function displayTelephone(){
+    if(isset($_SESSION['telephone'])){
+        echo $_SESSION['telephone'];
+    }else{
+        echo '';
+    }
+}
 ?>
+

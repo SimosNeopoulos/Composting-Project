@@ -1,4 +1,8 @@
-<!-- -->
+<?php
+    include("../php/connect.php");
+    include("../php/functions.php");   
+    
+?>
 
 
 <!DOCTYPE html>
@@ -11,9 +15,11 @@
     <link rel="shortcut icon" href="../images/composting200.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Composting!</title>
-
+    
 </head>
 <body>
+
+
 
 <header id="page-header"></header>
 <div class="container">
@@ -38,28 +44,28 @@
 
         <div class="user-data-fields">
             <label>Όνομα χρήστη</label>
-            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Username" value="<?php displayName(); ?>">
 
         </div>
         <div class="user-data-fields">
             <label> Email</label>
-            <input type="text" placeholder="Email">
+            <input type="text" placeholder="Email" value="<?php displayEmail(); ?>">
 
 
         </div>
         <div class="user-data-fields">
             <label>Διεύθυνση</label>
-            <input type="text" placeholder="Address">
+            <input type="text" placeholder="Address" value="<?php dipslayAddress(); ?>">
 
         </div>
         <div class="user-data-fields">
             <label>Κωδικός πρόσβασης </label>
-            <input type="password" placeholder="Password">
+            <input type="password" placeholder="Password" value="<?php displayPassword(); ?>">
 
         </div>
         <div class="user-data-fields">
             <label>Τηλέφωνο</label>
-            <input type="tel" placeholder="69-99999999" pattern="69-[0-9]{8}" required>
+            <input type="tel" placeholder="69-99999999" pattern="69-[0-9]{8}" required value="<?php displayTelephone(); ?>">
 
         </div>
 
@@ -108,6 +114,7 @@
 <script defer src="../javascript/header.js"></script>
 <script type="text/javascript" src="../javascript/script.js"></script>
 <script type="text/javascript" src="../javascript/personal-info.js"></script>
+
 </body>
 </html>
 
