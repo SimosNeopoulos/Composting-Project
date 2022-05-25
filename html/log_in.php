@@ -16,11 +16,8 @@ do{
             $passwordIncorrect = true;
             break;
         }
-        if($loggedIn) {
-            $id = $_SESSION['user']->getId();
+        if($loggedIn)
             header("Location: ../html/homepage.html");
-        }
-            
     }
 }while(false)
 
@@ -88,10 +85,10 @@ do{
 </body>
 <?php
 if($passwordIncorrect) {
-    echo "<script>function warning() { alert('Λάθος κωδικός!'); } warning();</script>";
+    echo "<script>function warning() { alert('Λάθος κωδικός ή email!'); } warning();</script>";
 }
 if($serverError) {
-    echo "<script>function warning() { alert('Υπήρξε πρόβλημα με τον server'); } warning();</script>";
+    echo "<script>function warning() { alert('Παρουσιάστηκε πρόβλημα με τον server'); } warning();</script>";
 }
 $serverError = false;
 $passwordIncorrect = false;
