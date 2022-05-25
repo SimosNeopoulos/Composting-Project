@@ -16,8 +16,11 @@ do{
             $passwordIncorrect = true;
             break;
         }
-        if($loggedIn)
+        if($loggedIn) {
+            $id = $_SESSION['user']->getId();
             header("Location: ../html/homepage.html");
+        }
+            
     }
 }while(false)
 
@@ -45,7 +48,7 @@ do{
 <!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
     <h1 class="top-text">Log In</h1>
-    <form method="post">
+    <form action="#" id="log-in-form" method="post">
         <!-------- INPUT FIELDS --------->
         <div class="input-field">
             <input type="email" name="email" placeholder=" " id="log-in-email" required>
@@ -66,7 +69,7 @@ do{
 
         <!---------- SUBMIT BUTTON ----------->
         <div class="btn-space">
-            <button onclick="logInClick()" name="submit-btn" type="submit" class="submit-btn">
+            <button name="submit-btn" type="submit" class="submit-btn">
                 Log In
             </button>
         </div>
@@ -85,10 +88,10 @@ do{
 </body>
 <?php
 if($passwordIncorrect) {
-    echo "<script>function warning() { alert('Wrong password!'); } warning();</script>";
+    echo "<script>function warning() { alert('Λάθος κωδικός!'); } warning();</script>";
 }
 if($serverError) {
-    echo "<script>function warning() { alert('There was a problem with the server'); } warning();</script>";
+    echo "<script>function warning() { alert('Υπήρξε πρόβλημα με τον server'); } warning();</script>";
 }
 $serverError = false;
 $passwordIncorrect = false;
