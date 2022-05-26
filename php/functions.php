@@ -132,16 +132,17 @@ function displayTelephone(){
 /************* POSTS / COMMENTS / TAGS *************/
 
 function deletePost($conn, $id) {
-    $sql_query = "DELETE FROM users WHERE id = '$id'";
-    mysqli_query($conn, $sql_query);
-    //$id = mysqli_insert_id($conn); Αν δεν περνει το id η συναρτηση
-    $sql_query = "DELETE FROM posts_has_tags WHERE posts_id = '$id'";
-    mysqli_query($conn, $sql_query);
+    $sql_query = "DELETE FROM posts WHERE id = '$id'";
+    if(mysqli_query($conn, $sql_query)) 
+        return true;
+    return false;
 }
 
 function updatePost($conn, $id, $newBody) {
-    $sql_query = "UPDATE users SET body = '$newBody' WHERE id = '$id'";
-    mysqli_query($conn, $sql_query);
+    $sql_query = "UPDATE posts SET body = '$newBody' WHERE id = '$id'";
+    if(mysqli_query($conn, $sql_query))
+        return true;
+    return false;
 }
 
 function getUserPosts($conn, $userId) {
@@ -174,24 +175,72 @@ function getPostsFromArea($conn, $city) {
     return $data;
 }
 
-function getPostsWithTag($conn, $tags) {
+function getPostsWithTag($conn, $tags, $numberOfPosts=30) {
+    $where_query = getArrayWhereStatment($tags, "tag_name");
+    $sql_query = "SELECT posts.id AS post_id, id_user, body , post_date
+                  FROM posts INNNER JOIN posts_has_tags
+                  ON post_id = posts_id
+                  INNER JOIN tags
+                  ON tags.id = tags_id
+                  WHERE $where_query
+                  ORDER BY post_date DESC 
+                  LIMIT $numberOfPosts";
+    $result = mysqli_query($conn, $sql_query);
+    $rows = mysqli_num_rows($result);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    if($rows < 1) {
+        echo "Δεν επιστρέφηκαν αποτελέσματα";
+        return;
+    }
+    return $data;
+}
+
+function createPost($conn, $userId, $body, $tags) {
+    $post_date = date('Y-m-d H:i:s');
+    if(!$post_date) {
+        return null;
+    }
+    $sql_query = "INSERT INTO posts(id_user, body, post_date) VALUES ('$userId', '$body', '$post_date')";
+    if(!mysqli_query($conn, $sql_query)) {
+        return null;
+    }
+    $id = mysqli_insert_id($conn);
+    createPostsTagsAssociation($conn, $id, $tags);
+
+}
+
+function createPostsTagsAssociation($conn, $post_id, $tags) {
+    $where_query = getArrayWhereStatment($tags, "tag_name");
+    $sql_query = "SELECT id FROM tags WHERE $where_query";
+    $result = mysqli_query($conn, $sql_query);
+    $rows = mysqli_num_rows($result);
+    
+    if($rows < 1) {
+        echo "Δεν επιστρέφηκαν αποτελέσματα";
+        return;
+    }
+
+    while ($row = mysqli_fetch_assoc($result)) {
+        $tag_id = $row['id'];
+        $sql_query = "INSERT INTO posts_has_tags(posts_id, tags_id) VALUES ('$post_id', '$tag_id')";
+        mysqli_query($conn, $sql_query);
+    }
+    mysqli_free_result($result);
+}
+
+function getArrayWhereStatment($array, $columnName) {
     $where_query = "( ";
-    $numElements = count($tags);
+    $numElements = count($array);
     for($i=0; $i<$numElements; $i++) {
-        $where_query .= "tag_name = " . $tags[$i];
+        $elemnt = $array[$i];
+        $where_query .= "$columnName = '$elemnt'";
         if($i+1 !== $numElements) {
             $where_query .= " OR ";
         }
     }
     $where_query .= ")";
-    $sql_query = "SELECT posts.id, posts.id_user, posts.body, posts.post_date 
-                  FROM posts INNNER JOIN posts_has_tags
-                  ON posts.id = posts_id
-                  INNER JOIN tags
-                  ON tags.id = tags_id
-                  WHERE $where_query
-                  ORDER BY post_date DESC 
-                  LIMIT 5";
+    return $where_query;
 }
 
 /************************  *************************/
