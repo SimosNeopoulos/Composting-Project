@@ -15,6 +15,6 @@ if (isset($_POST["submit-btn"])) { // check if user has account
 
     mail($to, $subject, $message, $headers);
 
-    //header("Location: ../html/contact.html?success");
+    header("Location: ../html/contact.php?reset=success");
 
 }

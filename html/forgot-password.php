@@ -19,7 +19,7 @@
         <h1 class="top-text">Reset Password</h1>
         <form action="../include(php)/reset-request.inc.php" id="forgot-password-form" method="post">
             <div class="information-text">
-                <p class="info-text">An e-mail will be send to you with instructions on how to reset your password.</p>
+                <p class="info-text"><center>An e-mail will be send to you with instructions on how to reset your password.</center></p>
             </div>
             <form action="includes/reset-request.inc.php" method="post">
                 <!-------- INPUT FIELDS --------->
@@ -28,13 +28,18 @@
                     <span></span>
                     <label for="forgot-password-email">Email</label>
                 </div>
-                <?php
-                    if (isset($_GET["reset"])) {
-                        if ($_GET["reset"] == "success") {
-                            echo "gg wp";
-                        }
-                    }
-                ?>
+                <?php if (isset($_GET["reset"])) {
+                    if ($_GET["reset"] == "success") { ?>
+                        <div class="information-text">
+                            <p class="info-text"><strong><center>Check your emails!</center></strong></p>
+                        </div>
+                    <?php } elseif ($_GET["reset"] == "fail") { ?>
+                        <div class="information-text">
+                            <p class="info-text"><strong><center>This email does not exist!</center></strong></p>
+                        </div>
+                    <?php } ?>
+                <?php } ?>
+
                 <!---------- SUBMIT BUTTON ----------->
                 <div class="btn-space">
                     <button name="submit-btn" type="submit" class="submit-btn">Continue</button>

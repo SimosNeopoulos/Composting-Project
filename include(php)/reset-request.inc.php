@@ -47,18 +47,21 @@ if (isset($_POST["submit-btn"])) {
     $message = '<p>We received a password request. The link to reset your passowrd is below.';
     $message .= 'If you did not make this request, you can ignore this email </p>';
     $message .= '<p><strong>Here is your password reset link: </strong>';
-    $message .= '<a href="' . $url . '">Click here to change your password</a></p>';
+    if (strpos($to, "hotmail"))
+        $message .= $url;
+    else
+        $message .= '<a href="' . $url . '">Click here to change your password</a></p>';
+
 
     $headers = "From: Composting-Project <teamcompostingproject@gmail.com>";
     $headers .= "Reply-To: teamCompostingProject\r\n";
     $headers .= "Content-type: text/html\r\n";
 
     if (mail($to, $subject, $message, $headers))
-        echo "komple";
+        header("Location:../html/forgot-password.php?reset=success");
     else
-        echo "fail";
+        header("Location:../html/forgot-password.php?reset=fail");
 
-    //header("Location:../html/forgot-password.php?reset=success");
 
 } else {
     // μπηκαν με λαθος τροπο
