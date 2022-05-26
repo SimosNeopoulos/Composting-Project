@@ -83,3 +83,16 @@ function passwordVerification(password) {
 }
 
 /*********************** ************************/
+
+/**************** PASSWORD VISIBILITY ****************/
+
+var state = false
+function toggle() {
+    if(state) {
+        document.getElementById("log-in-password").setAttribute("type", "password");
+        state = false;
+    } else {
+        document.getElementById("log-in-password").setAttribute("type", "text");
+        state = true;
+    }
+}
