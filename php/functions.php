@@ -327,7 +327,7 @@ function isFriendsWith($conn, $userId, $friendName) {
 function findFriends($conn, $userId, $friendName) {
     $sql_query = "SELECT * 
                   FROM friends 
-                  WHERE users_id = '$userId' AND username LIKE '%$friendName'%";
+                  WHERE users_id = '$userId' AND username LIKE '%$friendName%'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
