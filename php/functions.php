@@ -177,11 +177,11 @@ function getPostsFromArea($conn, $city) {
 
 function getPostsWithTag($conn, $tags, $numberOfPosts=30) {
     $where_query = getArrayWhereStatment($tags, "tag_name");
-    $sql_query = "SELECT posts.id AS post_id, id_user, body , post_date
+    $sql_query = "SELECT id, id_user, body, post_date
                   FROM posts INNNER JOIN posts_has_tags
-                  ON post_id = posts_id
+                  ON id = posts_id
                   INNER JOIN tags
-                  ON tags.id = tags_id
+                  ON id_tag = tags_id
                   WHERE $where_query
                   ORDER BY post_date DESC 
                   LIMIT $numberOfPosts";
