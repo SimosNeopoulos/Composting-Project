@@ -1,7 +1,8 @@
 <?php
+
+include("../php/classes.php");
 session_start();
 include("../php/connect.php");
-include("../php/classes.php");
 
 /********** LOG IN / SIGN UP VERIFICATION **********/
 
@@ -138,6 +139,11 @@ function authenticate($conn, $email, $password) {
  */
 function logIn($user) {
     $_SESSION["user"] = $user;
+    $_SESSION["username"] = $user->getUsername();
+    $_SESSION["email"] = $user->getEmail();
+    $_SESSION["address"] = $user->getAddress();
+    $_SESSION["password"] = $user->getPassword();
+    $_SESSION["telephone"] = $user->getTelephone();
     return true;
 }
 /****************************** *****************************/
@@ -448,6 +454,7 @@ function removeTagsToPost($conn, $post_id, $tags) {
     mysqli_free_result($result);
     return true;
 }
+
 
 function deleteComment($conn, $id) {
     $sql_query = "DELETE FROM comments WHERE id = '$id'";
