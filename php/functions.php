@@ -1,7 +1,8 @@
 <?php
+
+include("../php/classes.php");
 session_start();
 include("../php/connect.php");
-include("../php/classes.php");
 
 function nameExists($conn, $username) {
     $sql_query = "SELECT username FROM users WHERE username = '$username'";
@@ -74,7 +75,7 @@ function authenticate($conn, $email, $password) {
 
 function logIn($user) {
     $_SESSION["user"] = $user;
-    $_SESSION["username"] = $user->getUsername();///////////////
+    $_SESSION["username"] = $user->getUsername();
     $_SESSION["email"] = $user->getEmail();
     $_SESSION["address"] = $user->getAddress();
     $_SESSION["password"] = $user->getPassword();
@@ -88,9 +89,6 @@ function logOut() {
     return true;
 }
 
-function getCurrentUserData(){
-
-}
 
 function displayName(){
     if(isset($_SESSION['username'])){
@@ -132,4 +130,3 @@ function displayTelephone(){
     }
 }
 ?>
-

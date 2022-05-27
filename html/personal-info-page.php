@@ -1,7 +1,38 @@
 <?php
-    include("../php/connect.php");
-    include("../php/functions.php");   
+    include("../php/functions.php");  
     
+ 
+
+    if(isset($_POST['upload-pic'])){
+        $target_dir = '../images/';
+        if(isset($_FILES["pic"]["name"]) ){
+            $target_file = $target_dir.basename($_FILES["pic"]["name"]);
+            move_uploaded_file($_FILES['pic']['tmp_name'], $target_file);
+        }else{
+            echo 'not uploaded';
+        }
+        
+      
+    }
+
+    if(isset($_POST['save-button'])){
+                
+        $update = "UPDATE users SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , address= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_SESSION['username']."' ";
+        
+        if(mysqli_query($conn, $update)){
+            $_SESSION['username']=$_POST['username'];
+            $_SESSION['email']=$_POST['email'];
+            $_SESSION['address']=$_POST['address'];
+            $_SESSION['password']=$_POST['password'];
+            $_SESSION['telephone']=$_POST['telephone'];
+        }else{
+            printf("error");
+        }
+        
+       
+    }
+
+
 ?>
 
 
@@ -18,63 +49,77 @@
     
 </head>
 <body>
+<?php
+    require("../php/header.php");
+?>
 
-
-
-<header id="page-header"></header>
 <div class="container">
 
     <!--Profile pic box-->
     <div class="profile_pic">
         <img class="picture" src="../images/profile-circle.png" alt="profile image!">
         <div class="edit">
+            
             <h3 id="edit-text"> Νεα εικόνα προφίλ;</h3>
-            <input type="file" id="image-upload" accept="image/*">
-            <label for="image-upload"><img id="edit-icon" src="../images/edit-icon.png" alt="click hear to edit"></label>
+            <form method="post" action="" enctype="multipart/form-data" >
+                <label for="image-upload"><img id="edit-icon" src="../images/edit-icon.png" alt="click hear to edit"></label>
+                <input type="file" name="pic" id="image-upload" accept="images/*">
+                <input type="submit" value="Αποθήκευση" name="upload-pic" id="submit-upload">
+            </form>
+            
+            
         </div>
-
+        <!-- <form  action="#">
+            <button type="submit" id="save-pic"> Αποθηκευση εικόνας</button>
+        </form> -->
     </div>
 
     <!--Profile info box-->
     <div class="profile_info">
+
         <div class="title">
             <h1 id="profile-header">Καλωσόρισες στο προφίλ σου!</h1>
         </div>
 
+        <form method='post' action="#" >
+           
+            <div class="user-data-fields">
+                <label>Όνομα χρήστη</label>
+                <input type="text" name="username" placeholder="Username" value="<?php displayName(); ?>">
 
-        <div class="user-data-fields">
-            <label>Όνομα χρήστη</label>
-            <input type="text" placeholder="Username" value="<?php displayName(); ?>">
-
-        </div>
-        <div class="user-data-fields">
-            <label> Email</label>
-            <input type="text" placeholder="Email" value="<?php displayEmail(); ?>">
+            </div>
+            <div class="user-data-fields">
+                <label> Email</label>
+                <input type="text" name="email" placeholder="Email" value="<?php displayEmail(); ?>">
 
 
-        </div>
-        <div class="user-data-fields">
-            <label>Διεύθυνση</label>
-            <input type="text" placeholder="Address" value="<?php dipslayAddress(); ?>">
+            </div>  
+          <div class="user-data-fields">
+               <label>Διεύθυνση</label>
+                <input type="text" name="address" placeholder="Address" value="<?php dipslayAddress(); ?>">
 
-        </div>
-        <div class="user-data-fields">
+          </div>
+          <div class="user-data-fields">
             <label>Κωδικός πρόσβασης </label>
-            <input type="password" placeholder="Password" value="<?php displayPassword(); ?>">
+            <input type="password" name="password" placeholder="Password" value="<?php displayPassword(); ?>">
 
-        </div>
-        <div class="user-data-fields">
-            <label>Τηλέφωνο</label>
-            <input type="tel" placeholder="69-99999999" pattern="69-[0-9]{8}" required value="<?php displayTelephone(); ?>">
+           </div>
+            <div class="user-data-fields">
+              <label>Τηλέφωνο</label>
+              <input type="tel" name="telephone" placeholder="69-99999999"  required value="<?php displayTelephone(); ?>">
 
-        </div>
+            </div>
 
 
-        <div class="save-button">
-            <button id="save" type="button" name="save-button">
-                Αποθήκευση
-            </button>
-        </div>
+            <div class="save-button">
+                <button id="save" type="submit" name="save-button" >
+                    Αποθηκευση!
+                </button>
+                    
+                
+            </div>
+        </form>
+        
 
         <div class="links-container">
             <div class="links">
