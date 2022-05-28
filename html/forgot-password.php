@@ -28,12 +28,12 @@
                     <span></span>
                     <label for="forgot-password-email">Email</label>
                 </div>
-                <?php if (isset($_POST["reset"])) {
+                <?php if (isset($_GET["reset"])) {
                     if ($_GET["reset"] == "success") { ?>
                         <div class="information-text">
                             <p class="info-text"><strong><center>Check your emails!</center></strong></p>
                         </div>
-                    <?php } elseif ($_POST["reset"] == "fail") { ?>
+                    <?php } elseif ($_GET["reset"] == "fail") { ?>
                         <div class="information-text">
                             <p class="info-text"><strong><center>This email does not exist!</center></strong></p>
                         </div>

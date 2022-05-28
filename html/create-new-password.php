@@ -47,22 +47,21 @@
                             <label for="forgot-password-email">Repeat new password</label>
                         </div>
                         <?php
-                        $newpwd = $_GET["newpwd"];
-                        //if (isset($_POST["newpwd"])) {
-                            if ($newpwd == "passwordupdated") { ?>
+                        if (isset($_GET["newpwd"])) {
+                            if ($_GET["newpwd"] == "passwordupdated") { ?>
                                 <div class="information-text">
                                     <p class="info-text"><strong><center>Your password has changed!</center></strong></p>
                                 </div>
-                            <?php } elseif ($newpwd == "notsame") { ?>
+                            <?php } elseif ($_GET["newpwd"] == "notsame") { ?>
                                 <div class="information-text">
                                     <p class="info-text"><strong><center>Please put the same password!</center></strong></p>
                                 </div>
-                            <?php } elseif ($newpwd == "incorrect") { ?>
+                            <?php } elseif ($_GET["newpwd"] == "incorrect") { ?>
                                 <div class="information-text">
                                     <p class="info-text"><strong><center>Password must be 6-16 characters long and contain at least one 
                                         numeric and special character !@#$%^&*</center></strong></p>
                                 </div>
-                            <?php } ?>
+                            <?php } } ?>
                         <div class="btn-space">
                             <button name="reset-password-submit" type="submit" class="submit-btn">Submit password</button>
                         </div>

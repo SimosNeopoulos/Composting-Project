@@ -1,5 +1,8 @@
 <?php
 
+include("../php/functions.php");
+include("../php/connect.php");
+
 // came here from button not from putting the link
 if (isset($_POST["reset-password-submit"])) {
 
@@ -21,8 +24,10 @@ if (isset($_POST["reset-password-submit"])) {
         header("Location:../" . $url . "&newpwd=notsame");
         exit();
     } else {
-        
-        header("Location:../" . $url . "&newpwd=passwordupdated");
+        upadtePassword($conn, $email, $password);
+        echo "<script>if(confirm('Ο κωδικός σας άλλαξε επιτυχώς')){document.location.href='../html/log_in.php'};</script>";
+        //echo "<script>function warning() { alert('Ο κωδικός σας άλλαξε επιτυχώς'); } warning();</script>";
+        //header("Location:../html/log_in.php");
     }
 
     

@@ -8,7 +8,8 @@ if (isset($_POST["submit-btn"])) {
 
     $userEmail = $_POST["forgot-password-email"];
 
-    if ($emailExists($conn, $userEmail)) {
+    if (emailExists($conn, $userEmail)) {
+
         //create unique tokens
         $selector = bin2hex(random_bytes(8));
         $token = random_bytes(32);
@@ -20,9 +21,9 @@ if (isset($_POST["submit-btn"])) {
         //expired time
         $expires = date("U") + 1800;
 
+        /*
         //import database
         require 'dbh.inc.php';
-
         $sql = "DELETE FROM pwdReset WHERE pwdResetEmail=?";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -44,7 +45,8 @@ if (isset($_POST["submit-btn"])) {
         }
         mysqli_stmt_close($stmt);
         mysqli_close($conn);
-
+        */
+        
         $to = $userEmail;
         //if (emailExists($conn, $to)) { // exists
             $subject = 'Reset your password for Composting-Project';
@@ -62,13 +64,15 @@ if (isset($_POST["submit-btn"])) {
             $headers .= "Reply-To: teamCompostingProject\r\n";
             $headers .= "Content-type: text/html\r\n";
 
-            if (mail($to, $subject, $message, $headers))
+            if (mail($to, $subject, $message, $headers)) {
                 header("Location:../html/forgot-password.php?reset=success");
-            else
+            } else {
                 header("Location:../html/forgot-password.php?reset=fail");
-            //header("Location:../html/forgot-password.php?reset=fail");
-        }
+            }
+        } else {
+            $_POST["reset"] = "fail";
             header("Location:../html/forgot-password.php?reset=fail");
+        }
 
 } else {
     // μπηκαν με λαθος τροπο
