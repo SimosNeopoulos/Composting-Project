@@ -21,19 +21,19 @@
             <div class="information-text">
                 <p class="info-text"><center>An e-mail will be send to you with instructions on how to reset your password.</center></p>
             </div>
-            <form action="includes/reset-request.inc.php" method="post">
+            <form method="post" action="includes/reset-request.inc.php">
                 <!-------- INPUT FIELDS --------->
                 <div class="input-field">
                     <input type="text" placeholder=" " name="forgot-password-email" id="forgot-password-email" required>
                     <span></span>
                     <label for="forgot-password-email">Email</label>
                 </div>
-                <?php if (isset($_GET["reset"])) {
+                <?php if (isset($_POST["reset"])) {
                     if ($_GET["reset"] == "success") { ?>
                         <div class="information-text">
                             <p class="info-text"><strong><center>Check your emails!</center></strong></p>
                         </div>
-                    <?php } elseif ($_GET["reset"] == "fail") { ?>
+                    <?php } elseif ($_POST["reset"] == "fail") { ?>
                         <div class="information-text">
                             <p class="info-text"><strong><center>This email does not exist!</center></strong></p>
                         </div>

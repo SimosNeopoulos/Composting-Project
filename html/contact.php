@@ -22,7 +22,7 @@ include("../php/functions.php");
 <!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
     <h1 class="contact-text">Ποιό είναι το πρόβλημα;</h1>
-    <form action="#" id="contact-form" method="post">
+    <form action="../include(php)/contact-email.inc.php" id="contact-form" method="post">
         <!-------- INPUT FIELDS --------->
         <div class="input-field">
             <input type="text" placeholder=" " name="contact-name" id="contact-name" required>
@@ -47,8 +47,8 @@ include("../php/functions.php");
             <label for="contact-message">Μήνυμα</label>
         </div>
         <!--------------------------------->
-	<?php if (isset($_GET["reset"])) {
-            if ($_GET["reset"] == "success") { ?>
+	<?php if (isset($_POST["reset"])) {
+            if ($_POST["reset"] == "success") { ?>
                 <div class="information-text">
                     <p class="info-text"><strong><center>Ευχαριστούμε για το μήνυμα σας.</center></strong></p>
                 </div>

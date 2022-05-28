@@ -5,21 +5,34 @@ if (isset($_POST["reset-password-submit"])) {
 
     $selector = $_POST["selector"];
     $validator = $_POST["validator"];
+    $email = $_POST["email"];
     $password = $_POST["new-password"];
     $passwordRepeat = $_POST["new-password-repeat"];
+    
+    $url = "html/create-new-password.php?selector=" . $selector . "&email=" . $email . "&validator=" . $validator;
+    
+    if (empty($password) || empty($passwordRepeat)) {
+        header($url . "&newpwd=empty");
+        exit();
+    } elseif (!preg_match('/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/', $password)) {
+        header("Location:../" . $url . "&newpwd=incorrect");
+        exit();
+    } elseif ($password !== $passwordRepeat) {
+        header("Location:../" . $url . "&newpwd=notsame");
+        exit();
+    } else {
+        header("Location:../" . $url . "&newpwd=passwordupdated");
+    }
 
-    if (empty($password) || empty($passwordRepeat)) { // empty passwords,also passwords requirments
-        header("Location: ../html/create-new-password.php?newpassword=empty");
-        exit();
-    } else if ($password != $passwordRepeat)
-        header("Location: ../html/create-new-password.php?newpassword=notsame");
-        exit();
+    
 } else {
 
     $currentDate = date("U");
 
     require "dbh.inc.php";
-
+    
+    /*/^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/*/
+    /*
     $sql = "SELECT * FROM pwdReset WHERE pwdResetSelector=? AND pwdResetExpires >= ?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -78,12 +91,12 @@ if (isset($_POST["reset-password-submit"])) {
                             } else {
                                 mysqli_stmt_bind_param($stmt, "s", $tokenEmail);
                                 mysqli_stmt_execute($stmt);
-                                header("Location: ../html/create-new-password.php?newpwd=passwordupdated");
+                                header("Location:../" . $url . "&newpwd=passwordupdated");
                             }
                         }
                     }
                 }
             }
         }
-    }
+    }*/
 }
