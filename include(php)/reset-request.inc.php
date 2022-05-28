@@ -1,13 +1,14 @@
 <?php
 
-//include("../php/connect.php");
+include("../php/functions.php");
+include("../php/connect.php");
 
 // came here from button
 if (isset($_POST["submit-btn"])) {
 
     $userEmail = $_POST["forgot-password-email"];
 
-    //if ($emailExists($conn, $userEmail)) {
+    if ($emailExists($conn, $userEmail)) {
         //create unique tokens
         $selector = bin2hex(random_bytes(8));
         $token = random_bytes(32);
@@ -66,8 +67,8 @@ if (isset($_POST["submit-btn"])) {
             else
                 header("Location:../html/forgot-password.php?reset=fail");
             //header("Location:../html/forgot-password.php?reset=fail");
-        //}
-            //header("Location:../html/forgot-password.php?reset=fail");
+        }
+            header("Location:../html/forgot-password.php?reset=fail");
 
 } else {
     // μπηκαν με λαθος τροπο

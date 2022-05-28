@@ -671,6 +671,23 @@ function updatePost($conn, $id, $newBody) {
     return false;
 }
 
+/**
+ * Updates the password a user with email equal to $email in the database
+ * 
+ * 
+ * @param mysqli    $conn           the connection to the serever
+ * @param string    $email          the id of a post
+ * @param string    $newPassword    the new body text of the post
+ * 
+ * @return boolean                  returns true if the password was updated successfully or false if there was an error
+ */
+function upadtePassword($conn, $email, $newPassword) {
+    $sql_query = "UPDATE users SET password = '$newPassword' WHERE email = '$email'";
+    if(mysqli_query($conn, $sql_query))
+        return true;
+    return false;
+}
+
 /***************** *****************/
 
 /**

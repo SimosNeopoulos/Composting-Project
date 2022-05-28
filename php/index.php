@@ -1,4 +1,5 @@
 <?php
+    include("functions.php");
     include("connect.php");
 ?>
 
@@ -14,23 +15,11 @@
 <a href="../html/homepage.html">Homepage</a> <br>
 <?php
 
-    if(1) {
-        echo "1";
+    if(upadtePassword($conn, "simneo22@gmail.com", "159456753sim!")) {
+        echo "worked";
     } else {
-        echo "2";
+        echo "Didn't work";
     }
-    //  $sql = "SELECT * FROM users;";
-    //  $result = mysqli_query($conn, $sql);
-    //  $resultCheck = mysqli_num_rows($result);
-
-    // if ($resultCheck > 0) {
-    //     while ($row = mysqli_fetch_assoc($result)) {
-    //         echo $row['username'] ."<br>";
-    //         echo $row['email'] ."<br>";
-    //         echo $row['address'] ."<br>";
-    //         echo $row['password'] ."<br>";
-    //     }
-    // }
 ?>
 
 </body>
