@@ -60,7 +60,7 @@ function emailExists($conn, $email) {
  * @param mysqli $conn      the connection to the serever
  * @param string $username  the username of the user that's being added
  * @param string $email     the email of the user that's being added
- * @param string $address   the address of the user that's being added
+ * @param string $city   the city of the user that's being added
  * @param string $password  the password of the user that's being added
  * @param string $telephone the telephone of the user that's being added
  * 
@@ -68,8 +68,8 @@ function emailExists($conn, $email) {
  *                          created successfully and false if there was a problem
  *                          with the creation of the user
  */
-function signUp($conn, $username, $email, $address, $password, $telephone) {
-     return addAccountToDB($conn, $username, $email, $address, $password, $telephone);
+function signUp($conn, $username, $email, $city, $password, $telephone) {
+     return addAccountToDB($conn, $username, $email, $city, $password, $telephone);
 }
 
 /**
@@ -79,7 +79,7 @@ function signUp($conn, $username, $email, $address, $password, $telephone) {
  * @param mysqli $conn      the connection to the serever
  * @param string $username  the username of the user that's being added
  * @param string $email     the email of the user that's being added
- * @param string $address   the address of the user that's being added
+ * @param string $city   the city of the user that's being added
  * @param string $password  the password of the user that's being added
  * @param string $telephone the telephone of the user that's being added
  * 
@@ -87,11 +87,11 @@ function signUp($conn, $username, $email, $address, $password, $telephone) {
  *                          created successfully and false if there was a problem
  *                          with the creation of the user
  */
-function addAccountToDB($conn, $username, $email, $address, $password, $telephone) {
-    $sql_query = "INSERT INTO user(username, email, address, password, telephone, imgpath) VALUES ('$username', '$email', '$address', '$password','$telephone', '../images/profile-circle.png')";
+function addAccountToDB($conn, $username, $email, $city, $password, $telephone) {
+    $sql_query = "INSERT INTO user(username, email, city, password, telephone, imgpath) VALUES ('$username', '$email', '$city', '$password','$telephone', '../images/profile-circle.png')";
     if(mysqli_query($conn, $sql_query)) {
         $id = mysqli_insert_id($conn);
-        $user = new User($id, $username, $email, $address, $password, $telephone);
+        $user = new User($id, $username, $email, $city, $password, $telephone);
         if(logIn($user, $conn)) {
             return true;
         } else {
@@ -126,7 +126,7 @@ function authenticate($conn, $email, $password) {
     if($rows < 1 || $data["password"] != $password) {
         return false;
     }
-    $user = new User($data["id"], $data["username"], $data["email"], $data["address"], $data["password"], $data["telephone"]);
+    $user = new User($data["id"], $data["username"], $data["email"], $data["city"], $data["password"], $data["telephone"]);
     return logIn($user, $conn);
 }
 
@@ -141,7 +141,7 @@ function logIn($user, $conn) {
     $_SESSION["user"] = $user;
     $_SESSION["username"] = $user->getUsername();
     $_SESSION["email"] = $user->getEmail();
-    $_SESSION["address"] = $user->getAddress();
+    $_SESSION["city"] = $user->getAddress();
     $_SESSION["password"] = $user->getPassword();
     $_SESSION["telephone"] = $user->getTelephone();
 
@@ -174,8 +174,8 @@ function displayEmail(){
 }
 
 function dipslayAddress(){
-    if(isset($_SESSION['address'])){
-        echo $_SESSION['address'];
+    if(isset($_SESSION['city'])){
+        echo $_SESSION['city'];
     }else{
         echo '';
     }
@@ -250,7 +250,7 @@ function getUserPosts($conn, $userId) {
 function getPostsFromArea($conn, $city) {
     $sql_query = "SELECT post.id, id_user, post.body, post.post_date 
                   FROM user, post 
-                  WHERE user.address = '$city' AND id_user = user.id 
+                  WHERE user.city = '$city' AND id_user = user.id 
                   ORDER BY post_date DESC 
                   LIMIT 5";
     $result = mysqli_query($conn, $sql_query);
@@ -410,7 +410,7 @@ function findUsers($conn, $username) {
 function findUsersFromArea($conn, $area) {
     $sql_query = "SELECT * 
                   FROM user 
-                  WHERE address = '$area'";
+                  WHERE city = '$area'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
