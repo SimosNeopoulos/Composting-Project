@@ -43,11 +43,12 @@ function closeNav() {
             return;
         }
         signUpPassword.setCustomValidity("Password must be 6-16 characters long and contain at least one" +
-            " numeric and special character \"@#$%^&*\"");
+            " numeric and special character \"@!#$%^&*\"");
         signUpPassword.reportValidity();
     });
 
-    document.getElementById("sign-up-form").addEventListener("submit", ev => {
+    let signUpForm = document.getElementById("sign-up-form");
+    signUpForm.addEventListener('submit', ev => {
         let email = document.getElementById("sign-up-email").value;
         let address = document.getElementById("sign-up-address").value;
         let phone = document.getElementById("sign-up-tel").value;
@@ -71,35 +72,13 @@ function closeNav() {
         
     });
 
-/*********** LOG IN EVENT LISTENERS ***********/
-
-
-document.getElementById("log-in-form").addEventListener("submit", ev => {
-    let form = ev.target;
-    let data = new FormData(form);
-    ev.preventDefault();
-});
-
-
-/******************** ***********************/
-
-
-/*********** CONTACT EVENT LISTENERS ***********/
-
-document.getElementById("contact-form").addEventListener("submit", ev => {
-    let form = ev.target;
-    let data = new FormData(form);
-    ev.preventDefault();
-});
-
-/******************** ***********************/
 
 function nameVerification(username) {
     return /^[a-zA-Z][a-zA-Z0-9_]{4,16}$/.test(username);
 }
 
 function passwordVerification(password) {
-    return /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password);
+    return /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password);
 }
 
 /*********************** ************************/

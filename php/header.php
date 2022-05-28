@@ -49,19 +49,23 @@
     </div>
 
     <?php
+    // If the user has logged in the site a "My Account" button is displayed in the nav bar
     $filePath = explode("/", $_SERVER['PHP_SELF']);
     $headerLocation = array_pop($filePath);
     if(isset($_SESSION["user"])):
     ?>
     <div class="btn-container">
-        <a href="../html/personal-info-page.html" class="btn btn-acc">My Account</a>
+        <a href="../html/personal-info-page.php" class="btn btn-acc">My Account</a>
     </div>
+
+    <!-- If the user has not logged in the site and is currently in the "sign_up.php" page a "Log In" button is displayed in the nav bar -->
     <?php elseif($headerLocation == "sign_up.php"): ?>
 
     <div class="btn-container">
         <a href="../html/log_in.php" class="btn btn-acc">Log In</a>
     </div>
-
+    
+    <!-- If the user has not logged in the site and is currently in any other page other than "sign_up.php"  a "Sign Up" button is displayed in the nav bar -->
     <?php else:?>
     <div class="btn-container">
         <a href="../html/sign_up.php" class="btn btn-acc">Sign Up</a>
