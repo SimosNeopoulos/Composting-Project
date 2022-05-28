@@ -7,7 +7,6 @@ include("../php/connect.php");
 if (isset($_POST["submit-btn"])) {
 
     $userEmail = $_POST["forgot-password-email"];
-
     if (emailExists($conn, $userEmail)) {
 
         //create unique tokens
@@ -16,7 +15,8 @@ if (isset($_POST["submit-btn"])) {
         $validator = bin2hex($token);
 
         //page url
-        $url = "http://localhost:7882/Composting-Project/html/create-new-password.php?selector=" . $selector . "&email=" . $userEmail . "&validator=" . $validator;
+        $PORT_NUMBER = 3000;
+        $url = "http://localhost:$PORT_NUMBER/Composting-Project/html/create-new-password.php?selector=" . $selector . "&email=" . $userEmail . "&validator=" . $validator;
         
         //expired time
         $expires = date("U") + 1800;
