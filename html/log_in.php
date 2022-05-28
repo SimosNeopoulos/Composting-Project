@@ -50,7 +50,7 @@ do{
 <!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
     <h1 class="top-text">Log In</h1>
-    <form action="#" id="log-in-form" method="post">
+    <form action="log_in.php" id="log-in-form" method="post">
         <!-------- INPUT FIELDS --------->
         <div class="input-field">
             <input type="email" name="email" placeholder=" " id="log-in-email" required>
@@ -59,7 +59,7 @@ do{
         </div>
 
         <div class="input-field">
-            <input type="password" placeholder=" " name="log-in-password" id="log-in-password" required>
+            <input type="password" name="password" placeholder=" " id="log-in-password" required>
             <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggle()"></i>
             <span></span>
             <label for="log-in-password">Κωδικός</label>
