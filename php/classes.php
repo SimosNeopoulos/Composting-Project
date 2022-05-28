@@ -9,6 +9,7 @@ class User {
     private $imgpath;
     private $is_admin;
 
+
     public function __construct($id, $username, $email, $address, $password, $telephone, $is_admin=0, $imgpath="../images/profile-circle.png") {
         $this->id = $id;
         $this->username = $username;
@@ -18,6 +19,7 @@ class User {
         $this->telephone = $telephone;
         $this->is_admin = $is_admin;
         $this->imgpath = $imgpath;
+
     }
 
     public function getId() {
@@ -43,6 +45,7 @@ class User {
     public function getTelephone() {
         return $this->telephone;
     }
+
 
     public function isAdmin() {
         return $this->is_admin;

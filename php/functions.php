@@ -127,7 +127,7 @@ function authenticate($conn, $email, $password) {
         return false;
     }
     $user = new User($data["id"], $data["username"], $data["email"], $data["address"], $data["password"], $data["telephone"]);
-    return logIn($user);
+    return logIn($user, $conn);
 }
 
 /**
@@ -137,13 +137,18 @@ function authenticate($conn, $email, $password) {
  * 
  * @return boolean      true when the user is added to the SESSION
  */
-function logIn($user) {
+function logIn($user, $conn) {
     $_SESSION["user"] = $user;
     $_SESSION["username"] = $user->getUsername();
     $_SESSION["email"] = $user->getEmail();
     $_SESSION["address"] = $user->getAddress();
     $_SESSION["password"] = $user->getPassword();
     $_SESSION["telephone"] = $user->getTelephone();
+
+    $getImg = "SELECT imgpath FROM users WHERE username='" .$_SESSION['username']. "'";
+    $dataFetch = mysqli_query($conn, $getImg);
+    $row = mysqli_fetch_array($dataFetch);
+    $_SESSION["imgpath"] = $row['imgpath'];
     return true;
 }
 /****************************** *****************************/
@@ -187,6 +192,14 @@ function displayPassword(){
 function displayTelephone(){
     if(isset($_SESSION['telephone'])){
         echo $_SESSION['telephone'];
+    }else{
+        echo '';
+    }
+}
+
+function displayImg(){
+    if(isset($_SESSION['imgpath'])){
+        echo $_SESSION['imgpath'];
     }else{
         echo '';
     }
