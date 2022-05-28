@@ -2,20 +2,29 @@
 include("../php/functions.php");
 include("../php/connect.php");
 
+// Veriables that indicate if there was a problem with the user logging in.
+// An appropriate error message is shown if there was a problem
 $serverError = false;
 $passwordIncorrect = false;
+
 do{
+    // Checking if the user submited any data
     if(isset($_POST['submit-btn'])) {
+        // Authenticates the user input with the data from the database
         $loggedIn = authenticate($conn, $_POST['email'], $_POST['password']);
+
+        // If there was an error with the server
         if($loggedIn === null) {
             $serverError = true;
             break;
         }
 
+        // If the data provided by the user was incorrect
         if(!$loggedIn) {
             $passwordIncorrect = true;
             break;
         }
+        // The user was logged in succesffuly
         if($loggedIn)
             header("Location: ../html/homepage.html");
     }
@@ -34,12 +43,7 @@ do{
 </head>
 <body>
 <!------------ HEADER ------------->
-<?php //unset($_SESSION['user']); ?>
 <?php require("../php/header.php")?>
-
-
-
-<!-- <script defer src="../javascript/header.js"></script> -->
 <!--------------------------------->
 
 <!------------- MAIN CONTAINER -------------->

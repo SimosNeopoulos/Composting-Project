@@ -88,7 +88,7 @@ function signUp($conn, $username, $email, $address, $password, $telephone) {
  *                          with the creation of the user
  */
 function addAccountToDB($conn, $username, $email, $address, $password, $telephone) {
-    $sql_query = "INSERT INTO users(username, email, address, password, telephone) VALUES ('$username', '$email', '$address', '$password','$telephone')";
+    $sql_query = "INSERT INTO users(username, email, address, password, telephone, imgpath) VALUES ('$username', '$email', '$address', '$password','$telephone', '../images/profile-circle.png')";
     if(mysqli_query($conn, $sql_query)) {
         $id = mysqli_insert_id($conn);
         $user = new User($id, $username, $email, $address, $password, $telephone);
@@ -299,8 +299,8 @@ function getPostsWithTag($conn, $tags, $numberOfPosts=30) {
  * This function is used to get the ids of the tags inside the $tags array
  * 
  * 
- * @param mysqli  $conn             the connection to the serever
- * @param array   $tags             string array of the tags of a post
+ * @param mysqli  $conn     the connection to the serever
+ * @param array   $tags     string array of the tags of a post
  * 
  * @return mixed            returns an associated array with the ids of all the tags
  *                          in the $tags array
@@ -322,10 +322,10 @@ function getTagsId($conn, $tags) {
  * with another user whose username is qual to $friendName
  * 
  * 
- * @param mysqli    $conn               the connection to the serever
- * @param integer   $userId             the id of the user that we want to see if he has a 
- *                                      specific friened
- * @param string    $friendName         a string of the username of a friend 
+ * @param mysqli    $conn           the connection to the serever
+ * @param integer   $userId         the id of the user that we want to see if he has a 
+ *                                  specific friened
+ * @param string    $friendName     a string of the username of a friend 
  * 
  * @return boolean          returns true if the user with id equal to $userId has
  *                          a friend with a username equal to$friendName
@@ -343,6 +343,20 @@ function isFriendsWith($conn, $userId, $friendName) {
     return false;
 }
 
+
+/**
+ * A function that finds and returns all the friends of a user, with id equal to
+ * $userId, whose username have $friendName as a substring
+ * 
+ * 
+ * @param mysqli    $conn           the connection to the serever
+ * @param integer   $userId         the id of the user 
+ * @param string    $friendName     a substring of the username of a friend 
+ * 
+ * @return mixed            returns an associated array with the data of all the friends
+ *                          of $userId whose usernames have a substring equal to $friendName
+ *                          or false if the search had no results 
+ */
 function findFriends($conn, $userId, $friendName) {
     $sql_query = "SELECT * 
                   FROM friends 
@@ -357,10 +371,22 @@ function findFriends($conn, $userId, $friendName) {
     return $data;
 }
 
+/**
+ * A function that finds and returns all the users, whose usernames 
+ * have a substring equal to $username
+ * 
+ * 
+ * @param mysqli    $conn       the connection to the serever
+ * @param string    $username   a substring of the users' username
+ * 
+ * @return mixed            returns an associated array with the data of all the users
+ *                          whose usernames have a substring equal to $username
+ *                          or false if the search had no results 
+ */
 function findUsers($conn, $username) {
     $sql_query = "SELECT * 
                   FROM users 
-                  WHERE username LIKE '%$username'%";
+                  WHERE username LIKE '%$username%'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -371,6 +397,16 @@ function findUsers($conn, $username) {
     return $data;
 }
 
+/**
+ * A function that finds and returns all the users, whose area id equal to $area
+ * 
+ * 
+ * @param mysqli    $conn   the connection to the serever
+ * @param string    $area   the name of an area
+ * 
+ * @return mixed            returns an associated array with the data of all the users
+ *                          whose area is equal to $area or false if the search had no results 
+ */
 function findUsersFromArea($conn, $area) {
     $sql_query = "SELECT * 
                   FROM users 
@@ -380,36 +416,105 @@ function findUsersFromArea($conn, $area) {
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
     mysqli_free_result($result);
     if($rows < 1) {
-        echo "Δεν επιστρέφηκαν αποτελέσματα";
         return false;
     }
     return $data;
+}
+
+/**
+ * This function gets the username of a user and returns their data from the
+ * database if that user exists
+ * 
+ * 
+ * @param mysqli    $conn       the connection to the serever
+ * @param string    $username   the username of a user
+ * 
+ * @return mixed            returns an associated array with the data from a users
+ *                          whose username is equal to $username or false if the 
+ *                          search had no results 
+ */
+function getUser($conn, $username) {
+    $sql_query = "SELECT * 
+                  FROM users 
+                  WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql_query);
+    $rows = mysqli_num_rows($result);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    if($rows < 1) {
+        return false;
+    }
+    return $data;
+}
+
+/**
+ * This function gets the username of a user and returns their id from the
+ * database if that user exists
+ * 
+ * 
+ * @param mysqli    $conn       the connection to the serever
+ * @param string    $username   the username of a user
+ * 
+ * @return mixed            returns the id of the a users whose username 
+ *                          is equal to $username or false if the search had no results 
+ */
+function getUserId($conn, $username) {
+    $sql_query = "SELECT id 
+                  FROM users 
+                  WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql_query);
+    $rows = mysqli_num_rows($result);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    if($rows !== 1) {
+        return false;
+    }
+    return $data[0]["id"];
 }
 
 /**************** ****************/
 
 /********* INSERT QUERIES **********/
 
+/**
+ * A function that adds the data of a post in the database
+ * 
+ * 
+ * @param mysqli    $conn               the connection to the serever
+ * @param integer   $userId             the id of a user
+ * @param string    $body               the body text of a post
+ * @param array     $tags               a string array that contains the names of the tags of the post
+ * 
+ * @return boolean          returns true if the post was created successfully or false if there was an error 
+ */
 function createPost($conn, $userId, $body, $tags) {
     $post_date = date('Y-m-d H:i:s');
     if(!$post_date) {
-        return null;
+        return false;
     }
     $sql_query = "INSERT INTO posts(id_user, body, post_date) VALUES ('$userId', '$body', '$post_date')";
     if(!mysqli_query($conn, $sql_query)) {
-        return null;
+        return false;
     }
     $id = mysqli_insert_id($conn);
-    addTagsToPost($conn, $id, $tags);
-
+    return addTagsToPost($conn, $id, $tags);
 }
 
+/**
+ * A creates an association with the tags and a post in the database
+ * 
+ * 
+ * @param mysqli    $conn               the connection to the serever
+ * @param integer   $post_id            the id of a post
+ * @param array     $tags               a string array that contains the names of tags
+ * 
+ * @return boolean          returns true if the association was created successfully or false if there was an error 
+ */
 function addTagsToPost($conn, $post_id, $tags) {
     $result = getTagsId($conn, $tags);
     
     if(!$result) {
-        echo "Δεν επιστρέφηκαν αποτελέσματα";
-        return;
+        return false;
     }
 
     while ($row = mysqli_fetch_assoc($result)) {
@@ -418,8 +523,19 @@ function addTagsToPost($conn, $post_id, $tags) {
         mysqli_query($conn, $sql_query);
     }
     mysqli_free_result($result);
+    return true;
 }
 
+/**
+ * Adds a friend to a user in the database
+ * 
+ * 
+ * @param mysqli    $conn               the connection to the serever
+ * @param integer   $userId             the id of a user
+ * @param string    $friendName         the username of a friend
+ * 
+ * @return boolean          returns true if the friend was added successfully or false if there was an error 
+ */
 function addFriend($conn, $userId, $friendName) {
     $sql_query = "INSERT INTO friends(users_id, username) VALUES ('$userId', '$friendName')";
     if(mysqli_query($conn, $sql_query))
@@ -427,14 +543,24 @@ function addFriend($conn, $userId, $friendName) {
     return false;
 }
 
-function createComment($conn, $posts_id, $body, $commentAuthor) {
+/**
+ * Adds a comment to a post in the database
+ * 
+ * 
+ * @param mysqli    $conn               the connection to the serever
+ * @param integer   $posts_id           the id of a post
+ * @param string    $body               the text body a post
+ * 
+ * @return boolean          returns true if the comment was added successfully or false if there was an error 
+ */
+function addComment($conn, $posts_id, $body, $commentAuthor) {
     $post_date = date('Y-m-d H:i:s');
     if(!$post_date) {
-        return null;
+        return false;
     }
     $sql_query = "INSERT INTO comments(posts_id, body, comment_author, post_date) VALUES ('$posts_id', '$body', '$commentAuthor', '$post_date')";
     if(!mysqli_query($conn, $sql_query)) {
-        return null;
+        return false;
     }
     return true;
 }
@@ -442,6 +568,16 @@ function createComment($conn, $posts_id, $body, $commentAuthor) {
 /*************** *****************/
 
 /********* DELETE QUERIES **********/
+
+/**
+ * Deletes a post from the database with id equal to $id
+ * 
+ * 
+ * @param mysqli    $conn   the connection to the serever
+ * @param integer   $id     the id of a post
+ * 
+ * @return boolean          returns true if the post was deleted successfully or false if there was an error 
+ */
 function deletePost($conn, $id) {
     $sql_query = "DELETE FROM posts WHERE id = '$id'";
     if(mysqli_query($conn, $sql_query)) 
@@ -449,26 +585,43 @@ function deletePost($conn, $id) {
     return false;
 }
 
+/**
+ * Function that deletes the association bettwen a post and the tags that the $tags array contains
+ * 
+ * 
+ * @param mysqli    $conn        the connection to the serever
+ * @param integer   $post_id     the id of a post
+ * @param array     $tags        string array that contains the names of some tags
+ * 
+ * @return boolean               returns true if the association was deleted successfully or false if there was an error 
+ */
 function removeTagsToPost($conn, $post_id, $tags) {
     $result = getTagsId($conn, $tags);
 
     if(!$result) {
-        echo "Δεν επιστρέφηκαν αποτελέσματα";
-        return null;
+        return false;
     }
 
     while ($row = mysqli_fetch_assoc($result)) {
         $tag_id = $row['id'];
         $sql_query = "DELETE FROM posts_has_tags WHERE posts_id = $post_id AND tags_id = $tag_id";
         if(!mysqli_query($conn, $sql_query)) {
-            return null;
+            return false;
         }
     }
     mysqli_free_result($result);
     return true;
 }
 
-
+/**
+ * Deletes a comment from the database with id equal to $id
+ * 
+ * 
+ * @param mysqli    $conn   the connection to the serever
+ * @param integer   $id     the id of a comment
+ * 
+ * @return boolean          returns true if the comment was deleted successfully or false if there was an error 
+ */
 function deleteComment($conn, $id) {
     $sql_query = "DELETE FROM comments WHERE id = '$id'";
     if(mysqli_query($conn, $sql_query))
@@ -476,7 +629,16 @@ function deleteComment($conn, $id) {
     return false;
 }
 
-
+/**
+ * Deletes the friend of the user with id equal to $userId, that has a username equal to $friendName
+ * 
+ * 
+ * @param mysqli    $conn           the connection to the serever
+ * @param integer   $userId         the id of a user
+ * @param string    $friendName     the username of a friend
+ * 
+ * @return boolean                  returns true if the comment was deleted successfully or false if there was an error 
+ */
 function deleteFriend($conn, $userId, $friendName) {
     $sql_query = "DELETE FROM friends WHERE users_id = '$userId' AND username = '$friendName'";
     if(mysqli_query($conn, $sql_query))
@@ -488,6 +650,16 @@ function deleteFriend($conn, $userId, $friendName) {
 
 /********* UPDATE QUERIES **********/
 
+/**
+ * Updates the body text of the comment with id equal to $id in the database
+ * 
+ * 
+ * @param mysqli    $conn       the connection to the serever
+ * @param integer   $id         the id of a comment
+ * @param string    $newBody    the new body text of the comment
+ * 
+ * @return boolean              returns true if the comment was updated successfully or false if there was an error 
+ */
 function updateComment($conn, $id, $newBody) {
     $sql_query = "UPDATE comments SET body = '$newBody' WHERE id = '$id'";
     if(mysqli_query($conn, $sql_query))
@@ -495,6 +667,16 @@ function updateComment($conn, $id, $newBody) {
     return false;
 }
 
+/**
+ * Updates the body text of the post with id equal to $id in the database
+ * 
+ * 
+ * @param mysqli    $conn       the connection to the serever
+ * @param integer   $id         the id of a post
+ * @param string    $newBody    the new body text of the post
+ * 
+ * @return boolean              returns true if the post was updated successfully or false if there was an error 
+ */
 function updatePost($conn, $id, $newBody) {
     $sql_query = "UPDATE posts SET body = '$newBody' WHERE id = '$id'";
     if(mysqli_query($conn, $sql_query))
@@ -504,6 +686,18 @@ function updatePost($conn, $id, $newBody) {
 
 /***************** *****************/
 
+/**
+ * This function which creates a string that contains a costume "WHERE" statment to be used
+ * in SQL queries. It is used when a query with unknown number of args in the 'WHERE' stament
+ * needs to be used. For example if we need to access all the posts that contain one or more
+ * tags. The names of the tags are provided in the $array and the column's name that contains 
+ * the names of the tags is provided throught $columnName
+ * 
+ * @param array     $array          the values we are searching for
+ * @param string    $columnName     the name of column of a table
+ * 
+ * @return  string                  returns a costum 'WHERE' statement
+ */
 function getArrayWhereStatment($array, $columnName) {
     $where_query = "( ";
     $numElements = count($array);

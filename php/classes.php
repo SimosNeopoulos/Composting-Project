@@ -7,15 +7,24 @@ class User {
     private $password;
     private $telephone;
     private $imgpath;
+<<<<<<< HEAD
+=======
+    private $is_admin;
+>>>>>>> origin/main
 
-    public function __construct($id, $username, $email, $address, $password, $telephone) {
+    public function __construct($id, $username, $email, $address, $password, $telephone, $is_admin=0, $imgpath="../images/profile-circle.png") {
         $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->address = $address;
         $this->password = $password;
         $this->telephone = $telephone;
+<<<<<<< HEAD
         $this->imgpath = '../images/profile-circle.png';
+=======
+        $this->is_admin = $is_admin;
+        $this->imgpath = $imgpath;
+>>>>>>> origin/main
     }
 
     public function getId() {
@@ -42,8 +51,17 @@ class User {
         return $this->telephone;
     }
 
+<<<<<<< HEAD
     public function getImgpath() {
         return $this-> imgpath;
+=======
+    public function isAdmin() {
+        return $this->is_admin;
+    }
+
+    public function getImagePath() {
+        return $this->imgpath;
+>>>>>>> origin/main
     }
 }
 ?>
