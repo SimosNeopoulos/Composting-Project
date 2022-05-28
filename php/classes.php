@@ -5,6 +5,7 @@ class User {
     private $address;
     private $password;
     private $telephone;
+    private $imgpath;
 
     public function __construct($username, $email, $address, $password, $telephone) {
         $this->username = $username;
@@ -12,6 +13,7 @@ class User {
         $this->address = $address;
         $this->password = $password;
         $this->telephone = $telephone;
+        $this->imgpath = '../images/profile-circle.png';
     }
 
     public function getUsername() {
@@ -32,6 +34,10 @@ class User {
 
     public function getTelephone() {
         return $this->telephone;
+    }
+
+    public function getImgpath() {
+        return $this-> imgpath;
     }
 }
 ?>
