@@ -41,6 +41,14 @@
        
     }
 
+    if(isset($_POST['deleteUser'])){
+        echo 'post is working';
+        if(!deleteUserFromDB($conn, $_SESSION['username'])){
+            echo 'i faild';
+        }
+        
+    }
+
     
 ?>
 
@@ -89,6 +97,9 @@
 
         <div class="title">
             <h1 id="profile-header">Καλωσόρισες στο προφίλ σου!</h1>
+            <form id="delete-form" method="post" action="#"> 
+                <input id="delete-user" name="deleteUser" type="submit" name="delete-user" value="">
+            </form>
         </div>
 
         <form method='post' action="#" >
@@ -168,7 +179,7 @@
 
 <script type="text/javascript" src="../javascript/script.js"></script>
 <script type="text/javascript" src="../javascript/personal-info.js"></script>
-
+<script type="text/javascript" src="../javascript/manipulate-content.js"></script>
 </body>
 </html>
 

@@ -646,6 +646,19 @@ function deleteFriend($conn, $userId, $friendName) {
     return false;
 }
 
+function deleteUserFromDB($conn, $username){
+    echo 'inside deleteuser';
+    $delete_query = "DELETE FROM users WHERE username= '$username'";
+    echo 'after deletequery';
+    if(mysqli_query($conn,  $delete_query)){
+        echo 'userdeleted';
+        return true;
+        echo 'userdeleted';
+    }
+    echo 'i faild :(';
+    return false;
+}
+
 /***************** *****************/
 
 /********* UPDATE QUERIES **********/

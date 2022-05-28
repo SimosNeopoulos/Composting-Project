@@ -83,13 +83,39 @@ body {
 .title {
     text-align: center;
     padding: 3%;
+    display: flex;
+    flex-direction: row;
 }
 
+#profile-header{
+    flex-direction: column;
+    padding: 1%;
+    
+}
 
+#delete-form{
+    align-self: center;
+    max-width: 100%;
+}
+
+#delete-user{
+    background-color: #7BB79D;
+    padding: 2%;
+    border-radius: 100%;
+    border: solid #801515;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    align-self: center;
+    background-image: url("../images/delete-icon.png");
+    background-size: cover;
+    min-width: 40px;
+    height: 40px;
+    background-position: center;
+}
 
 .user-data-fields {
     display: flex;
     margin: 5%;
+
 }
 
 .user-data-fields input {
