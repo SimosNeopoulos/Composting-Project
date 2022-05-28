@@ -1,5 +1,6 @@
 <?php 
 class User {
+    private $id;
     private $username;
     private $email;
     private $address;
@@ -7,13 +8,18 @@ class User {
     private $telephone;
     private $imgpath;
 
-    public function __construct($username, $email, $address, $password, $telephone) {
+    public function __construct($id, $username, $email, $address, $password, $telephone) {
+        $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->address = $address;
         $this->password = $password;
         $this->telephone = $telephone;
         $this->imgpath = '../images/profile-circle.png';
+    }
+
+    public function getId() {
+        return $this->id;
     }
 
     public function getUsername() {
