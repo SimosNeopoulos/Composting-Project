@@ -165,8 +165,7 @@
     </div>
 </footer>
 
-<!--header script-->
-<script defer src="../javascript/header.js"></script>
+
 <script type="text/javascript" src="../javascript/script.js"></script>
 <script type="text/javascript" src="../javascript/personal-info.js"></script>
 
