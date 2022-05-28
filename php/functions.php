@@ -286,8 +286,8 @@ function getPostsWithTag($conn, $tags, $numberOfPosts=30) {
  * This function is used to get the ids of the tags inside the $tags array
  * 
  * 
- * @param mysqli  $conn             the connection to the serever
- * @param array   $tags             string array of the tags of a post
+ * @param mysqli  $conn     the connection to the serever
+ * @param array   $tags     string array of the tags of a post
  * 
  * @return mixed            returns an associated array with the ids of all the tags
  *                          in the $tags array
@@ -309,10 +309,10 @@ function getTagsId($conn, $tags) {
  * with another user whose username is qual to $friendName
  * 
  * 
- * @param mysqli    $conn               the connection to the serever
- * @param integer   $userId             the id of the user that we want to see if he has a 
- *                                      specific friened
- * @param string    $friendName         a string of the username of a friend 
+ * @param mysqli    $conn           the connection to the serever
+ * @param integer   $userId         the id of the user that we want to see if he has a 
+ *                                  specific friened
+ * @param string    $friendName     a string of the username of a friend 
  * 
  * @return boolean          returns true if the user with id equal to $userId has
  *                          a friend with a username equal to$friendName
@@ -336,9 +336,9 @@ function isFriendsWith($conn, $userId, $friendName) {
  * $userId, whose username have $friendName as a substring
  * 
  * 
- * @param mysqli    $conn               the connection to the serever
- * @param integer   $userId             the id of the user 
- * @param string    $friendName         a substring of the username of a friend 
+ * @param mysqli    $conn           the connection to the serever
+ * @param integer   $userId         the id of the user 
+ * @param string    $friendName     a substring of the username of a friend 
  * 
  * @return mixed            returns an associated array with the data of all the friends
  *                          of $userId whose usernames have a substring equal to $friendName
@@ -363,8 +363,8 @@ function findFriends($conn, $userId, $friendName) {
  * have a substring equal to $username
  * 
  * 
- * @param mysqli    $conn               the connection to the serever
- * @param string    $username           a substring of the users' username
+ * @param mysqli    $conn       the connection to the serever
+ * @param string    $username   a substring of the users' username
  * 
  * @return mixed            returns an associated array with the data of all the users
  *                          whose usernames have a substring equal to $username
@@ -388,8 +388,8 @@ function findUsers($conn, $username) {
  * A function that finds and returns all the users, whose area id equal to $area
  * 
  * 
- * @param mysqli    $conn               the connection to the serever
- * @param string    $area               the name of an area
+ * @param mysqli    $conn   the connection to the serever
+ * @param string    $area   the name of an area
  * 
  * @return mixed            returns an associated array with the data of all the users
  *                          whose area is equal to $area or false if the search had no results 
@@ -406,6 +406,57 @@ function findUsersFromArea($conn, $area) {
         return false;
     }
     return $data;
+}
+
+/**
+ * This function gets the username of a user and returns their data from the
+ * database if that user exists
+ * 
+ * 
+ * @param mysqli    $conn       the connection to the serever
+ * @param string    $username   the username of a user
+ * 
+ * @return mixed            returns an associated array with the data from a users
+ *                          whose username is equal to $username or false if the 
+ *                          search had no results 
+ */
+function getUser($conn, $username) {
+    $sql_query = "SELECT * 
+                  FROM users 
+                  WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql_query);
+    $rows = mysqli_num_rows($result);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    if($rows < 1) {
+        return false;
+    }
+    return $data;
+}
+
+/**
+ * This function gets the username of a user and returns their id from the
+ * database if that user exists
+ * 
+ * 
+ * @param mysqli    $conn       the connection to the serever
+ * @param string    $username   the username of a user
+ * 
+ * @return mixed            returns the id of the a users whose username 
+ *                          is equal to $username or false if the search had no results 
+ */
+function getUserId($conn, $username) {
+    $sql_query = "SELECT id 
+                  FROM users 
+                  WHERE username = '$username'";
+    $result = mysqli_query($conn, $sql_query);
+    $rows = mysqli_num_rows($result);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    if($rows !== 1) {
+        return false;
+    }
+    return $data[0]["id"];
 }
 
 /**************** ****************/
