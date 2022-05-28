@@ -4,10 +4,19 @@
  
 
     if(isset($_POST['upload-pic'])){
-        $target_dir = '../images/';
+
+        $target_dir = '../images/usrimages/';
+
         if(isset($_FILES["pic"]["name"]) ){
+
             $target_file = $target_dir.basename($_FILES["pic"]["name"]);
             move_uploaded_file($_FILES['pic']['tmp_name'], $target_file);
+            $upadteImgpath = "UPDATE users SET imgpath= '../images/usrimages/" .$_FILES['pic']['name']. "' WHERE username='" .$_SESSION['username']."' ";
+
+            if(mysqli_query($conn, $upadteImgpath)){
+                
+                $_SESSION['imgpath']= "../images/usrimages/" .$_FILES['pic']['name']. "";
+            }
         }else{
             echo 'not uploaded';
         }
@@ -32,7 +41,7 @@
        
     }
 
-
+    
 ?>
 
 
@@ -49,15 +58,18 @@
     
 </head>
 <body>
+
 <?php
     require("../php/header.php");
+    
 ?>
 
 <div class="container">
 
     <!--Profile pic box-->
     <div class="profile_pic">
-        <img class="picture" src="../images/profile-circle.png" alt="profile image!">
+
+        <img class="picture" src=<?php displayImg(); ?> alt="profile image!">
         <div class="edit">
             
             <h3 id="edit-text"> Νεα εικόνα προφίλ;</h3>
@@ -69,9 +81,7 @@
             
             
         </div>
-        <!-- <form  action="#">
-            <button type="submit" id="save-pic"> Αποθηκευση εικόνας</button>
-        </form> -->
+       
     </div>
 
     <!--Profile info box-->
@@ -155,8 +165,7 @@
     </div>
 </footer>
 
-<!--header script-->
-<script defer src="../javascript/header.js"></script>
+
 <script type="text/javascript" src="../javascript/script.js"></script>
 <script type="text/javascript" src="../javascript/personal-info.js"></script>
 

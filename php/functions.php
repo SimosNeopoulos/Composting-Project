@@ -16,7 +16,7 @@ include("../php/connect.php");
  *                          and null if there was an error with the database
  */
 function nameExists($conn, $username) {
-    $sql_query = "SELECT username FROM users WHERE username = '$username'";
+    $sql_query = "SELECT username FROM user WHERE username = '$username'";
     $result = mysqli_query($conn, $sql_query);
     if(!$result) {
         return null;
@@ -40,7 +40,7 @@ function nameExists($conn, $username) {
  *                          and null if there was an error with the database
  */
 function emailExists($conn, $email) {
-    $sql_query = "SELECT email FROM users WHERE email = '$email'";
+    $sql_query = "SELECT email FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $sql_query);
     if(!$result) {
         return null;
@@ -88,11 +88,11 @@ function signUp($conn, $username, $email, $address, $password, $telephone) {
  *                          with the creation of the user
  */
 function addAccountToDB($conn, $username, $email, $address, $password, $telephone) {
-    $sql_query = "INSERT INTO users(username, email, address, password, telephone, imgpath) VALUES ('$username', '$email', '$address', '$password','$telephone', '../images/profile-circle.png')";
+    $sql_query = "INSERT INTO user(username, email, address, password, telephone, imgpath) VALUES ('$username', '$email', '$address', '$password','$telephone', '../images/profile-circle.png')";
     if(mysqli_query($conn, $sql_query)) {
         $id = mysqli_insert_id($conn);
         $user = new User($id, $username, $email, $address, $password, $telephone);
-        if(logIn($user)) {
+        if(logIn($user, $conn)) {
             return true;
         } else {
             return false;
@@ -115,7 +115,7 @@ function addAccountToDB($conn, $username, $email, $address, $password, $telephon
  *                          and null if there was an error with the database
  */
 function authenticate($conn, $email, $password) {
-    $sql_query = "SELECT * FROM users WHERE email = '$email'";
+    $sql_query = "SELECT * FROM user WHERE email = '$email'";
     $result = mysqli_query($conn, $sql_query);
     if(!$result) {
         return null;
@@ -127,7 +127,7 @@ function authenticate($conn, $email, $password) {
         return false;
     }
     $user = new User($data["id"], $data["username"], $data["email"], $data["address"], $data["password"], $data["telephone"]);
-    return logIn($user);
+    return logIn($user, $conn);
 }
 
 /**
@@ -137,13 +137,18 @@ function authenticate($conn, $email, $password) {
  * 
  * @return boolean      true when the user is added to the SESSION
  */
-function logIn($user) {
+function logIn($user, $conn) {
     $_SESSION["user"] = $user;
     $_SESSION["username"] = $user->getUsername();
     $_SESSION["email"] = $user->getEmail();
     $_SESSION["address"] = $user->getAddress();
     $_SESSION["password"] = $user->getPassword();
     $_SESSION["telephone"] = $user->getTelephone();
+
+    $getImg = "SELECT imgpath FROM user WHERE username='" .$_SESSION['username']. "'";
+    $dataFetch = mysqli_query($conn, $getImg);
+    $row = mysqli_fetch_array($dataFetch);
+    $_SESSION["imgpath"] = $row['imgpath'];
     return true;
 }
 /****************************** *****************************/
@@ -192,6 +197,14 @@ function displayTelephone(){
     }
 }
 
+function displayImg(){
+    if(isset($_SESSION['imgpath'])){
+        echo $_SESSION['imgpath'];
+    }else{
+        echo '';
+    }
+}
+
 
 /************* POSTS / COMMENTS / TAGS *************/
 
@@ -209,7 +222,7 @@ function displayTelephone(){
  *                          posts of a specific user or false if the search had no results
  */
 function getUserPosts($conn, $userId) {
-    $sql_query = "SELECT * FROM posts WHERE id_user = '$userId' ORDER BY post_date DESC";
+    $sql_query = "SELECT * FROM post WHERE id_user = '$userId' ORDER BY post_date DESC";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -235,9 +248,9 @@ function getUserPosts($conn, $userId) {
  */
 
 function getPostsFromArea($conn, $city) {
-    $sql_query = "SELECT posts.id, id_user, posts.body, posts.post_date 
-                  FROM users, posts 
-                  WHERE users.address = '$city' AND id_user = users.id 
+    $sql_query = "SELECT post.id, id_user, post.body, post.post_date 
+                  FROM user, post 
+                  WHERE user.address = '$city' AND id_user = user.id 
                   ORDER BY post_date DESC 
                   LIMIT 5";
     $result = mysqli_query($conn, $sql_query);
@@ -265,10 +278,10 @@ function getPostsFromArea($conn, $city) {
 function getPostsWithTag($conn, $tags, $numberOfPosts=30) {
     $where_query = getArrayWhereStatment($tags, "tag_name");
     $sql_query = "SELECT id, id_user, body, post_date
-                  FROM posts INNNER JOIN posts_has_tags
-                  ON id = posts_id
-                  INNER JOIN tags
-                  ON id_tag = tags_id
+                  FROM post INNNER JOIN post_has_tags
+                  ON id = post_id
+                  INNER JOIN tag
+                  ON id_tag = tag_id
                   WHERE $where_query
                   ORDER BY post_date DESC 
                   LIMIT $numberOfPosts";
@@ -294,7 +307,7 @@ function getPostsWithTag($conn, $tags, $numberOfPosts=30) {
  */
 function getTagsId($conn, $tags) {
     $where_query = getArrayWhereStatment($tags, "tag_name");
-    $sql_query = "SELECT id FROM tags WHERE $where_query";
+    $sql_query = "SELECT id FROM tag WHERE $where_query";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     
@@ -319,8 +332,8 @@ function getTagsId($conn, $tags) {
  */
 function isFriendsWith($conn, $userId, $friendName) {
     $sql_query = "SELECT username 
-                  FROM friends 
-                  WHERE users_id = '$userId' AND username = '$friendName'";
+                  FROM friend 
+                  WHERE user_id = '$userId' AND username = '$friendName'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     mysqli_free_result($result);
@@ -346,8 +359,8 @@ function isFriendsWith($conn, $userId, $friendName) {
  */
 function findFriends($conn, $userId, $friendName) {
     $sql_query = "SELECT * 
-                  FROM friends 
-                  WHERE users_id = '$userId' AND username LIKE '%$friendName%'";
+                  FROM friend 
+                  WHERE user_id = '$userId' AND username LIKE '%$friendName%'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -372,7 +385,7 @@ function findFriends($conn, $userId, $friendName) {
  */
 function findUsers($conn, $username) {
     $sql_query = "SELECT * 
-                  FROM users 
+                  FROM user 
                   WHERE username LIKE '%$username%'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
@@ -396,7 +409,7 @@ function findUsers($conn, $username) {
  */
 function findUsersFromArea($conn, $area) {
     $sql_query = "SELECT * 
-                  FROM users 
+                  FROM user 
                   WHERE address = '$area'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
@@ -422,7 +435,7 @@ function findUsersFromArea($conn, $area) {
  */
 function getUser($conn, $username) {
     $sql_query = "SELECT * 
-                  FROM users 
+                  FROM user 
                   WHERE username = '$username'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
@@ -447,7 +460,7 @@ function getUser($conn, $username) {
  */
 function getUserId($conn, $username) {
     $sql_query = "SELECT id 
-                  FROM users 
+                  FROM user 
                   WHERE username = '$username'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
@@ -479,7 +492,7 @@ function createPost($conn, $userId, $body, $tags) {
     if(!$post_date) {
         return false;
     }
-    $sql_query = "INSERT INTO posts(id_user, body, post_date) VALUES ('$userId', '$body', '$post_date')";
+    $sql_query = "INSERT INTO post(id_user, body, post_date) VALUES ('$userId', '$body', '$post_date')";
     if(!mysqli_query($conn, $sql_query)) {
         return false;
     }
@@ -506,7 +519,7 @@ function addTagsToPost($conn, $post_id, $tags) {
 
     while ($row = mysqli_fetch_assoc($result)) {
         $tag_id = $row['id'];
-        $sql_query = "INSERT INTO posts_has_tags(posts_id, tags_id) VALUES ('$post_id', '$tag_id')";
+        $sql_query = "INSERT INTO post_has_tags(post_id, tag_id) VALUES ('$post_id', '$tag_id')";
         mysqli_query($conn, $sql_query);
     }
     mysqli_free_result($result);
@@ -524,7 +537,7 @@ function addTagsToPost($conn, $post_id, $tags) {
  * @return boolean          returns true if the friend was added successfully or false if there was an error 
  */
 function addFriend($conn, $userId, $friendName) {
-    $sql_query = "INSERT INTO friends(users_id, username) VALUES ('$userId', '$friendName')";
+    $sql_query = "INSERT INTO friend(user_id, username) VALUES ('$userId', '$friendName')";
     if(mysqli_query($conn, $sql_query))
         return true;
     return false;
@@ -545,7 +558,7 @@ function addComment($conn, $posts_id, $body, $commentAuthor) {
     if(!$post_date) {
         return false;
     }
-    $sql_query = "INSERT INTO comments(posts_id, body, comment_author, post_date) VALUES ('$posts_id', '$body', '$commentAuthor', '$post_date')";
+    $sql_query = "INSERT INTO comment(post_id, body, comment_author, post_date) VALUES ('$posts_id', '$body', '$commentAuthor', '$post_date')";
     if(!mysqli_query($conn, $sql_query)) {
         return false;
     }
@@ -566,7 +579,7 @@ function addComment($conn, $posts_id, $body, $commentAuthor) {
  * @return boolean          returns true if the post was deleted successfully or false if there was an error 
  */
 function deletePost($conn, $id) {
-    $sql_query = "DELETE FROM posts WHERE id = '$id'";
+    $sql_query = "DELETE FROM post WHERE id = '$id'";
     if(mysqli_query($conn, $sql_query)) 
         return true;
     return false;
@@ -591,7 +604,7 @@ function removeTagsToPost($conn, $post_id, $tags) {
 
     while ($row = mysqli_fetch_assoc($result)) {
         $tag_id = $row['id'];
-        $sql_query = "DELETE FROM posts_has_tags WHERE posts_id = $post_id AND tags_id = $tag_id";
+        $sql_query = "DELETE FROM post_has_tags WHERE post_id = $post_id AND tag_id = $tag_id";
         if(!mysqli_query($conn, $sql_query)) {
             return false;
         }
@@ -610,7 +623,7 @@ function removeTagsToPost($conn, $post_id, $tags) {
  * @return boolean          returns true if the comment was deleted successfully or false if there was an error 
  */
 function deleteComment($conn, $id) {
-    $sql_query = "DELETE FROM comments WHERE id = '$id'";
+    $sql_query = "DELETE FROM comment WHERE id = '$id'";
     if(mysqli_query($conn, $sql_query))
         return true;
     return false;
@@ -627,7 +640,7 @@ function deleteComment($conn, $id) {
  * @return boolean                  returns true if the comment was deleted successfully or false if there was an error 
  */
 function deleteFriend($conn, $userId, $friendName) {
-    $sql_query = "DELETE FROM friends WHERE users_id = '$userId' AND username = '$friendName'";
+    $sql_query = "DELETE FROM friend WHERE user_id = '$userId' AND username = '$friendName'";
     if(mysqli_query($conn, $sql_query))
         return true;
     return false;
@@ -648,7 +661,7 @@ function deleteFriend($conn, $userId, $friendName) {
  * @return boolean              returns true if the comment was updated successfully or false if there was an error 
  */
 function updateComment($conn, $id, $newBody) {
-    $sql_query = "UPDATE comments SET body = '$newBody' WHERE id = '$id'";
+    $sql_query = "UPDATE comment SET body = '$newBody' WHERE id = '$id'";
     if(mysqli_query($conn, $sql_query))
         return true;
     return false;
@@ -665,7 +678,7 @@ function updateComment($conn, $id, $newBody) {
  * @return boolean              returns true if the post was updated successfully or false if there was an error 
  */
 function updatePost($conn, $id, $newBody) {
-    $sql_query = "UPDATE posts SET body = '$newBody' WHERE id = '$id'";
+    $sql_query = "UPDATE post SET body = '$newBody' WHERE id = '$id'";
     if(mysqli_query($conn, $sql_query))
         return true;
     return false;
