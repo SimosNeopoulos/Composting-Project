@@ -373,7 +373,7 @@ function findFriends($conn, $userId, $friendName) {
 function findUsers($conn, $username) {
     $sql_query = "SELECT * 
                   FROM users 
-                  WHERE username LIKE '%$username'%";
+                  WHERE username LIKE '%$username%'";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
