@@ -2,24 +2,36 @@
 include("../php/functions.php");
 include("../php/connect.php");
 
+// Veriables that indicate if there was a problem with the user singing up.
+// An appropriate error message is shown if there was a problem
 $serverError = false;
 $nameTaken = false;
 $emailTaken = false;
 do {
+    // Checking if the user submited any data
     if(isset($_POST['submit-btn'])) {
+        //Checking if the username the user submited already exists in the database
         $nameTaken = nameExists($conn, $_POST['username']);
+        // The name already exists or there was an error in the database
         if($nameTaken === null || $nameTaken) {
+            $emailTaken = true;
             break;
         }
 
+        //Checking if the email the user submited already exists in the database
         $emailTaken = emailExists($conn, $_POST['email']);
+        // The email already exists or there was an error in the database
         if($emailTaken === null || $emailTaken) {
+            $emailTaken = true;
             break;
         }
         
+        // Adding the user data to the database and signing them in the site
         if(signUp($conn, $_POST["username"], $_POST["email"], $_POST["address"], $_POST["password"], $_POST["telephone"])) {
             mysqli_close($conn);
             header('Location: ../html/homepage.html');
+        } else {
+            $serverError = true;
         }
     }
 } while(false)
