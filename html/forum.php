@@ -95,7 +95,7 @@ if(isset($_POST['saveComment'])){
             </div>
             
             <?php         
-            $result= getPostsFromDB($conn);
+            $result = getPostsFromDB($conn);
             while($row = mysqli_fetch_array($result)){
             ?> 
              
@@ -112,18 +112,27 @@ if(isset($_POST['saveComment'])){
                 </div>
                 <div class="post-answers">
                     <ul class="comment-section">
+                        <?php 
+                        $comments = getCommentsForPost($conn, $row['id']);
+                        if($comments):
+                            foreach ($comments as $comment):
+                        ?>
                         <li>
                             <div class="comment-user-container">
                                 <div class="comment-pic-container">
                                     <img class="comment-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>"
                                          alt="commenter profile picture">
                                 </div>
-                                <b class="user-commenting">Όνομα σχολιαστή #1</b>
+                                <b class="user-commenting"><?php echo $comment['comment_author'] ?></b>
     
                             </div>
-                            <p class="user-comment">Περιεχόμενο σχόλιου πρώτου χρήστη</p>
+                            <p class="user-comment"><?php echo $comment['body'] ?></p>
     
                         </li>
+                        <?php 
+                            endforeach;
+                        endif;
+                        ?>
                        
                     </ul>
                     
@@ -141,7 +150,10 @@ if(isset($_POST['saveComment'])){
            </div>
        </li>
    </ul> 
-    <?php  } ?>
+    <?php  } 
+    
+    mysqli_free_result($result);
+    mysqli_close($conn)?>
 
                
             

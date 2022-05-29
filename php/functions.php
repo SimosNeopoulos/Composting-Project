@@ -318,6 +318,21 @@ function getTagsId($conn, $tags) {
     return $result;
 }
 
+function getCommentsForPost($conn, $post_id) {
+    $sql_query = "SELECT body, comment_author, post_date
+                  FROM comment
+                  WHERE post_id = '$post_id'
+                  ORDER BY post_date DESC";
+    $result = mysqli_query($conn, $sql_query);
+    $rows = mysqli_num_rows($result);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    if($rows < 1) {
+        return false;
+    }
+    return $data;
+}
+
 /**
  * This function checks is a user with id equal to $userId is friends
  * with another user whose username is qual to $friendName
