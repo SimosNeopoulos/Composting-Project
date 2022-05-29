@@ -49,7 +49,7 @@ do{
 <!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
     <h1 class="top-text">Log In</h1>
-    <form action="#" id="log-in-form" method="post">
+    <form action="log_in.php" id="log-in-form" method="post">
         <!-------- INPUT FIELDS --------->
         <div class="input-field">
             <input type="email" name="email" placeholder=" " id="log-in-email" required>

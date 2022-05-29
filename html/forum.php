@@ -11,8 +11,8 @@ if(isset($_POST['posting'])){
 }
 
 if(isset($_POST['saveComment'])){
-    echo $_POST['post_id'];
-    addComment($conn, $_POST['post_id'], $_POST['newComment'], $_SESSION['userId']);
+    echo $_POST['id-value'];
+    addComment($conn, $_POST['id-value'], $_POST['newComment'], $_SESSION['username']);
 }
 ?>
 
@@ -131,8 +131,9 @@ if(isset($_POST['saveComment'])){
                     <div class="my-pic-container">
                         <img class="my-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>" alt="my comment profile picture">
                     </div>
-                    <form method="post" action="#">
+                    <form method="post" action="forum.php">
                         <input type="text" name="newComment" class="my-comment" placeholder="Πρόσθεσε σχόλιο"> 
+                        <input type="hidden" name="id-value" class="id-value" value="<?php echo $row["id"] ?>"> 
                         <input type="submit" name="saveComment" value="Αποθήκευση σχολίου">
                     </form>
                    

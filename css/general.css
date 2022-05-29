@@ -13,6 +13,10 @@ body {
     background-color: #a5d2a4;
 }
 
+.id-value {
+    display: none;
+}
+
 /***** UNDECORATED LINKS *****/
 
 a:link,
