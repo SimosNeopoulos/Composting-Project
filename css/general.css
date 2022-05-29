@@ -13,6 +13,10 @@ body {
     background-color: #a5d2a4;
 }
 
+.id-value {
+    display: none;
+}
+
 /***** UNDECORATED LINKS *****/
 
 a:link,
@@ -723,9 +727,6 @@ footer{
 @media (max-width: 400px) {
     .form-container {
         width: 90%;
-    }
-    .container-height {
-        height: 500px;
     }
 }
 

@@ -61,7 +61,7 @@ function emailExists($conn, $email) {
  * @param mysqli $conn      the connection to the serever
  * @param string $username  the username of the user that's being added
  * @param string $email     the email of the user that's being added
- * @param string $address   the address of the user that's being added
+ * @param string $city   the city of the user that's being added
  * @param string $password  the password of the user that's being added
  * @param string $telephone the telephone of the user that's being added
  * 
@@ -69,8 +69,8 @@ function emailExists($conn, $email) {
  *                          created successfully and false if there was a problem
  *                          with the creation of the user
  */
-function signUp($conn, $username, $email, $address, $password, $telephone) {
-     return addAccountToDB($conn, $username, $email, $address, $password, $telephone);
+function signUp($conn, $username, $email, $city, $password, $telephone) {
+     return addAccountToDB($conn, $username, $email, $city, $password, $telephone);
 }
 
 /**
@@ -80,7 +80,7 @@ function signUp($conn, $username, $email, $address, $password, $telephone) {
  * @param mysqli $conn      the connection to the serever
  * @param string $username  the username of the user that's being added
  * @param string $email     the email of the user that's being added
- * @param string $address   the address of the user that's being added
+ * @param string $city   the city of the user that's being added
  * @param string $password  the password of the user that's being added
  * @param string $telephone the telephone of the user that's being added
  * 
@@ -88,11 +88,13 @@ function signUp($conn, $username, $email, $address, $password, $telephone) {
  *                          created successfully and false if there was a problem
  *                          with the creation of the user
  */
-function addAccountToDB($conn, $username, $email, $address, $password, $telephone) {
-    $sql_query = "INSERT INTO user(username, email, city, password, telephone, imgpath) VALUES ('$username', '$email', '$address', '$password','$telephone', '../images/profile-circle.png')";
+
+function addAccountToDB($conn, $username, $email, $city, $password, $telephone) {
+    $sql_query = "INSERT INTO user(username, email, city, password, telephone, imgpath) VALUES ('$username', '$email', '$city', '$password','$telephone', '../images/profile-circle.png')";
+
     if(mysqli_query($conn, $sql_query)) {
         $id = mysqli_insert_id($conn);
-        $user = new User($id, $username, $email, $address, $password, $telephone);
+        $user = new User($id, $username, $email, $city, $password, $telephone);
         if(logIn($user, $conn)) {
             return true;
         } else {
@@ -140,9 +142,10 @@ function authenticate($conn, $email, $password) {
  */
 function logIn($user, $conn) {
     $_SESSION["user"] = $user;
+    $_SESSION["userId"] = $user->getId();
     $_SESSION["username"] = $user->getUsername();
     $_SESSION["email"] = $user->getEmail();
-    $_SESSION["address"] = $user->getAddress();
+    $_SESSION["city"] = $user->getAddress();
     $_SESSION["password"] = $user->getPassword();
     $_SESSION["telephone"] = $user->getTelephone();
    
@@ -179,8 +182,8 @@ function displayEmail(){
 }
 
 function dipslayAddress(){
-    if(isset($_SESSION['address'])){
-        echo $_SESSION['address'];
+    if(isset($_SESSION['city'])){
+        echo $_SESSION['city'];
     }else{
         echo '';
     }
@@ -255,7 +258,7 @@ function getUserPosts($conn, $userId) {
 function getPostsFromArea($conn, $city) {
     $sql_query = "SELECT post.id, id_user, post.body, post.post_date 
                   FROM user, post 
-                  WHERE user.address = '$city' AND id_user = user.id 
+                  WHERE user.city = '$city' AND id_user = user.id 
                   ORDER BY post_date DESC 
                   LIMIT 5";
     $result = mysqli_query($conn, $sql_query);
@@ -365,7 +368,8 @@ function isFriendsWith($conn, $userId, $friendName) {
 function findFriends($conn, $userId, $friendName) {
     $sql_query = "SELECT * 
                   FROM friend 
-                  WHERE user_id = '$userId' AND username LIKE '%$friendName%'";
+                  WHERE user_id = '$userId' AND username LIKE '%$friendName%'
+                  ORDER BY username";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -391,7 +395,8 @@ function findFriends($conn, $userId, $friendName) {
 function findUsers($conn, $username) {
     $sql_query = "SELECT * 
                   FROM user 
-                  WHERE username LIKE '%$username%'";
+                  WHERE username LIKE '%$username%'
+                  ORDER BY username ";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -415,7 +420,8 @@ function findUsers($conn, $username) {
 function findUsersFromArea($conn, $area) {
     $sql_query = "SELECT * 
                   FROM user 
-                  WHERE address = '$area'";
+                  WHERE city = '$area'
+                  ORDER BY username ";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -501,9 +507,33 @@ function createPost($conn, $userId, $body, $tags) {
     if(!mysqli_query($conn, $sql_query)) {
         return false;
     }
-    $id = mysqli_insert_id($conn);
-    return addTagsToPost($conn, $id, $tags);
+    // $id = mysqli_insert_id($conn);
+    // return addTagsToPost($conn, $id, $tags);
+    return true;
 }
+
+
+function getPostsFromDB($conn){
+    $getPostsQuery = "SELECT * FROM post ORDER BY post_date DESC";
+    $result = mysqli_query($conn, $getPostsQuery);
+   
+   return $result;
+}
+
+function  getUserImage($conn, $idUser){
+    $findUsrImgQuery = "SELECT imgpath FROM user WHERE id= $idUser ";
+    $result = mysqli_query($conn, $findUsrImgQuery);
+    $row = mysqli_fetch_array($result);
+    return $row['imgpath'];
+}
+
+function getUsernameByID($conn, $id){
+    $getUsrnmQuery = "SELECT username FROM user WHERE id= $id";
+    $result = mysqli_query($conn, $getUsrnmQuery);
+    $row = mysqli_fetch_array($result);
+    return $row['username'];
+}
+
 
 /**
  * A creates an association with the tags and a post in the database
@@ -565,8 +595,11 @@ function addComment($conn, $posts_id, $body, $commentAuthor) {
     }
     $sql_query = "INSERT INTO comment(post_id, body, comment_author, post_date) VALUES ('$posts_id', '$body', '$commentAuthor', '$post_date')";
     if(!mysqli_query($conn, $sql_query)) {
+        echo'kati den phge kala!';
         return false;
+
     }
+    echo 'h doyleia egine';
     return true;
 }
 
@@ -697,6 +730,23 @@ function updateComment($conn, $id, $newBody) {
  */
 function updatePost($conn, $id, $newBody) {
     $sql_query = "UPDATE post SET body = '$newBody' WHERE id = '$id'";
+    if(mysqli_query($conn, $sql_query))
+        return true;
+    return false;
+}
+
+/**
+ * Updates the password a user with email equal to $email in the database
+ * 
+ * 
+ * @param mysqli    $conn           the connection to the serever
+ * @param string    $email          the id of a post
+ * @param string    $newPassword    the new body text of the post
+ * 
+ * @return boolean                  returns true if the password was updated successfully or false if there was an error
+ */
+function updatePassword($conn, $email, $newPassword) {
+    $sql_query = "UPDATE user SET password = '$newPassword' WHERE email = '$email'";
     if(mysqli_query($conn, $sql_query))
         return true;
     return false;

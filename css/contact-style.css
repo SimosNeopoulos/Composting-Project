@@ -168,7 +168,7 @@ form .input-field-message {
     }
 }
 
-@media(max-width: 450px) {
+@media(max-width: 455px) {
     .container-height {
         height: 660px;
     }
@@ -180,6 +180,16 @@ form .input-field-message {
     .input-field-message textarea:focus,
     .input-field-message textarea:not(:placeholder-shown) {
         font-size: 30px;
+    }
+}
+
+@media(max-width: 360px) {
+    .contact-text {
+        font-size: 20px;
+    }
+
+    form .input-field-message {
+        margin: 35px 0;
     }
 }
 

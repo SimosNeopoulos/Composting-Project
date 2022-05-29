@@ -1,3 +1,21 @@
+<?php
+include('../php/functions.php');
+
+// getPostsFromDB($conn);
+
+
+if(isset($_POST['posting'])){
+    createPost($conn, $_SESSION['userId'], $_POST['new-post'], $_POST['tags']);
+    $_POST = array();
+    
+}
+
+if(isset($_POST['saveComment'])){
+    echo $_POST['id-value'];
+    addComment($conn, $_POST['id-value'], $_POST['newComment'], $_SESSION['username']);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,10 +40,10 @@
             </div>
             <div class="profile-body">
                 <div class="profile-pic-container">
-                    <img class="profile-pic" src="../images/profilepicture.png" alt="profile picture">
+                    <img class="profile-pic" src="<?php displayImg(); ?>" alt="profile picture">
                 </div>
                 <div class="profile-info-container">
-                    <b class="username">Όνομα χρήστη: Όνομα</b>
+                    <b class="username">Όνομα χρήστη: <?php displayName(); ?></b>
                     <button class="btn-profile" onclick="window.location.href = 'personal-info-page.php'">Επισκεψου το
                         προφιλ σου
                     </button>
@@ -35,13 +53,6 @@
         <div class="popular-tags">
             <b class="tag-title">Δημοφιλείς ετικέτες</b>
             <ul class="tag-list">
-                <li><a href="">#ετικέτα1</a></li>
-                <li><a href="">#ετικέτα2</a></li>
-                <li><a href="">#ετικέτα3</a></li>
-                <li><a href="">#ετικέτα4</a></li>
-                <li><a href="">#ετικέτα5</a></li>
-                <li><a href="">#ετικέτα6</a></li>
-
             </ul>
         </div>
     </div>
@@ -75,217 +86,75 @@
             </div>
         </div>
         <div class="forum-posts">
+            <div class="add-post">
+                <form method="post" action="#">
+                    <input type="text" name="new-post">
+                    <input type="text" name="tags">
+                    <input type="submit" name="posting" value="Δημοσιευσε">
+                </form>
+            </div>
+            
+            <?php         
+            $result= getPostsFromDB($conn);
+            while($row = mysqli_fetch_array($result)){
+            ?> 
+             
             <ul id="posts" class="posts">
                 <li class="post">
-                    <div class="post-top">
-                        <div class="post-pic-container">
-                            <img class="post-pic" src="../images/profilepicture.png" alt="poster profile picture">
-                        </div>
-                        <b class="user">Όνομα δημοσιευτή</b>
+                <div class="post-top">
+                    <div class="post-pic-container">
+                        <img class="post-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>" alt="poster profile picture">
                     </div>
-                    <div class="post-body">
-                        <p class="paragraph">Περιεχόμενο δημοσίευσης
-                        </p>
-                    </div>
-                    <div class="post-answers">
-                        <ul class="comment-section">
-                            <li>
-                                <div class="comment-user-container">
-                                    <div class="comment-pic-container">
-                                        <img class="comment-pic" src="../images/profilepicture.png"
-                                             alt="commenter profile picture">
-                                    </div>
-                                    <b class="user-commenting">Όνομα σχολιαστή #1</b>
-
+                    <b class="user"><?php echo getUserNameByID($conn, $row['id_user']); ?></b>
+                </div>
+                <div class="post-body">
+                    <p class="paragraph"><?php echo $row['body']; ?> </p>
+                </div>
+                <div class="post-answers">
+                    <ul class="comment-section">
+                        <li>
+                            <div class="comment-user-container">
+                                <div class="comment-pic-container">
+                                    <img class="comment-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>"
+                                         alt="commenter profile picture">
                                 </div>
-                                <p class="user-comment">Περιεχόμενο σχόλιου πρώτου χρήστη</p>
-
-                            </li>
-                            <li>
-                                <div class="comment-user-container">
-                                    <div class="comment-pic-container">
-                                        <img class="comment-pic" src="../images/profilepicture.png"
-                                             alt="commenter profile picture">
-                                    </div>
-                                    <b class="user-commenting">Όνομα σχολιαστή #2</b>
-                                </div>
-                                <p class="user-comment">Περιεχόμενο σχόλιου δεύτερου χρήστη</p>
-                            </li>
-                        </ul>
-
-                        <div class="add-comment">
-                            <div class="my-pic-container">
-                                <img class="my-pic" src="../images/profilepicture.png" alt="my comment profile picture">
+                                <b class="user-commenting">Όνομα σχολιαστή #1</b>
+    
                             </div>
-                            <b class="me">Εγώ</b>
-                            <input class="my-comment" placeholder="Πρόσθεσε σχόλιο">
-                            <button class="btn-enter">Σχολίασε</button>
-                        </div>
+                            <p class="user-comment">Περιεχόμενο σχόλιου πρώτου χρήστη</p>
+    
+                        </li>
+                       
+                    </ul>
+                    
+                    <div class="add-comment">
+                    <div class="my-pic-container">
+                        <img class="my-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>" alt="my comment profile picture">
                     </div>
-                </li>
-                <li class="post">
-                    <div class="post-top">
-                        <div class="post-pic-container">
-                            <img class="post-pic" src="../images/profilepicture.png" alt="poster profile picture">
-                        </div>
-                        <b class="user">Όνομα δημοσιευτή</b>
-                    </div>
-                    <div class="post-body">
-                        <p class="paragraph">Περιεχόμενο δημοσίευσης
-                        </p>
-                    </div>
-                    <div class="post-answers">
-                        <ul class="comment-section">
-                            <li>
-                                <div class="comment-user-container">
-                                    <div class="comment-pic-container">
-                                        <img class="comment-pic" src="../images/profilepicture.png"
-                                             alt="commenter profile picture">
-                                    </div>
-                                    <b class="user-commenting">Όνομα σχολιαστή #1</b>
+                    <form method="post" action="forum.php">
+                        <input type="text" name="newComment" class="my-comment" placeholder="Πρόσθεσε σχόλιο"> 
+                        <input type="hidden" name="id-value" class="id-value" value="<?php echo $row["id"] ?>"> 
+                        <input type="submit" name="saveComment" value="Αποθήκευση σχολίου">
+                    </form>
+                   
+               </div>
+           </div>
+       </li>
+   </ul> 
+    <?php  } ?>
 
-                                </div>
-                                <p class="user-comment">Περιεχόμενο σχόλιου πρώτου χρήστη</p>
+               
+            
 
-                            </li>
-                            <li>
-                                <div class="comment-user-container">
-                                    <div class="comment-pic-container">
-                                        <img class="comment-pic" src="../images/profilepicture.png"
-                                             alt="commenter profile picture">
-                                    </div>
-                                    <b class="user-commenting">Όνομα σχολιαστή #2</b>
-                                </div>
-                                <p class="user-comment">Περιεχόμενο σχόλιου δεύτερου χρήστη</p>
-                            </li>
-                        </ul>
-
-                        <div class="add-comment">
-                            <div class="my-pic-container">
-                                <img class="my-pic" src="../images/profilepicture.png" alt="my comment profile picture">
-                            </div>
-                            <b class="me">Εγώ</b>
-                            <input class="my-comment" placeholder="Πρόσθεσε σχόλιο">
-                            <button class="btn-enter">Σχολίασε</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="post">
-                    <div class="post-top">
-                        <div class="post-pic-container">
-                            <img class="post-pic" src="../images/profilepicture.png" alt="poster profile picture">
-                        </div>
-                        <b class="user">Όνομα δημοσιευτή</b>
-                    </div>
-                    <div class="post-body">
-                        <p class="paragraph">Περιεχόμενο δημοσίευσης
-                        </p>
-                    </div>
-                    <div class="post-answers">
-                        <ul class="comment-section">
-                            <li>
-                                <div class="comment-user-container">
-                                    <div class="comment-pic-container">
-                                        <img class="comment-pic" src="../images/profilepicture.png"
-                                             alt="commenter profile picture">
-                                    </div>
-                                    <b class="user-commenting">Όνομα σχολιαστή #1</b>
-
-                                </div>
-                                <p class="user-comment">Περιεχόμενο σχόλιου πρώτου χρήστη</p>
-
-                            </li>
-                            <li>
-                                <div class="comment-user-container">
-                                    <div class="comment-pic-container">
-                                        <img class="comment-pic" src="../images/profilepicture.png"
-                                             alt="commenter profile picture">
-                                    </div>
-                                    <b class="user-commenting">Όνομα σχολιαστή #2</b>
-                                </div>
-                                <p class="user-comment">Περιεχόμενο σχόλιου δεύτερου χρήστη</p>
-                            </li>
-                        </ul>
-
-                        <div class="add-comment">
-                            <div class="my-pic-container">
-                                <img class="my-pic" src="../images/profilepicture.png" alt="commenter profile picture">
-                            </div>
-                            <b class="me">Εγώ</b>
-                            <input class="my-comment" placeholder="Πρόσθεσε σχόλιο">
-                            <button class="btn-enter">Σχολίασε</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="post">
-                    <div class="post-top">
-                        <div class="post-pic-container">
-                            <img class="post-pic" src="../images/profilepicture.png" alt="poster profile picture">
-                        </div>
-                        <b class="user">Όνομα δημοσιευτή</b>
-                    </div>
-                    <div class="post-body">
-                        <p class="paragraph">Περιεχόμενο δημοσίευσης
-                        </p>
-                    </div>
-                    <div class="post-answers">
-                        <ul class="comment-section">
-                            <li>
-                                <div class="comment-user-container">
-                                    <div class="comment-pic-container">
-                                        <img class="comment-pic" src="../images/profilepicture.png"
-                                             alt="commenter profile picture">
-                                    </div>
-                                    <b class="user-commenting">Όνομα σχολιαστή #1</b>
-
-                                </div>
-                                <p class="user-comment">Περιεχόμενο σχόλιου πρώτου χρήστη</p>
-
-                            </li>
-                            <li>
-                                <div class="comment-user-container">
-                                    <div class="comment-pic-container">
-                                        <img class="comment-pic" src="../images/profilepicture.png"
-                                             alt="commenter profile picture">
-                                    </div>
-                                    <b class="user-commenting">Όνομα σχολιαστή #2</b>
-                                </div>
-                                <p class="user-comment">Περιεχόμενο σχόλιου δεύτερου χρήστη</p>
-                            </li>
-                        </ul>
-
-                        <div class="add-comment">
-                            <div class="my-pic-container">
-                                <img class="my-pic" src="../images/profilepicture.png" alt="my comment profile picture">
-                            </div>
-                            <b class="me">Εγώ</b>
-                            <input class="my-comment" placeholder="Πρόσθεσε σχόλιο">
-                            <button class="btn-enter">Σχολίασε</button>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                         
+        
         </div>
     </div>
 
 
 </div>
 
-<footer>
-    <div class="footer-content">
-        <h3><b>Composting</b></h3>
-        <p>You can also find us on our social media!</p>
-        <ul class="socials">
-            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-        </ul>
-    </div>
-    <div class="footer-bottom">
-        <p>copyright &copy;2022 composting</p>
-    </div>
-</footer>
+<?php include("../php/footer.php") ?>
 
 <script>
     let btn_forum_filter = document.querySelector('.btn-forum-filter');
@@ -298,5 +167,6 @@
 
 </script>
 <script type="text/javascript" src="../javascript/script.js"></script>
+<script type="text/javascript" src="../javascript/forum.js"></script>
 </body>
 </html>
