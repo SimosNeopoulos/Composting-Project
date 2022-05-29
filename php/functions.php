@@ -504,7 +504,7 @@ function createPost($conn, $userId, $body, $tags) {
 
 
 function getPostsFromDB($conn){
-    $getPostsQuery = "SELECT * FROM post";
+    $getPostsQuery = "SELECT * FROM post ORDER BY post_date DESC";
     $result = mysqli_query($conn, $getPostsQuery);
    
    return $result;
