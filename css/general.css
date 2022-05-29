@@ -724,9 +724,6 @@ footer{
     .form-container {
         width: 90%;
     }
-    .container-height {
-        height: 500px;
-    }
 }
 
 @media (max-device-width: 335px) {
