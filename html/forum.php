@@ -11,8 +11,8 @@ if(isset($_POST['posting'])){
 }
 
 if(isset($_POST['saveComment'])){
-    
-    addComment($conn, 1 , $_POST['newComment'], $_SESSION['userId']);
+    echo $_POST['post_id'];
+    addComment($conn, $_POST['post_id'], $_POST['newComment'], $_SESSION['userId']);
 }
 ?>
 
@@ -97,25 +97,25 @@ if(isset($_POST['saveComment'])){
             <?php         
             $result= getPostsFromDB($conn);
             while($row = mysqli_fetch_array($result)){
-               
-                echo '<ul id="posts" class="posts">
+            ?> 
+             
+            <ul id="posts" class="posts">
                 <li class="post">
                 <div class="post-top">
                     <div class="post-pic-container">
-                        <img class="post-pic" src="' . getUserImage($conn, $row['id_user']).'" alt="poster profile picture">
+                        <img class="post-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>" alt="poster profile picture">
                     </div>
-                    <b class="user">'.getUserNameByID($conn, $row['id_user']).'</b>
+                    <b class="user"><?php echo getUserNameByID($conn, $row['id_user']); ?></b>
                 </div>
                 <div class="post-body">
-                    <p class="paragraph">' .  $row['body'] .'
-                    </p>
+                    <p class="paragraph"><?php echo $row['body']; ?> </p>
                 </div>
                 <div class="post-answers">
                     <ul class="comment-section">
                         <li>
                             <div class="comment-user-container">
                                 <div class="comment-pic-container">
-                                    <img class="comment-pic" src="'.  getUserImage($conn, $row['id_user']).'"
+                                    <img class="comment-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>"
                                          alt="commenter profile picture">
                                 </div>
                                 <b class="user-commenting">Όνομα σχολιαστή #1</b>
@@ -129,19 +129,18 @@ if(isset($_POST['saveComment'])){
                     
                     <div class="add-comment">
                     <div class="my-pic-container">
-                        <img class="my-pic" src="'.getUserImage($conn, $row['id_user']).'" alt="my comment profile picture">
+                        <img class="my-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>" alt="my comment profile picture">
                     </div>
                     <form method="post" action="#">
-                        <input type="text" name="newComment" class="my-comment" placeholder="Πρόσθεσε σχόλιο">
+                        <input type="text" name="newComment" class="my-comment" placeholder="Πρόσθεσε σχόλιο"> 
                         <input type="submit" name="saveComment" value="Αποθήκευση σχολίου">
                     </form>
                    
                </div>
            </div>
        </li>
-   </ul> ';  
-            }
-            ?>
+   </ul> 
+    <?php  } ?>
 
                
             
