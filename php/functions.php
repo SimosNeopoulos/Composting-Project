@@ -4,6 +4,7 @@ include("../php/classes.php");
 session_start();
 include("../php/connect.php");
 
+
 /********** LOG IN / SIGN UP VERIFICATION **********/
 
 /**
@@ -87,8 +88,10 @@ function signUp($conn, $username, $email, $city, $password, $telephone) {
  *                          created successfully and false if there was a problem
  *                          with the creation of the user
  */
+
 function addAccountToDB($conn, $username, $email, $city, $password, $telephone) {
     $sql_query = "INSERT INTO user(username, email, city, password, telephone, imgpath) VALUES ('$username', '$email', '$city', '$password','$telephone', '../images/profile-circle.png')";
+
     if(mysqli_query($conn, $sql_query)) {
         $id = mysqli_insert_id($conn);
         $user = new User($id, $username, $email, $city, $password, $telephone);
@@ -145,7 +148,11 @@ function logIn($user, $conn) {
     $_SESSION["city"] = $user->getAddress();
     $_SESSION["password"] = $user->getPassword();
     $_SESSION["telephone"] = $user->getTelephone();
-
+   
+    $isAdnim ="SELECT is_admin FROM user WHERE username='" .$_SESSION['username']. "'";
+    $fetchIsAdmin = mysqli_query($conn, $isAdnim);
+    $row = mysqli_fetch_array($fetchIsAdmin);
+    $_SESSION["isAdnim"] = $row['is_admin'];
     $getImg = "SELECT imgpath FROM user WHERE username='" .$_SESSION['username']. "'";
     $dataFetch = mysqli_query($conn, $getImg);
     $row = mysqli_fetch_array($dataFetch);
@@ -689,6 +696,19 @@ function deleteFriend($conn, $userId, $friendName) {
     $sql_query = "DELETE FROM friend WHERE user_id = '$userId' AND username = '$friendName'";
     if(mysqli_query($conn, $sql_query))
         return true;
+    return false;
+}
+
+function deleteUserFromDB($conn, $username){
+   
+    $delete_query = "DELETE FROM user WHERE username= '$username'";
+    
+    if(mysqli_query($conn,  $delete_query)){
+      
+        return true;
+      
+    }
+    
     return false;
 }
 

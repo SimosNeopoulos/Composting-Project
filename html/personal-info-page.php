@@ -1,7 +1,7 @@
 <?php
     include("../php/functions.php");  
     
- 
+    
 
     if(isset($_POST['upload-pic'])){
 
@@ -41,6 +41,15 @@
        
     }
 
+    if(isset($_POST['deleteUser'])){
+        echo 'post is working';
+        if(deleteUserFromDB($conn, $_SESSION['username'])){
+            //TODO να μην εμφανιζονται πλεον τα στοιχεια του χρηστη!
+            header("Location:../html/homepage.php");
+        }
+        
+    }
+
     
 ?>
 
@@ -55,13 +64,15 @@
     <link rel="shortcut icon" href="../images/composting200.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Composting!</title>
-    
+
+
+   
 </head>
 <body>
 
 <?php
     require("../php/header.php");
-    
+       
 ?>
 
 <div class="container">
@@ -89,6 +100,9 @@
 
         <div class="title">
             <h1 id="profile-header">Καλωσόρισες στο προφίλ σου!</h1>
+            <form id="delete-form" method="post" action="#"> 
+                <input id="delete-user" name="deleteUser" type="submit" name="delete-user" value="">
+            </form>
         </div>
 
         <form method='post' action="#" >
@@ -131,14 +145,14 @@
         </form>
         
 
-        <div class="links-container">
+        <div class="links-container" style="display:block;">
             <div class="links">
                 <img class="link-icons" src="../images/save_icon.png" alt="Posts!">
-                <a class="posts" href=""> Τα ποστ μου</a>
+                <a class="posts" href=""> Οι φίλοι μου</a>
             </div>
             <div class="links">
                 <img class="link-icons" src="../images/push_pin.png" alt="Saved!">
-                <a class="posts" href="">Αποθηκευμένα ποστ</a>
+                <a class="posts" href="">Τα ποστ μου</a>
             </div>
             <div class="links">
                 <img class="link-icons" src="../images/logout-icon.png" alt="Logout!">
@@ -151,8 +165,13 @@
 
 <?php include("../php/footer.php") ?>
 
+<?php
+if(!$_SESSION['isAdnim']){
+    echo '<script type="text/javascript" src="../javascript/manipulate-content.js"></script>';
+}
 
-<script type="text/javascript" src="../javascript/script.js"></script>
+?>
+<!-- <script type="text/javascript" src="../javascript/script.js"></script> -->
 <script type="text/javascript" src="../javascript/personal-info.js"></script>
 
 </body>
