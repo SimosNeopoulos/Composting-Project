@@ -4,6 +4,7 @@ include("../php/classes.php");
 session_start();
 include("../php/connect.php");
 
+
 /********** LOG IN / SIGN UP VERIFICATION **********/
 
 /**
@@ -88,7 +89,7 @@ function signUp($conn, $username, $email, $address, $password, $telephone) {
  *                          with the creation of the user
  */
 function addAccountToDB($conn, $username, $email, $address, $password, $telephone) {
-    $sql_query = "INSERT INTO user(username, email, address, password, telephone, imgpath) VALUES ('$username', '$email', '$address', '$password','$telephone', '../images/profile-circle.png')";
+    $sql_query = "INSERT INTO user(username, email, city, password, telephone, imgpath) VALUES ('$username', '$email', '$address', '$password','$telephone', '../images/profile-circle.png')";
     if(mysqli_query($conn, $sql_query)) {
         $id = mysqli_insert_id($conn);
         $user = new User($id, $username, $email, $address, $password, $telephone);
@@ -126,7 +127,7 @@ function authenticate($conn, $email, $password) {
     if($rows < 1 || $data["password"] != $password) {
         return false;
     }
-    $user = new User($data["id"], $data["username"], $data["email"], $data["address"], $data["password"], $data["telephone"]);
+    $user = new User($data["id"], $data["username"], $data["email"], $data["city"], $data["password"], $data["telephone"]);
     return logIn($user, $conn);
 }
 
@@ -144,7 +145,11 @@ function logIn($user, $conn) {
     $_SESSION["address"] = $user->getAddress();
     $_SESSION["password"] = $user->getPassword();
     $_SESSION["telephone"] = $user->getTelephone();
-
+   
+    $isAdnim ="SELECT is_admin FROM user WHERE username='" .$_SESSION['username']. "'";
+    $fetchIsAdmin = mysqli_query($conn, $isAdnim);
+    $row = mysqli_fetch_array($fetchIsAdmin);
+    $_SESSION["isAdnim"] = $row['is_admin'];
     $getImg = "SELECT imgpath FROM user WHERE username='" .$_SESSION['username']. "'";
     $dataFetch = mysqli_query($conn, $getImg);
     $row = mysqli_fetch_array($dataFetch);
@@ -647,15 +652,15 @@ function deleteFriend($conn, $userId, $friendName) {
 }
 
 function deleteUserFromDB($conn, $username){
-    echo 'inside deleteuser';
-    $delete_query = "DELETE FROM users WHERE username= '$username'";
-    echo 'after deletequery';
+   
+    $delete_query = "DELETE FROM user WHERE username= '$username'";
+    
     if(mysqli_query($conn,  $delete_query)){
-        echo 'userdeleted';
+      
         return true;
-        echo 'userdeleted';
+      
     }
-    echo 'i faild :(';
+    
     return false;
 }
 
