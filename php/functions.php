@@ -315,7 +315,27 @@ function getPostsWithTag($conn, $tags, $numberOfPosts=30) {
  */
 function getTagsId($conn, $tags) {
     $where_query = getArrayWhereStatment($tags, "tag_name");
-    $sql_query = "SELECT id FROM tag WHERE $where_query";
+    $sql_query = "SELECT id_tag FROM tag WHERE $where_query";
+    $result = mysqli_query($conn, $sql_query);
+    $rows = mysqli_num_rows($result);
+    
+    if($rows < 1) {
+        return false;
+    }
+    return $result;
+}
+
+/**
+ * This function is used to get the ids of the tags inside the $tags array
+ * 
+ * 
+ * @param mysqli  $conn     the connection to the serever
+ * 
+ * @return mixed            returns an associated array with the names from all the tags
+ *                          or false if there were no results;
+ */
+function getAllTags($conn) {
+    $sql_query = "SELECT tag_name FROM tag ORDER BY tag_name";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     
@@ -513,7 +533,7 @@ function getUserId($conn, $username) {
  * 
  * @return boolean          returns true if the post was created successfully or false if there was an error 
  */
-function createPost($conn, $userId, $body, $tags) {
+function createPost($conn, $userId, $body, $tags=null) {
     $post_date = date('Y-m-d H:i:s');
     if(!$post_date) {
         return false;
@@ -522,17 +542,23 @@ function createPost($conn, $userId, $body, $tags) {
     if(!mysqli_query($conn, $sql_query)) {
         return false;
     }
-    // $id = mysqli_insert_id($conn);
-    // return addTagsToPost($conn, $id, $tags);
-    return true;
+    if($tags === null)
+        return true;
+    $id = mysqli_insert_id($conn);
+    return addTagsToPost($conn, $id, $tags);
 }
 
 
 function getPostsFromDB($conn){
     $getPostsQuery = "SELECT * FROM post ORDER BY post_date DESC";
     $result = mysqli_query($conn, $getPostsQuery);
-   
-   return $result;
+    $rows = mysqli_num_rows($result);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    if($rows < 1) {
+        return false;
+    }
+    return $data;
 }
 
 function  getUserImage($conn, $idUser){
@@ -568,7 +594,7 @@ function addTagsToPost($conn, $post_id, $tags) {
     }
 
     while ($row = mysqli_fetch_assoc($result)) {
-        $tag_id = $row['id'];
+        $tag_id = $row['id_tag'];
         $sql_query = "INSERT INTO post_has_tags(post_id, tag_id) VALUES ('$post_id', '$tag_id')";
         mysqli_query($conn, $sql_query);
     }

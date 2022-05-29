@@ -5,7 +5,8 @@ include('../php/functions.php');
 
 
 if(isset($_POST['posting'])){
-    createPost($conn, $_SESSION['userId'], $_POST['new-post'], $_POST['tags']);
+    $associate_tags = explode(" ", $_POST['tags']);
+    createPost($conn, $_SESSION['userId'], $_POST['new-post'], $associate_tags);
     $_POST = array();
     
 }
@@ -26,8 +27,6 @@ if(isset($_POST['saveComment'])){
     <title>Forum</title>
 </head>
 <body>
-<!-- <header id="page-header"></header>
-<script defer src="../javascript/header.js"></script> -->
 <?php
     require('../php/header.php');
 ?>
@@ -53,6 +52,16 @@ if(isset($_POST['saveComment'])){
         <div class="popular-tags">
             <b class="tag-title">Δημοφιλείς ετικέτες</b>
             <ul class="tag-list">
+                <?php
+                    $tags = getAllTags($conn);
+                    if($tags):
+                        foreach ($tags as $tag):
+                ?>
+                <li><a href="#">#<?php echo $tag["tag_name"]; ?></a></li>
+                <?php 
+                        endforeach;
+                    endif;
+                ?>
             </ul>
         </div>
     </div>
@@ -72,16 +81,18 @@ if(isset($_POST['saveComment'])){
             </div>
             <div class="forum-search">
                 <table class="elementsContainerForum">
+                    <form method="post" action="#">
                     <tr>
                         <td>
-                            <input class="searchForum" placeholder="Αναζήτηση στο forum">
+                            <input class="searchForum" name="search-tags" placeholder="Αναζήτηση στο forum">
                         </td>
                         <td>
-                            <button type="submit" class="searchIconForum"><img src="../images/search-icon.png"
+                            <button type="submit" name="search-for-tags" class="searchIconForum"><img src="../images/search-icon.png"
                                                                                alt="search icon">
                             </button>
                         </td>
                     </tr>
+                    </form>
                 </table>
             </div>
         </div>
@@ -94,33 +105,39 @@ if(isset($_POST['saveComment'])){
                 </form>
             </div>
             
-            <?php         
-            $result = getPostsFromDB($conn);
-            while($row = mysqli_fetch_array($result)){
+            <?php
+            if(isset($_POST["search-tags"])){
+                $tags_array = explode(" ", $_POST["search-tags"]);
+                $posts = getPostsWithTag($conn, $tags_array);
+            } else {
+                $posts = getPostsFromDB($conn);
+            }
+            if($posts):
+                foreach($posts as $post):
             ?> 
              
             <ul id="posts" class="posts">
                 <li class="post">
                 <div class="post-top">
                     <div class="post-pic-container">
-                        <img class="post-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>" alt="poster profile picture">
+                        <img class="post-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>" alt="poster profile picture">
                     </div>
-                    <b class="user"><?php echo getUserNameByID($conn, $row['id_user']); ?></b>
+                    <b class="user"><?php echo getUserNameByID($conn, $post['id_user']); ?></b>
                 </div>
                 <div class="post-body">
-                    <p class="paragraph"><?php echo $row['body']; ?> </p>
+                    <p class="paragraph"><?php echo $post['body']; ?> </p>
                 </div>
                 <div class="post-answers">
                     <ul class="comment-section">
                         <?php 
-                        $comments = getCommentsForPost($conn, $row['id']);
+                        $comments = getCommentsForPost($conn, $post['id']);
                         if($comments):
                             foreach ($comments as $comment):
                         ?>
                         <li>
                             <div class="comment-user-container">
                                 <div class="comment-pic-container">
-                                    <img class="comment-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>"
+                                    <img class="comment-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>"
                                          alt="commenter profile picture">
                                 </div>
                                 <b class="user-commenting"><?php echo $comment['comment_author'] ?></b>
@@ -138,11 +155,11 @@ if(isset($_POST['saveComment'])){
                     
                     <div class="add-comment">
                     <div class="my-pic-container">
-                        <img class="my-pic" src="<?php echo getUserImage($conn, $row['id_user']); ?>" alt="my comment profile picture">
+                        <img class="my-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>" alt="my comment profile picture">
                     </div>
                     <form method="post" action="forum.php">
                         <input type="text" name="newComment" class="my-comment" placeholder="Πρόσθεσε σχόλιο"> 
-                        <input type="hidden" name="id-value" class="id-value" value="<?php echo $row["id"] ?>"> 
+                        <input type="hidden" name="id-value" class="id-value" value="<?php echo $post["id"] ?>"> 
                         <input type="submit" name="saveComment" value="Αποθήκευση σχολίου">
                     </form>
                    
@@ -150,10 +167,10 @@ if(isset($_POST['saveComment'])){
            </div>
        </li>
    </ul> 
-    <?php  } 
-    
-    mysqli_free_result($result);
-    mysqli_close($conn)?>
+    <?php 
+            endforeach;
+        endif;
+    ?>
 
                
             
