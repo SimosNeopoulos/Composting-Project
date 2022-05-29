@@ -46,6 +46,7 @@ do {
     <link rel="stylesheet" href="../css/general.css">
     <title>Composting Sign Up</title>
     <link rel="shortcut icon" href="../images/composting200.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -77,6 +78,7 @@ do {
 
         <div class="input-field">
             <input type="password" name="password" placeholder=" " id="sign-up-password" required>
+            <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggleSignup()"></i>
             <span></span>
             <label for="sign-up-password">Κωδικός</label>
         </div>

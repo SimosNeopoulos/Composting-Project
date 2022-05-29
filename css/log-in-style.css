@@ -24,6 +24,19 @@ form .input-field{
     margin: 55px 0;
 }
 
+.fa {
+    position: absolute;
+    right: 17px;
+    transform: transalte(0, -50%);
+    top: 30%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+#log-in-password {
+    width: 89%;
+}
+
 @media(max-device-width: 900px) {
     form .input-field{
         margin: 35px 0;

@@ -81,3 +81,27 @@ function nameVerification(username) {
 function passwordVerification(password) {
     return /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/.test(password);
 }
+
+/**************** PASSWORD VISIBILITY ****************/
+
+var state = false
+function toggleLogin() {
+    if(state) {
+        document.getElementById("log-in-password").setAttribute("type", "password");
+        state = false;
+    } else {
+        document.getElementById("log-in-password").setAttribute("type", "text");
+        state = true;
+    }
+}
+
+var state2 = false
+function toggleSignup() {
+    if(state2) {
+        document.getElementById("sign-up-password").setAttribute("type", "password");
+        state2 = false;
+    } else {
+        document.getElementById("sign-up-password").setAttribute("type", "text");
+        state2 = true;
+    }
+}

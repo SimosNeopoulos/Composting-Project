@@ -40,6 +40,7 @@ do{
     <link rel="stylesheet" href="../css/general.css">
     <title>Composting Log In</title>
     <link rel="shortcut icon" href="../images/composting200.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
 <!------------ HEADER ------------->
@@ -59,6 +60,7 @@ do{
 
         <div class="input-field">
             <input type="password" name="password" placeholder=" " id="log-in-password" required>
+            <i class="fa fa-eye" aria-hidden="true" id="eye" onclick="toggleLogin()"></i>
             <span></span>
             <label for="log-in-password">Κωδικός</label>
         </div>

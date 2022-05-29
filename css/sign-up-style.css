@@ -18,6 +18,19 @@ form .input-field{
     margin: 44px 0;
 }
 
+.fa {
+    position: absolute;
+    right: 10px;
+    transform: transalte(0, -50%);
+    top: 35%;
+    cursor: pointer;
+    font-size: 50px;
+}
+
+#sign-up-password {
+    width: 90%;
+}
+
 @media (max-device-width: 900px) {
     form .input-field{
         margin: 11% 0;
