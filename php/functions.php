@@ -361,7 +361,8 @@ function isFriendsWith($conn, $userId, $friendName) {
 function findFriends($conn, $userId, $friendName) {
     $sql_query = "SELECT * 
                   FROM friend 
-                  WHERE user_id = '$userId' AND username LIKE '%$friendName%'";
+                  WHERE user_id = '$userId' AND username LIKE '%$friendName%'
+                  ORDER BY username";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -387,7 +388,8 @@ function findFriends($conn, $userId, $friendName) {
 function findUsers($conn, $username) {
     $sql_query = "SELECT * 
                   FROM user 
-                  WHERE username LIKE '%$username%'";
+                  WHERE username LIKE '%$username%'
+                  ORDER BY username ";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -411,7 +413,8 @@ function findUsers($conn, $username) {
 function findUsersFromArea($conn, $area) {
     $sql_query = "SELECT * 
                   FROM user 
-                  WHERE city = '$area'";
+                  WHERE city = '$area'
+                  ORDER BY username ";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
     $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
