@@ -11,7 +11,7 @@
 
             $target_file = $target_dir.basename($_FILES["pic"]["name"]);
             move_uploaded_file($_FILES['pic']['tmp_name'], $target_file);
-            $upadteImgpath = "UPDATE users SET imgpath= '../images/usrimages/" .$_FILES['pic']['name']. "' WHERE username='" .$_SESSION['username']."' ";
+            $upadteImgpath = "UPDATE user SET imgpath= '../images/usrimages/" .$_FILES['pic']['name']. "' WHERE username='" .$_SESSION['username']."' ";
 
             if(mysqli_query($conn, $upadteImgpath)){
                 
@@ -26,7 +26,7 @@
 
     if(isset($_POST['save-button'])){
                 
-        $update = "UPDATE users SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , address= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_SESSION['username']."' ";
+        $update = "UPDATE user SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , city= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_SESSION['username']."' ";
         
         if(mysqli_query($conn, $update)){
             $_SESSION['username']=$_POST['username'];

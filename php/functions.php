@@ -139,6 +139,7 @@ function authenticate($conn, $email, $password) {
  */
 function logIn($user, $conn) {
     $_SESSION["user"] = $user;
+    $_SESSION["userId"] = $user->getId();
     $_SESSION["username"] = $user->getUsername();
     $_SESSION["email"] = $user->getEmail();
     $_SESSION["city"] = $user->getAddress();
@@ -496,9 +497,33 @@ function createPost($conn, $userId, $body, $tags) {
     if(!mysqli_query($conn, $sql_query)) {
         return false;
     }
-    $id = mysqli_insert_id($conn);
-    return addTagsToPost($conn, $id, $tags);
+    // $id = mysqli_insert_id($conn);
+    // return addTagsToPost($conn, $id, $tags);
+    return true;
 }
+
+
+function getPostsFromDB($conn){
+    $getPostsQuery = "SELECT * FROM post";
+    $result = mysqli_query($conn, $getPostsQuery);
+   
+   return $result;
+}
+
+function  getUserImage($conn, $idUser){
+    $findUsrImgQuery = "SELECT imgpath FROM user WHERE id= $idUser ";
+    $result = mysqli_query($conn, $findUsrImgQuery);
+    $row = mysqli_fetch_array($result);
+    return $row['imgpath'];
+}
+
+function getUsernameByID($conn, $id){
+    $getUsrnmQuery = "SELECT username FROM user WHERE id= $id";
+    $result = mysqli_query($conn, $getUsrnmQuery);
+    $row = mysqli_fetch_array($result);
+    return $row['username'];
+}
+
 
 /**
  * A creates an association with the tags and a post in the database
@@ -560,8 +585,11 @@ function addComment($conn, $posts_id, $body, $commentAuthor) {
     }
     $sql_query = "INSERT INTO comment(post_id, body, comment_author, post_date) VALUES ('$posts_id', '$body', '$commentAuthor', '$post_date')";
     if(!mysqli_query($conn, $sql_query)) {
+        echo'kati den phge kala!';
         return false;
+
     }
+    echo 'h doyleia egine';
     return true;
 }
 
