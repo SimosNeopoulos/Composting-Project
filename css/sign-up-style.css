@@ -82,18 +82,9 @@ form .input-field{
     }
 }
 
-@media(max-width: 500px) {
-
-    .sign-up-text {
-        font-size: .9rem;
-    }
-
-    .sign-up-text {
-        margin: 30px 0;
-    }
-
-    .input-field {
-        font-size: 200px;
+@media(max-width: 305px) {
+    .log-in-text {
+        font-size: 13px;
     }
 }
 
