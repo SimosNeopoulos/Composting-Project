@@ -51,5 +51,5 @@ if (isset($_POST["submit-btn"])) {
 
 } else {
     // μπηκαν με λαθος τροπο
-    header("Location:../html/homepage.php");
+    header("Location:../html/index.php");
 }
