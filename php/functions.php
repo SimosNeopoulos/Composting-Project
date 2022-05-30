@@ -414,6 +414,14 @@ function getAllFriends($conn, $userId) {
 }
 
 /**
+ * 
+ */
+function getImagePath($conn, $username) {
+    $id = getUserId($conn, $username);
+    return getUserImage($conn, $id);
+}
+
+/**
  * A function that finds and returns all the users, whose usernames 
  * have a substring equal to $username
  * 

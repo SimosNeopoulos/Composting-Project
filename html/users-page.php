@@ -69,16 +69,18 @@ include('../php/functions.php');
             </div>
         </div>
          <div class="forum-posts">
-             <?php if(isset($_POST['user-search'])){
+             <?php $showFriends = false;
+              if(isset($_POST['user-search'])){
                 $users = findUsers($conn, $_POST['user-search']);
              }else{
+                $showFriends = true;
                 $users = getAllFriends($conn, $_SESSION['userId']);
              }
                 if($users):
                     foreach($users as $user ):
                 ?>
                 <div class="userProfile">
-                    <img class="post-pic" src="<?php echo $user['imgpath']; ?>">
+                    <img class="post-pic" src="<?php echo $showFriends ? getImagePath($conn, $user['username']) : $user['imgpath']; ?>">
                     <a id="username" href="../html/personal-info-page.php?username=<?php echo $user['username']; ?>"> <?php echo $user['username']; ?></a>
                 </div>
                 <?php
