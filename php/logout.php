@@ -2,7 +2,7 @@
 
 session_start();
 unset($_SESSION);
-header("Location:../html/homepage.php");
+header("Location:../html/index.php");
 session_destroy();
 
 ?>

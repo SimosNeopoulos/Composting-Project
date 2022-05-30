@@ -29,7 +29,7 @@ do {
         // Adding the user data to the database and signing them in the site
         if(signUp($conn, $_POST["username"], $_POST["email"], $_POST["address"], $_POST["password"], $_POST["telephone"])) {
             mysqli_close($conn);
-            header('Location: ../html/homepage.php');
+            header('Location: ../html/index.php');
         } else {
             $serverError = true;
         }

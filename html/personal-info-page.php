@@ -34,11 +34,10 @@
         
         if(mysqli_query($conn, $update)){
             
-            // $_SESSION['username']=$_POST['username'];
-            // $_SESSION['email']=$_POST['email'];
-            // $_SESSION['address']=$_POST['address'];
-            // $_SESSION['password']=$_POST['password'];
-            // $_SESSION['telephone']=$_POST['telephone'];
+            if($_SESSION['isAdnim']){
+               echo 'ston admin mpainei';
+            }
+            
             header("Location: personal-info-page.php");
             exit();
         }else{
@@ -52,7 +51,7 @@
         
         if(deleteUserFromDB($conn, $_POST['deleteUser'])){
          
-            header("Location:../html/homepage.php");
+            header("Location:../html/index.php");
         }
         
     }
@@ -162,7 +161,7 @@
 
 
             <div class="save-button">
-                <button id="save" type="submit" name="save-button" >
+                <button id="save" type="submit" name="save-button" value="<?php echo $user[0]['username']; ?> ">
                     Αποθηκευση!
                 </button>
                     
