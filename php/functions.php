@@ -304,6 +304,32 @@ function getPostsWithTag($conn, $tags, $numberOfPosts=30) {
 }
 
 /**
+ * This function returns an associated array with the data from all 
+ * the posts that have one or more of the tags in the array
+ * 
+ * 
+ * @param mysqli  $conn        the connection to the serever
+ * @param integer $post_id     the id of a post
+ * 
+ * @return mixed            returns an associated array with the tag_names from all the
+ *                          tags from a post whose id is equal to $post_id
+ */
+function getTagsFromPost($conn, $post_id) {
+    $sql_query = "SELECT tag_name 
+                  FROM post, post_has_tags, tag
+                  WHERE $post_id = post_id
+                  AND tag_id = id_tag";
+    $result = mysqli_query($conn, $sql_query);
+    $rows = mysqli_num_rows($result);
+    $data = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    mysqli_free_result($result);
+    if($rows < 1) {
+        return false;
+    }
+    return $data;
+}
+
+/**
  * This function is used to get the ids of the tags inside the $tags array
  * 
  * 
