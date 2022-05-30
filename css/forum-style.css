@@ -287,6 +287,20 @@ body{
     flex: 9;
 }
 
+#delete-user{
+    background-color: #7BB79D;
+    padding: 2%;
+    border-radius: 100%;
+    border: solid #801515;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    align-self: center;
+    background-image: url("../images/delete-icon.png");
+    background-size: cover;
+    min-width: 40px;
+    height: 40px;
+    background-position: center;
+}
+
 .post-body{
     background: white;
     padding: 2%;

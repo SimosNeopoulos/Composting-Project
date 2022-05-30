@@ -71,6 +71,8 @@ include('../php/functions.php');
          <div class="forum-posts">
              <?php if(isset($_POST['user-search'])){
                 $users = findUsers($conn, $_POST['user-search']);
+             }else{
+                //  $users = findFriends($conn, $_SESSION['userId'], 'maria');
              }
                 if($users):
                     foreach($users as $user ):

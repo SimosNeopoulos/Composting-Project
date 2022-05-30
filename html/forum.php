@@ -14,6 +14,10 @@ if(isset($_POST['posting'])){
 if(isset($_POST['saveComment'])){
     addComment($conn, $_POST['id-value'], $_POST['newComment'], $_SESSION['username']);
 }   
+
+if(isset($_POST['deletePost'])){
+    deletePost($conn, $_POST['deletePost']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -125,8 +129,17 @@ if(isset($_POST['saveComment'])){
                     <div class="post-top">
                         <div class="post-pic-container">
                         <img class="post-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>" alt="poster profile picture">
+                        <?php
+                            if($_SESSION['isAdnim']):
+                        ?>
+                        <form method='post' action='#'> 
+                        <input id="delete-user" name="deletePost" type="submit" name="delete-Post" value="<?php echo $post["id"] ?>">
+                        </form>
+                        <?php 
+                        endif;
+                        ?>
                         </div>
-                        <b class="user"><?php echo getUserNameByID($conn, $post['id_user']); ?></b>
+                        <b class="user"><?php echo getUserNameByID($conn, $post['id_user']); ?></b> 
                     </div>
                     <div class="post-body">
                     <p class="paragraph"><?php echo $post['body']; ?> </p>
