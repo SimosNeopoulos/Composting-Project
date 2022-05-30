@@ -29,14 +29,17 @@
             $update = "UPDATE user SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , city= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_GET['username']."' ";
         }else{
             $update = "UPDATE user SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , city= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_SESSION['username']."' ";
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['email'] = $_POST['email'];
+            $_SESSION['city'] = $_POST['address'];
+            $_SESSION['password'] = $_POST['password'];
+            $_SESSION['telephone'] = $_POST['telephone'];
+
         }        
         
         
         if(mysqli_query($conn, $update)){
             
-            if($_SESSION['isAdnim']){
-               echo 'ston admin mpainei';
-            }
             
             header("Location: personal-info-page.php");
             exit();
