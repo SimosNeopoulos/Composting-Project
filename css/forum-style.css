@@ -6,6 +6,24 @@ body{
     color: #243e16;
 
 }
+#username{
+    align-self: center;
+    text-decoration: none;
+    font-size: large;
+}
+.userProfile{
+    width: 70%;
+    align-self: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: rgb(209, 243, 175);
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.45);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 3%;
+    margin: 5%;
+}
 .forum-body{
     display: flex;
     width: 100%;

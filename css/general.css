@@ -342,6 +342,7 @@ footer{
     background-color: #a5d2a4;
     width: 100%;
     color: #fff;
+    bottom: 0;
 }
 .footer-content{
     display: flex;
