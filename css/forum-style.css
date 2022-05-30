@@ -344,6 +344,7 @@ body{
 }
 input[name="newComment"]{
     width: 100%;
+    height: 40px;
     border: 2px solid rgba(36, 62, 22, 0.7);
     border-radius: 5px;
     font-size: 13px;
@@ -352,6 +353,29 @@ input[name="newComment"]{
     padding: 0 1%;
     outline: none;
 }
+input[name="new-post"]{
+    height: 100px;
+    width: 80%;
+    border: 2px solid rgba(36, 62, 22, 0.7);
+    border-radius: 5px;
+    font-size: 13px;
+    margin: 2%;
+    color: #243e16;
+    padding: 0 1%;
+    outline: none;
+}
+
+input[name="tags"]{
+    width: 80%;
+    border: 2px solid rgba(36, 62, 22, 0.7);
+    border-radius: 5px;
+    font-size: 13px;
+    margin: 2%;
+    color: #243e16;
+    padding: 0 1%;
+    outline: none;
+}
+
 input::placeholder[name="newComment"]{
     font-weight: bold;
     color: rgba(36, 62, 22, 0.7);
@@ -361,8 +385,9 @@ input::placeholder[name="newComment"]{
     margin: 0.5% 0 0 0;
     font-size: 12px;
 }
-input[type="submit"]{
+input[name="saveComment"]{
     cursor: pointer;
+    height: 50px;
     background: #236f21;
     border: 0;
     padding: 10px 15px;
@@ -373,7 +398,7 @@ input[type="submit"]{
     text-transform: uppercase;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.45);
 }
-input[type="submit"]:hover{
+input[name="saveComment"]:hover{
     background: rgba(68, 68, 68, 0.2);
     color: #236f21;
 }
@@ -388,4 +413,12 @@ input[type="submit"]:hover{
 .form-container form{
     padding: 0;
     display: flex;
+}
+
+.add-post{
+    display: block;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.45);
+    background: rgba(165, 210, 164, 0.6);
+    padding: 1%;
+    border-radius: 10px;
 }

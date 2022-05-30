@@ -109,8 +109,8 @@ if(isset($_POST['deleteComment'])){
          <div class="forum-posts">
             <div class="add-post">
                 <form method="post" action="#">
-                    <input type="text" name="new-post">
-                    <input type="text" name="tags">
+                    <input type="text" name="new-post" placeholder="Πληκτρολόγησε εδώ την δημοσίευση σου">
+                    <input type="text" name="tags" placeholder="Πρόσθεσε ετικέτες">
                     <input type="submit" name="posting" value="Δημοσιευσε">
                 </form>
             </div>
