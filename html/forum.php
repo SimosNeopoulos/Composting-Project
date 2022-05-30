@@ -1,7 +1,6 @@
 <?php
 include('../php/functions.php');
 
-// getPostsFromDB($conn);
 
 
 if(isset($_POST['posting'])){
@@ -13,7 +12,7 @@ if(isset($_POST['posting'])){
 if(isset($_POST['saveComment'])){
     echo $_POST['id-value'];
     addComment($conn, $_POST['id-value'], $_POST['newComment'], $_SESSION['username']);
-}
+}   
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +25,7 @@ if(isset($_POST['saveComment'])){
     <title>Forum</title>
 </head>
 <body>
-<!-- <header id="page-header"></header>
-<script defer src="../javascript/header.js"></script> -->
+
 <?php
     require('../php/header.php');
 ?>
@@ -85,7 +83,7 @@ if(isset($_POST['saveComment'])){
                 </table>
             </div>
         </div>
-        <div class="forum-posts">
+         <div class="forum-posts">
             <div class="add-post">
                 <form method="post" action="#">
                     <input type="text" name="new-post">
@@ -95,8 +93,8 @@ if(isset($_POST['saveComment'])){
             </div>
             
             <?php         
-            $result= getPostsFromDB($conn);
-            while($row = mysqli_fetch_array($result)){
+                $result= getPostsFromDB($conn);
+                while($row = mysqli_fetch_array($result)){
             ?> 
              
             <ul id="posts" class="posts">
@@ -142,13 +140,19 @@ if(isset($_POST['saveComment'])){
        </li>
    </ul> 
     <?php  } ?>
-
-               
             
-
+               
+    <!-- <?php 
+       // if(isset($_GET['myPosts'])){
+        //    echo 'malakes mpainei re';
+       //     inqlude('../html/my-posts.php');
+       // }
+        
+    
+    ?> -->
                          
         
-        </div>
+        </div> 
     </div>
 
 

@@ -1,7 +1,7 @@
 <?php
     include("../php/functions.php");  
     
-    
+ 
 
     if(isset($_POST['upload-pic'])){
 
@@ -11,7 +11,7 @@
 
             $target_file = $target_dir.basename($_FILES["pic"]["name"]);
             move_uploaded_file($_FILES['pic']['tmp_name'], $target_file);
-            $upadteImgpath = "UPDATE user SET imgpath= '../images/usrimages/" .$_FILES['pic']['name']. "' WHERE username='" .$_SESSION['username']."' ";
+            $upadteImgpath = "UPDATE users SET imgpath= '../images/usrimages/" .$_FILES['pic']['name']. "' WHERE username='" .$_SESSION['username']."' ";
 
             if(mysqli_query($conn, $upadteImgpath)){
                 
@@ -26,7 +26,7 @@
 
     if(isset($_POST['save-button'])){
                 
-        $update = "UPDATE user SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , city= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_SESSION['username']."' ";
+        $update = "UPDATE users SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , address= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_SESSION['username']."' ";
         
         if(mysqli_query($conn, $update)){
             $_SESSION['username']=$_POST['username'];
@@ -39,15 +39,6 @@
         }
         
        
-    }
-
-    if(isset($_POST['deleteUser'])){
-        echo 'post is working';
-        if(deleteUserFromDB($conn, $_SESSION['username'])){
-            //TODO να μην εμφανιζονται πλεον τα στοιχεια του χρηστη!
-            header("Location:../html/homepage.php");
-        }
-        
     }
 
     
@@ -64,15 +55,13 @@
     <link rel="shortcut icon" href="../images/composting200.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Composting!</title>
-
-
-   
+    
 </head>
 <body>
 
 <?php
     require("../php/header.php");
-       
+    
 ?>
 
 <div class="container">
@@ -100,9 +89,7 @@
 
         <div class="title">
             <h1 id="profile-header">Καλωσόρισες στο προφίλ σου!</h1>
-            <form id="delete-form" method="post" action="#"> 
-                <input id="delete-user" name="deleteUser" type="submit" name="delete-user" value="">
-            </form>
+            <input id="delete-user" type="image" src="../images/delete-icon.png" name="delete-user" value="">
         </div>
 
         <form method='post' action="#" >
@@ -145,14 +132,14 @@
         </form>
         
 
-        <div class="links-container" style="display:block;">
+        <div class="links-container">
             <div class="links">
                 <img class="link-icons" src="../images/save_icon.png" alt="Posts!">
-                <a class="posts" href=""> Οι φίλοι μου</a>
+                <a class="posts" href=""> Επαφές</a>
             </div>
             <div class="links">
                 <img class="link-icons" src="../images/push_pin.png" alt="Saved!">
-                <a class="posts" href="">Τα ποστ μου</a>
+                <a class="posts" href="../html/forum.php?index.myPosts=true">Αποθηκευμένα ποστ</a>
             </div>
             <div class="links">
                 <img class="link-icons" src="../images/logout-icon.png" alt="Logout!">
@@ -163,17 +150,31 @@
     </div>
 </div>
 
-<?php include("../php/footer.php") ?>
+<footer>
+    <div class="footer-content">
+        <h3><b>Composting</b></h3>
+        <p>You can also find us on our social media!</p>
+        <ul class="socials">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2022 composting</p>
+    </div>
+</footer>
 
+
+<script type="text/javascript" src="../javascript/script.js"></script>
+<script type="text/javascript" src="../javascript/personal-info.js"></script>
 <?php
-if(!$_SESSION['isAdnim']){
-    echo '<script type="text/javascript" src="../javascript/manipulate-content.js"></script>';
-}
+    if(!$_SESSION['isAdnim']){
+        echo '<script type="text/javascript" src="../javascript/manipulate-content.js"></script>';
+    }
 
 ?>
-<!-- <script type="text/javascript" src="../javascript/script.js"></script> -->
-<script type="text/javascript" src="../javascript/personal-info.js"></script>
-
 </body>
 </html>
 
