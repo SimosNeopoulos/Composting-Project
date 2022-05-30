@@ -36,15 +36,17 @@
 
     <div class="search-box">
         <table class="elementsContainer">
-            <tr>
-                <td>
-                    <input type="text" class="search" placeholder="Search">
-                </td>
-                <td>
-                    <button type="submit" class="searchIcon"><img src="../images/search-icon.png" alt="search icon">
-                    </button>
-                </td>
-            </tr>
+            <form method="post" action="../html/users-page.php">
+                <tr>
+                    <td>
+                        <input type="text" name="user-search" class="search" placeholder="Search">
+                    </td>
+                    <td>
+                        <button type="submit" class="searchIcon"><img src="../images/search-icon.png" alt="search icon">
+                        </button>
+                    </td>
+                </tr>
+            </form>
         </table>
     </div>
 
