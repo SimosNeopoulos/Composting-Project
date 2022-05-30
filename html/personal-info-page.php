@@ -35,7 +35,13 @@
             $_SESSION['password'] = $_POST['password'];
             $_SESSION['telephone'] = $_POST['telephone'];
 
-        }        
+            $_SESSION['user']->setUsername($_POST['username']);
+            $_SESSION['user']->setEmail($_POST['email']);
+            $_SESSION['user']->setAddress($_POST['address']);
+            $_SESSION['user']->setPassword($_POST['password']);
+            $_SESSION['user']->setTelephone($_POST['telephone']);
+
+        }
         
         
         if(mysqli_query($conn, $update)){
