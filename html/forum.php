@@ -18,6 +18,10 @@ if(isset($_POST['saveComment'])){
 if(isset($_POST['deletePost'])){
     deletePost($conn, $_POST['deletePost']);
 }
+
+if(isset($_POST['deleteComment'])){
+    deleteComment($conn, $_POST['deleteComment']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -158,7 +162,15 @@ if(isset($_POST['deletePost'])){
                                              alt="commenter profile picture">
                                     </div>
                                     <b class="user-commenting"><?php echo $comment['comment_author'] ?></b>
-        
+                                    <?php 
+                                        if($_SESSION['isAdnim']):
+                                    ?>
+                                    <form method='post' action='#'> 
+                                        <input id="delete-user" name="deleteComment" type="submit" name='deleteComment' value="<?php echo $comment['id'] ?>">
+                                    </form>
+                                    <?php 
+                                    endif;
+                                    ?>
                                 </div>
                                 <p class="user-comment"><?php echo $comment['body'] ?></p>
         

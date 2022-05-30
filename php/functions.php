@@ -346,7 +346,7 @@ function getAllTags($conn) {
 }
 
 function getCommentsForPost($conn, $post_id) {
-    $sql_query = "SELECT body, comment_author, post_date
+    $sql_query = "SELECT id, body, comment_author, post_date
                   FROM comment
                   WHERE post_id = '$post_id'
                   ORDER BY post_date DESC";
@@ -636,11 +636,9 @@ function addComment($conn, $posts_id, $body, $commentAuthor) {
     }
     $sql_query = "INSERT INTO comment(post_id, body, comment_author, post_date) VALUES ('$posts_id', '$body', '$commentAuthor', '$post_date')";
     if(!mysqli_query($conn, $sql_query)) {
-        echo'kati den phge kala!';
         return false;
 
     }
-    echo 'h doyleia egine';
     return true;
 }
 
