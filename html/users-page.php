@@ -40,23 +40,13 @@ include('../php/functions.php');
     <div class="main-container">
         <div class="forum-menu">
             <div class="space"></div>
-                <div class="container">
-                    <button class="btn-forum-filter" onclick="dropdownMenu()">Φιλτράρισμα<img src="../images/arrow-down.png"
-                                                                                          onclick="myFunction()"
-                                                                                          alt="arrow">
-                    </button>
-                    <div class="dropdown_menu">
-                        <button class="tabs">Πιο πρόσφατο</button>
-                        <button class="tabs">Πιο κοντά</button>
-                    </div>
-             </div>
             
             <div class="forum-search">
                 <table class="elementsContainerForum">
                 <form method="post" action="#">
                     <tr>
                         <td>
-                        <input class="searchForum" name="search-tags" placeholder="Αναζήτηση χρηστώνgit">
+                        <input class="searchForum" name="user-search" placeholder="Αναζήτηση χρηστών">
                         </td>
                         <td>
                         <button type="submit" name="search-for-tags" class="searchIconForum"><img src="../images/search-icon.png"

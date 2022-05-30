@@ -5,10 +5,17 @@ function createTags(){
     ul.appendChild(li);
 }
 
+let forumSearch = document.getElementById("forum-search");
+let forumForm = document.getElementById("forum-form");
+
 function forumSearchTextToTag(){
-    document.getElementsByClassName('searchForum')[0].textContent = 'Αναζήτηση ετικέτας';
+    forumSearch.setAttribute('name', 'search-tags');
+    forumSearch.setAttribute('placeholder', 'Αναζήτηση ετικέτας');
+    forumForm.setAttribute('action', '#');
 }
 
 function forumSearchTextToUser(){
-    document.getElementsByClassName('searchForum')[0].textContent = 'Αναζήτηση χρήστη';
+    forumSearch.setAttribute('name', 'user-search');
+    forumSearch.setAttribute('placeholder', 'Αναζήτηση χρήστη');
+    forumForm.setAttribute('action', '../html/users-page.php');
 }

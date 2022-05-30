@@ -1,8 +1,6 @@
 <?php
 include('../php/functions.php');
 
-// getPostsFromDB($conn);
-
 
 if(isset($_POST['posting'])){
     $associate_tags = explode(" ", $_POST['tags']);
@@ -32,7 +30,7 @@ if(isset($_POST['deleteComment'])){
     <link rel="stylesheet" href="../css/forum-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Forum</title>
-    <script type="text/javascript" src="../javascript/forum.js"></script>
+    
 
 </head>
 <body>
@@ -84,16 +82,16 @@ if(isset($_POST['deleteComment'])){
                                                                                           alt="arrow">
                 </button>
                 <div class="dropdown_menu">
-                    <button onclick="forumSearchTextToUser()" class="tabs">Αναζήτηση χρήστη</button>
-                    <button onclick="forumSearchTextToTag()"class="tabs">Αναζήτηση ετικέτας</button>
+                    <button type="button" onclick="forumSearchTextToUser()" class="tabs">Αναζήτηση χρήστη</button>
+                    <button type="button" onclick="forumSearchTextToTag()" class="tabs">Αναζήτηση ετικέτας</button>
                 </div>
             </div>
             <div class="forum-search">
                 <table class="elementsContainerForum">
-                <form method="post" action="#">
+                <form method="post" id="forum-form" action="#">
                     <tr>
                         <td>
-                        <input class="searchForum" name="search-tags" placeholder="Αναζήτηση ετικέτας">
+                        <input class="searchForum" id="forum-search" name="search-tags" placeholder="Αναζήτηση ετικέτας">
                         </td>
                         <td>
                         <button type="submit" name="search-for-tags" class="searchIconForum"><img src="../images/search-icon.png"
@@ -101,7 +99,7 @@ if(isset($_POST['deleteComment'])){
                             </button>
                         </td>
                     </tr>
-                    </form>
+                </form>
                 </table>
             </div>
         </div>
