@@ -104,12 +104,18 @@
                 <input id="delete-user" name="deleteUser" type="submit" name="delete-user" value="">
             </form>
         </div>
-
+        <?php
+            if(isset($_GET['username']) && ($_SESSION['username'] !== $_GET['username'] )){
+                $user = getUser($conn, $_GET['username']);
+            }else{
+                $user = getUser($conn, $_SESSION['username']);
+            } 
+        ?>
         <form method='post' action="#" >
            
             <div class="user-data-fields">
                 <label>Όνομα χρήστη</label>
-                <input type="text" name="username" placeholder="Username" value="<?php displayName(); ?>">
+                <input type="text" name="username" placeholder="Username" value="<?php $user['username']; ?>">
 
             </div>
             <div class="user-data-fields">
