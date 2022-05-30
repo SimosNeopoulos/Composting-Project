@@ -147,6 +147,20 @@ if(isset($_POST['deleteComment'])){
                     </div>
                     <div class="post-body">
                     <p class="paragraph"><?php echo $post['body']; ?> </p>
+                    <ul>
+                    <?php
+                      $tags = getTagsFromPost($conn, $post['id']);
+                      if($tags):
+                        foreach($tags as $tag):
+                    ?>
+                    <li> <?php echo $tag['tag_name']; ?></li> 
+
+
+                    <?php 
+                        endforeach;
+                       endif;   
+                    ?>
+                    </ul>
                     </div>
                     <div class="post-answers">
                         <ul class="comment-section">
