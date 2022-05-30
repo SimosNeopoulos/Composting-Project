@@ -18,5 +18,5 @@ if (isset($_POST["submit-btn"])) { // check if user has account
     header("Location: ../html/contact.php?reset=success");
 
 } else {
-    header("Location: ../html/homepage.html");
+    header("Location: ../html/index.php");
 }
