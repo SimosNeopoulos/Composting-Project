@@ -72,7 +72,13 @@
 
 <?php
     require("../php/header.php");
-       
+   
+    if(isset($_GET['username']) && ($_SESSION['username'] !== $_GET['username'] )){
+        $user = getUser($conn, $_GET['username']);
+    }else{
+        $user = getUser($conn, $_SESSION['username']);
+    } 
+
 ?>
 
 <div class="container">
@@ -80,7 +86,7 @@
     <!--Profile pic box-->
     <div class="profile_pic">
 
-        <img class="picture" src=<?php displayImg(); ?> alt="profile image!">
+        <img class="picture" src=<?php echo $user[0]['imgpath']; ?> alt="profile image!">
         <div class="edit">
             
             <h3 id="edit-text"> Νεα εικόνα προφίλ;</h3>
@@ -104,39 +110,33 @@
                 <input id="delete-user" name="deleteUser" type="submit" name="delete-user" value="">
             </form>
         </div>
-        <?php
-            if(isset($_GET['username']) && ($_SESSION['username'] !== $_GET['username'] )){
-                $user = getUser($conn, $_GET['username']);
-            }else{
-                $user = getUser($conn, $_SESSION['username']);
-            } 
-        ?>
+        
         <form method='post' action="#" >
            
             <div class="user-data-fields">
                 <label>Όνομα χρήστη</label>
-                <input type="text" name="username" placeholder="Username" value="<?php $user['username']; ?>">
+                <input type="text" name="username" placeholder="Username" value="<?php echo $user[0]['username']; ?>">
 
             </div>
             <div class="user-data-fields">
                 <label> Email</label>
-                <input type="text" name="email" placeholder="Email" value="<?php displayEmail(); ?>">
+                <input type="text" name="email" placeholder="Email" value="<?php echo $user[0]['email']; ?>">
 
 
             </div>  
           <div class="user-data-fields">
                <label>Διεύθυνση</label>
-                <input type="text" name="address" placeholder="Address" value="<?php dipslayAddress(); ?>">
+                <input type="text" name="address" placeholder="Address" value="<?php echo $user[0]['city']; ?>">
 
           </div>
           <div class="user-data-fields">
             <label>Κωδικός πρόσβασης </label>
-            <input type="password" name="password" placeholder="Password" value="<?php displayPassword(); ?>">
+            <input type="password" name="password" placeholder="Password" value="<?php echo $user[0]['password']; ?>">
 
            </div>
             <div class="user-data-fields">
               <label>Τηλέφωνο</label>
-              <input type="tel" name="telephone" placeholder="69-99999999"  required value="<?php displayTelephone(); ?>">
+              <input type="tel" name="telephone" placeholder="69-99999999"  required value="<?php echo $user[0]['telephone'] ?>">
 
             </div>
 
