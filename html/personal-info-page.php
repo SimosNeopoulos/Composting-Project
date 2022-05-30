@@ -58,9 +58,14 @@
 
     if(isset($_POST['addFriend'])){
         $friendID= getUserId($conn, $user[0]['username']);
-       if( !addFriend($conn, $_SESSION['userId'], $user[0]['username']) && !addFriend($conn, $friendID, $_SESSION['username'])){
-           echo 'Υπήρξε κάποιο πρόβλημα';
-       }
+        addFriend($conn, $_SESSION['userId'], $user[0]['username']);
+        addFriend($conn, $friendID, $_SESSION['username']);
+    }
+
+    if(isset($_POST['deleteFriend'])){
+        $friendID= getUserId($conn, $user[0]['username']);
+        deleteFriend($conn, $_SESSION['userId'], $user[0]['username']);
+        deleteFriend($conn, $friendID, $_SESSION['username']);
     }
 
    
@@ -158,7 +163,27 @@
             </div>
 
             <form method='post' action='#' class="addFriendForm">
-                <input id = 'addFriend' type='submit' name='addFriend' value='Προσθεσε φίλο!'>
+                <?php 
+                 if(isset($_GET['username'])):
+                    if(($_SESSION['username'] !== $_GET['username'])):
+                        $isFriend = isFriendsWith($conn, $_SESSION['userId'], $_GET['username']);
+                        if($isFriend):
+                          
+                ?>
+                            
+                            <input type='submit' name='deleteFriend' value='Διαγραφή φιλού'>
+                <?php 
+                        else:
+                        
+                ?>
+                            
+                            <input type='submit' name='addFriend' value='Προσθεσε φίλο!'>
+                            
+                <?php
+                        endif;
+                    endif;
+                endif;
+                ?>
             </form>
 
         </form>

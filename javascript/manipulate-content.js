@@ -11,7 +11,3 @@ edit.remove();
 userDataFields.remove();
 saveButton.remove();
 links.remove();
-
-      
-const addFriend = document.createElement("input");
-document.getElementsByClassName('addFriendForm')[0].appendChild(addFriend);
