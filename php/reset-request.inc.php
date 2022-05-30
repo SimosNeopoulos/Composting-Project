@@ -17,7 +17,7 @@ if (isset($_POST["submit-btn"])) {
         $validator = bin2hex($token);
 
         //page url
-        $PORT_NUMBER = 3000;
+        $PORT_NUMBER = 80; // ΒΑΛΤΕ ΤΟ ΣΩΣΤΟ PORT NUMBER ΠΟΥ ΕΧΕΤΕ ΣΤΟ XAMPP
         $url = "http://localhost:$PORT_NUMBER/Composting-Project/html/create-new-password.php?selector=" . $selector . "&email=" . $userEmail . "&validator=" . $validator;
         
         //expired time
@@ -46,7 +46,7 @@ if (isset($_POST["submit-btn"])) {
             }
         } else {
             $_POST["reset"] = "fail";
-            header("Location:../html/forgot-password.php?reset=fail");
+            header("Location:../html/forgot-password.php?reset=failemail");
         }
 
 } else {
