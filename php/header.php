@@ -4,7 +4,7 @@
     <div id="side-nav">
             <ul>
                 <li><span class="closeNav" onclick="closeNav()">&#10006</span></li>
-                <li><a href="../html/homepage.php">Home</a></li>
+                <li><a href="../html/index.php">Home</a></li>
                 <li><a href="../html/forum.php">Forum</a></li>
                 <li><a href="../html/learn-more.php">Learn More</a></li>
                 <li><a href="../html/contact.php">Help</a></li>
@@ -19,7 +19,7 @@
         </div>
     
         <div class="logo-container">
-            <a class="logo" href="../html/homepage.php">
+            <a class="logo" href="../html/index.php">
                 <img src="../images/composting.png" alt="search icon">
             </a>
         </div>
@@ -27,7 +27,7 @@
 
     <nav class="navigation">
         <ul class="navigation-list">
-            <li class="navigation-list-item"><a href="../html/homepage.php">Home</a></li>
+            <li class="navigation-list-item"><a href="../html/index.php">Home</a></li>
             <li class="navigation-list-item"><a href="../html/forum.php">Forum</a></li>
             <li class="navigation-list-item"><a href="../html/learn-more.php">Learn More</a></li>
             <li class="navigation-list-item"><a href="../html/contact.php">Help</a></li>
