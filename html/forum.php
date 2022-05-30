@@ -204,12 +204,13 @@ if(isset($_POST['deleteComment'])){
                         <div class="my-pic-container">
                         <img class="my-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>" alt="my comment profile picture">
                         </div>
-                        <form method="post" action="forum.php">
-                            <input type="text" name="newComment" class="my-comment" placeholder="Πρόσθεσε σχόλιο"> 
-                            <input type="hidden" name="id-value" class="id-value" value="<?php echo $post["id"] ?>"> 
-                            <input type="submit" name="saveComment" value="Αποθήκευση σχολίου">
-                        </form>
-                       
+                        <div class="form-container">
+                            <form method="post" action="forum.php">
+                                <input type="text" name="newComment" class="my-comment" placeholder="Πρόσθεσε σχόλιο"> 
+                                <input type="hidden" name="id-value" class="id-value" value="<?php echo $post["id"] ?>"> 
+                                <input type="submit" name="saveComment" value="Αποθήκευση σχολίου">
+                            </form>
+                        </div>
                    </div>
                </div>
            </li>

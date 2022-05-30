@@ -231,27 +231,6 @@ body{
     max-width: 100%;
 }
 
-.userProfile{
-    width: 70%;
-    align-self: center;
-    margin-left: 15%;
-    margin-right: 15%;
-    background-color: rgb(209, 243, 175);
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.45);
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 3%;
-    margin: 5%;
-}
-
-#username{
-    
-    align-self: center;
-    text-decoration: none;
-    font-size: large;
-}
-
 /*POSTS*/
 .posts{
     width: inherit;
@@ -286,20 +265,6 @@ body{
 .user{
     margin: 4% 0 1% 0;
     flex: 9;
-}
-
-#delete-user{
-    background-color: #7BB79D;
-    padding: 2%;
-    border-radius: 100%;
-    border: solid #801515;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    align-self: center;
-    background-image: url("../images/delete-icon.png");
-    background-size: cover;
-    min-width: 40px;
-    height: 40px;
-    background-position: center;
 }
 
 .post-body{
@@ -371,15 +336,14 @@ body{
 }
 .my-pic-container{
     margin: 0 0 0 2%;
-    flex: 1;
 }
 .my-pic{
     width: 20px;
     height: 20px;
     border-radius: 2px;
 }
-.my-comment{
-    flex: 20;
+input[name="newComment"]{
+    width: 100%;
     border: 2px solid rgba(36, 62, 22, 0.7);
     border-radius: 5px;
     font-size: 13px;
@@ -388,7 +352,7 @@ body{
     padding: 0 1%;
     outline: none;
 }
-.my-comment::placeholder{
+input::placeholder[name="newComment"]{
     font-weight: bold;
     color: rgba(36, 62, 22, 0.7);
 }
@@ -397,7 +361,7 @@ body{
     margin: 0.5% 0 0 0;
     font-size: 12px;
 }
-.btn-enter{
+input[type="submit"]{
     cursor: pointer;
     background: #236f21;
     border: 0;
@@ -409,8 +373,19 @@ body{
     text-transform: uppercase;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.45);
 }
-.btn-enter:hover{
+input[type="submit"]:hover{
     background: rgba(68, 68, 68, 0.2);
     color: #236f21;
 }
 
+.form-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+}
+.form-container form{
+    padding: 0;
+    display: flex;
+}
