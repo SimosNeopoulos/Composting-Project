@@ -20,6 +20,37 @@ class User {
         $this->imgpath = $imgpath;
     }
 
+    public function setId($id) {
+        $this->id = $id;
+    }
+
+    public function setUsername($username) {
+        $this->username = $username;
+    }
+
+    public function setEmail($email) {
+        $this->email = $email;
+    }
+
+    public function setAddress($city) {
+        $this->city = $city;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
+    }
+
+    public function setTelephone($telephone) {
+        $this->telephone = $telephone;
+    }
+
+    public function isAdmin() {
+        return $this->is_admin;
+    }
+
+    public function setImagePath($imgpath) {
+        $this->imgpath = $imgpath;
+    }
     public function getId() {
         return $this->id;
     }
@@ -42,10 +73,6 @@ class User {
 
     public function getTelephone() {
         return $this->telephone;
-    }
-
-    public function isAdmin() {
-        return $this->is_admin;
     }
 
     public function getImagePath() {
