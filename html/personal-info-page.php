@@ -50,8 +50,8 @@
 
     if(isset($_POST['deleteUser'])){
         
-        if(deleteUserFromDB($conn, $_SESSION['username'])){
-            //TODO να μην εμφανιζονται πλεον τα στοιχεια του χρηστη!
+        if(deleteUserFromDB($conn, $_POST['deleteUser'])){
+         
             header("Location:../html/homepage.php");
         }
         
@@ -127,7 +127,7 @@
         <div class="title">
             <h1 id="profile-header">Καλωσόρισες στο προφίλ σου!</h1>
             <form id="delete-form" method="post" action="#"> 
-                <input id="delete-user" name="deleteUser" type="submit" name="delete-user" value="">
+                <input id="delete-user" name="deleteUser" type="submit" name="delete-user" value="<?php echo $user[0]['username']; ?>">
             </form>
         </div>
         

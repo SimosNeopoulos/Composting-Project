@@ -32,6 +32,8 @@ if(isset($_POST['deleteComment'])){
     <link rel="stylesheet" href="../css/forum-style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Forum</title>
+    <script type="text/javascript" src="../javascript/forum.js"></script>
+
 </head>
 <body>
 <?php
@@ -82,8 +84,8 @@ if(isset($_POST['deleteComment'])){
                                                                                           alt="arrow">
                 </button>
                 <div class="dropdown_menu">
-                    <button class="tabs">Πιο πρόσφατο</button>
-                    <button class="tabs">Πιο κοντά</button>
+                    <button onclick="forumSearchTextToUser()" class="tabs">Αναζήτηση χρήστη</button>
+                    <button onclick="forumSearchTextToTag()"class="tabs">Αναζήτηση ετικέτας</button>
                 </div>
             </div>
             <div class="forum-search">
@@ -91,7 +93,7 @@ if(isset($_POST['deleteComment'])){
                 <form method="post" action="#">
                     <tr>
                         <td>
-                        <input class="searchForum" name="search-tags" placeholder="Αναζήτηση tag">
+                        <input class="searchForum" name="search-tags" placeholder="Αναζήτηση ετικέτας">
                         </td>
                         <td>
                         <button type="submit" name="search-for-tags" class="searchIconForum"><img src="../images/search-icon.png"
