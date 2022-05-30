@@ -316,7 +316,7 @@ function getPostsWithTag($conn, $tags, $numberOfPosts=30) {
  */
 function getTagsFromPost($conn, $post_id) {
     $sql_query = "SELECT tag_name 
-                  FROM post, post_has_tags, tag
+                  FROM post_has_tags, tag
                   WHERE $post_id = post_id
                   AND tag_id = id_tag";
     $result = mysqli_query($conn, $sql_query);
