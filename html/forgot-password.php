@@ -36,8 +36,13 @@
                         <div class="information-text">
                             <p class="info-text"><strong><center>This email does not exist!</center></strong></p>
                         </div>
+                    <?php } elseif ($_GET["reset"] == "failemail") { ?>
+                        <div class="information-text">
+                            <p class="info-text"><strong><center>Something went wrong with sending your email!</center></strong></p>
+                        </div>
                     <?php } ?>
-                <?php } ?>
+                <?php } ?> 
+                
 
                 <!---------- SUBMIT BUTTON ----------->
                 <div class="btn-space">

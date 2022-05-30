@@ -46,7 +46,7 @@ if (isset($_POST["submit-btn"])) {
             }
         } else {
             $_POST["reset"] = "fail";
-            header("Location:../html/forgot-password.php?reset=fail");
+            header("Location:../html/forgot-password.php?reset=failemail");
         }
 
 } else {
