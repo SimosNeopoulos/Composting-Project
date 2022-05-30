@@ -177,12 +177,14 @@ if(isset($_POST['deleteComment'])){
                                     </div>
                                     <b class="user-commenting"><?php echo $comment['comment_author'] ?></b>
                                     <?php 
+                                    if(isset($_SESSION['username'])):
                                         if($_SESSION['isAdnim']):
                                     ?>
                                     <form method='post' action='#'> 
                                         <input id="delete-user" name="deleteComment" type="submit" name='deleteComment' value="<?php echo $comment['id'] ?>">
                                     </form>
                                     <?php 
+                                        endif;
                                     endif;
                                     ?>
                                 </div>
