@@ -389,21 +389,19 @@ function isFriendsWith($conn, $userId, $friendName) {
 
 /**
  * A function that finds and returns all the friends of a user, with id equal to
- * $userId, whose username have $friendName as a substring
+ * $userId
  * 
  * 
  * @param mysqli    $conn           the connection to the serever
- * @param integer   $userId         the id of the user 
- * @param string    $friendName     a substring of the username of a friend 
+ * @param integer   $userId         the id of the user
  * 
  * @return mixed            returns an associated array with the data of all the friends
- *                          of $userId whose usernames have a substring equal to $friendName
- *                          or false if the search had no results 
+ *                          of $userId or false if the search had no results 
  */
-function findFriends($conn, $userId, $friendName) {
+function getAllFriends($conn, $userId) {
     $sql_query = "SELECT * 
                   FROM friend 
-                  WHERE user_id = '$userId' AND username LIKE '%$friendName%'
+                  WHERE user_id = '$userId'
                   ORDER BY username";
     $result = mysqli_query($conn, $sql_query);
     $rows = mysqli_num_rows($result);
