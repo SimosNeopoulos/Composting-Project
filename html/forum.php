@@ -95,6 +95,7 @@ if(isset($_POST['saveComment'])){
                 </table>
             </div>
         </div>
+        <?php if(isset($_SESSION['user'])):?>
          <div class="forum-posts">
             <div class="add-post">
                 <form method="post" action="#">
@@ -103,6 +104,7 @@ if(isset($_POST['saveComment'])){
                     <input type="submit" name="posting" value="Δημοσιευσε">
                 </form>
             </div>
+        <?php endif;?>
             
             <?php 
                 if(isset($_GET['myPosts'])){
