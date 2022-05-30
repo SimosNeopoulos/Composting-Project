@@ -152,7 +152,7 @@
             </div>
             <div class="links">
                 <img class="link-icons" src="../images/push_pin.png" alt="Saved!">
-                <a class="posts" href="">Τα ποστ μου</a>
+                <a class="posts" href="../html/forum.php?myPosts=true">Τα ποστ μου</a>
             </div>
             <div class="links">
                 <img class="link-icons" src="../images/logout-icon.png" alt="Logout!">

@@ -12,9 +12,8 @@ if(isset($_POST['posting'])){
 }
 
 if(isset($_POST['saveComment'])){
-    echo $_POST['id-value'];
     addComment($conn, $_POST['id-value'], $_POST['newComment'], $_SESSION['username']);
-}
+}   
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +51,7 @@ if(isset($_POST['saveComment'])){
         <div class="popular-tags">
             <b class="tag-title">Δημοφιλείς ετικέτες</b>
             <ul class="tag-list">
-                <?php
+            <?php
                     $tags = getAllTags($conn);
                     if($tags):
                         foreach ($tags as $tag):
@@ -81,13 +80,13 @@ if(isset($_POST['saveComment'])){
             </div>
             <div class="forum-search">
                 <table class="elementsContainerForum">
-                    <form method="post" action="#">
+                <form method="post" action="#">
                     <tr>
                         <td>
-                            <input class="searchForum" name="search-tags" placeholder="Αναζήτηση στο forum">
+                        <input class="searchForum" name="search-tags" placeholder="Αναζήτηση tag">
                         </td>
                         <td>
-                            <button type="submit" name="search-for-tags" class="searchIconForum"><img src="../images/search-icon.png"
+                        <button type="submit" name="search-for-tags" class="searchIconForum"><img src="../images/search-icon.png"
                                                                                alt="search icon">
                             </button>
                         </td>
@@ -96,7 +95,7 @@ if(isset($_POST['saveComment'])){
                 </table>
             </div>
         </div>
-        <div class="forum-posts">
+         <div class="forum-posts">
             <div class="add-post">
                 <form method="post" action="#">
                     <input type="text" name="new-post">
@@ -105,79 +104,77 @@ if(isset($_POST['saveComment'])){
                 </form>
             </div>
             
-            <?php
-            if(isset($_POST["search-tags"])){
-                $tags_array = explode(" ", $_POST["search-tags"]);
-                $posts = getPostsWithTag($conn, $tags_array);
-            } else {
-                $posts = getPostsFromDB($conn);
-            }
-            if($posts):
-                foreach($posts as $post):
-            ?> 
-             
-            <ul id="posts" class="posts">
-                <li class="post">
-                <div class="post-top">
-                    <div class="post-pic-container">
+            <?php 
+                if(isset($_GET['myPosts'])){
+                    $posts= getUserPosts($conn, $_SESSION['userId']);
+                }
+                elseif(isset($_POST["search-tags"])){
+                    $tags_array = explode(" ", $_POST["search-tags"]);
+                    $posts = getPostsWithTag($conn, $tags_array);
+                } else {
+                    $posts = getPostsFromDB($conn);
+                }
+                if($posts):
+                    foreach($posts as $post):
+                ?> 
+                 
+                <ul id="posts" class="posts">
+                    <li class="post">
+                    <div class="post-top">
+                        <div class="post-pic-container">
                         <img class="post-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>" alt="poster profile picture">
+                        </div>
+                        <b class="user"><?php echo getUserNameByID($conn, $post['id_user']); ?></b>
                     </div>
-                    <b class="user"><?php echo getUserNameByID($conn, $post['id_user']); ?></b>
-                </div>
-                <div class="post-body">
+                    <div class="post-body">
                     <p class="paragraph"><?php echo $post['body']; ?> </p>
-                </div>
-                <div class="post-answers">
-                    <ul class="comment-section">
-                        <?php 
-                        $comments = getCommentsForPost($conn, $post['id']);
-                        if($comments):
-                            foreach ($comments as $comment):
-                        ?>
-                        <li>
-                            <div class="comment-user-container">
-                                <div class="comment-pic-container">
-                                    <img class="comment-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>"
-                                         alt="commenter profile picture">
-                                </div>
-                                <b class="user-commenting"><?php echo $comment['comment_author'] ?></b>
-    
-                            </div>
-                            <p class="user-comment"><?php echo $comment['body'] ?></p>
-    
-                        </li>
-                        <?php 
-                            endforeach;
-                        endif;
-                        ?>
-                       
-                    </ul>
-                    
-                    <div class="add-comment">
-                    <div class="my-pic-container">
-                        <img class="my-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>" alt="my comment profile picture">
                     </div>
-                    <form method="post" action="forum.php">
-                        <input type="text" name="newComment" class="my-comment" placeholder="Πρόσθεσε σχόλιο"> 
-                        <input type="hidden" name="id-value" class="id-value" value="<?php echo $post["id"] ?>"> 
-                        <input type="submit" name="saveComment" value="Αποθήκευση σχολίου">
-                    </form>
-                   
-               </div>
-           </div>
-       </li>
-   </ul> 
-    <?php 
-            endforeach;
-        endif;
-    ?>
-
-               
-            
-
-                         
+                    <div class="post-answers">
+                        <ul class="comment-section">
+                        <?php 
+                            $comments = getCommentsForPost($conn, $post['id']);
+                            if($comments):
+                                foreach ($comments as $comment):
+                            ?>
+                            <li>
+                                <div class="comment-user-container">
+                                    <div class="comment-pic-container">
+                                    <img class="comment-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>"
+                                             alt="commenter profile picture">
+                                    </div>
+                                    <b class="user-commenting"><?php echo $comment['comment_author'] ?></b>
         
-        </div>
+                                </div>
+                                <p class="user-comment"><?php echo $comment['body'] ?></p>
+        
+                            </li>
+                            <?php 
+                                endforeach;
+                            endif;
+                            ?>
+                           
+                        </ul>
+                        
+                        <div class="add-comment">
+                        <div class="my-pic-container">
+                        <img class="my-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>" alt="my comment profile picture">
+                        </div>
+                        <form method="post" action="forum.php">
+                            <input type="text" name="newComment" class="my-comment" placeholder="Πρόσθεσε σχόλιο"> 
+                            <input type="hidden" name="id-value" class="id-value" value="<?php echo $post["id"] ?>"> 
+                            <input type="submit" name="saveComment" value="Αποθήκευση σχολίου">
+                        </form>
+                       
+                   </div>
+               </div>
+           </li>
+       </ul> 
+       <?php 
+                endforeach;
+            endif;
+        ?>                      
+        
+        </div> 
     </div>
 
 
