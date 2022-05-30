@@ -14,7 +14,4 @@
             saveButton.remove();
             links.remove();
 
-        
-      let deleteUser = document.getElementById('delete-user');
-      deleteUser.remove(); 
-
+      

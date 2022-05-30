@@ -167,11 +167,18 @@
 
 <?php
 if(!$_SESSION['isAdnim']){
-    echo '<script type="text/javascript" src="../javascript/manipulate-content.js"></script>';
+    echo '<script type="text/javascript" src="../javascript/isAdmin.js"></script>';
 }
-
+if(isset($_GET['username'])){
+    if(($_SESSION['username'] !== $_GET['username']) && !$_SESSION['isAdnim']){
+        
+        echo '<script type="text/javascript" src="../javascript/manipulate-content.js"></script>';
+    }
+        
+    
+}
 ?>
-<!-- <script type="text/javascript" src="../javascript/script.js"></script> -->
+<script type="text/javascript" src="../javascript/script.js"></script>
 <script type="text/javascript" src="../javascript/personal-info.js"></script>
 
 </body>

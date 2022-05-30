@@ -1,19 +1,6 @@
 <?php
 include('../php/functions.php');
-
-// getPostsFromDB($conn);
-
-
-if(isset($_POST['posting'])){
-    $associate_tags = explode(" ", $_POST['tags']);
-    createPost($conn, $_SESSION['userId'], $_POST['new-post'], $associate_tags);
-    $_POST = array();
-    
-}
-
-if(isset($_POST['saveComment'])){
-    addComment($conn, $_POST['id-value'], $_POST['newComment'], $_SESSION['username']);
-}   
+ 
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +77,7 @@ if(isset($_POST['saveComment'])){
                 ?>
                 <div class="userProfile">
                     <img class="post-pic" src="<?php echo $user['imgpath']; ?>">
-                    <a id="username" href="../html/personal-info-page.php"> <?php echo $user['username']; ?></a>
+                    <a id="username" href="../html/personal-info-page.php?username=<?php echo $user['username']; ?>"> <?php echo $user['username']; ?></a>
                 </div>
                 <?php
                     endforeach;
