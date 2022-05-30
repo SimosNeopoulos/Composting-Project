@@ -421,6 +421,26 @@ input[name="saveComment"]:hover{
     color: #236f21;
 }
 
+input[name="posting"]{
+    cursor: pointer;
+    height: 50px;
+    background: #236f21;
+    border: 0;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.45);
+}
+
+input[name="posting"]:hover{
+    background: rgba(68, 68, 68, 0.2);
+    color: #236f21;
+}
+
+
 .form-container{
     display: flex;
     flex-direction: column;
