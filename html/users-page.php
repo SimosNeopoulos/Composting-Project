@@ -72,7 +72,7 @@ include('../php/functions.php');
              <?php if(isset($_POST['user-search'])){
                 $users = findUsers($conn, $_POST['user-search']);
              }else{
-                //  $users = findFriends($conn, $_SESSION['userId'], 'maria');
+                $users = getAllFriends($conn, $_SESSION['userId']);
              }
                 if($users):
                     foreach($users as $user ):
