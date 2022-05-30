@@ -1,4 +1,8 @@
 
+let addFriend = document.getElementById('addFriend');
+addFriend.remove();
+
+
 /**  update profile photo */
 const image_upload = document.getElementById('image-upload');
 let uploaded_image = "";
@@ -13,7 +17,5 @@ image_upload.addEventListener("change", function (){
 })
 
     
-
-
 
 

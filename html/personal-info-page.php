@@ -42,12 +42,25 @@
     }
 
     if(isset($_POST['deleteUser'])){
-        echo 'post is working';
+        
         if(deleteUserFromDB($conn, $_SESSION['username'])){
             //TODO να μην εμφανιζονται πλεον τα στοιχεια του χρηστη!
             header("Location:../html/homepage.php");
         }
         
+    }
+    
+    if(isset($_GET['username']) && ($_SESSION['username'] !== $_GET['username'] )){
+        $user = getUser($conn, $_GET['username']);
+    }else{
+        $user = getUser($conn, $_SESSION['username']);
+    } 
+
+    if(isset($_POST['addFriend'])){
+     
+       if( !addFriend($conn, $_SESSION['userId'], $user[0]['username'])){
+           echo 'Υπήρξε κάποιο πρόβλημα';
+       }
     }
 
    
@@ -73,11 +86,6 @@
 <?php
     require("../php/header.php");
    
-    if(isset($_GET['username']) && ($_SESSION['username'] !== $_GET['username'] )){
-        $user = getUser($conn, $_GET['username']);
-    }else{
-        $user = getUser($conn, $_SESSION['username']);
-    } 
 
 ?>
 
@@ -148,13 +156,18 @@
                     
                 
             </div>
+
+            <form method='post' action='#' class="addFriendForm">
+                <input id = 'addFriend' type='submit' name='addFriend' value='Προσθεσε φίλο!'>
+            </form>
+
         </form>
         
 
         <div class="links-container" style="display:block;">
             <div class="links">
                 <img class="link-icons" src="../images/save_icon.png" alt="Posts!">
-                <a class="posts" href=""> Οι φίλοι μου</a>
+                <a class="posts" href="../html/users-page.php?myFriends=true"> Οι φίλοι μου</a>
             </div>
             <div class="links">
                 <img class="link-icons" src="../images/push_pin.png" alt="Saved!">
