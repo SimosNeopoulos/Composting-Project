@@ -57,8 +57,8 @@
     } 
 
     if(isset($_POST['addFriend'])){
-     
-       if( !addFriend($conn, $_SESSION['userId'], $user[0]['username'])){
+        $friendID= getUserId($conn, $user[0]['username']);
+       if( !addFriend($conn, $_SESSION['userId'], $user[0]['username']) && !addFriend($conn, $friendID, $_SESSION['username'])){
            echo 'Υπήρξε κάποιο πρόβλημα';
        }
     }
