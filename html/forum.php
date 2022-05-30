@@ -134,12 +134,14 @@ if(isset($_POST['deleteComment'])){
                         <div class="post-pic-container">
                         <img class="post-pic" src="<?php echo getUserImage($conn, $post['id_user']); ?>" alt="poster profile picture">
                         <?php
-                            if($_SESSION['isAdnim']):
+                            if(isset($_SESSION['username'])):
+                                if($_SESSION['isAdnim'] ):
                         ?>
                         <form method='post' action='#'> 
                         <input id="delete-user" name="deletePost" type="submit" name="delete-Post" value="<?php echo $post["id"] ?>">
                         </form>
                         <?php 
+                            endif;
                         endif;
                         ?>
                         </div>
@@ -154,8 +156,6 @@ if(isset($_POST['deleteComment'])){
                         foreach($tags as $tag):
                     ?>
                     <li> <?php echo $tag['tag_name']; ?></li> 
-
-
                     <?php 
                         endforeach;
                        endif;   
