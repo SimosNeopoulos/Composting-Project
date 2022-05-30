@@ -67,7 +67,7 @@ do{
         <!--------------------------------->
 
         <!-- FORGOT PASSWORD LINK -->
-        <div class="forgot-pass"><a href="#">Forgot your Password?</a></div>
+        <div class="forgot-pass"><a href="forgot-password.php">Forgot your Password?</a></div>
         <!-------------------------->
 
         <!---------- SUBMIT BUTTON ----------->

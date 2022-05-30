@@ -22,7 +22,7 @@ include("../php/functions.php");
 <!------------- MAIN CONTAINER -------------->
 <div class="form-container container-height">
     <h1 class="contact-text">Ποιό είναι το πρόβλημα;</h1>
-    <form action="#" id="contact-form" method="post">
+    <form action="../php/contact-email.inc.php" id="contact-form" method="post">
         <!-------- INPUT FIELDS --------->
         <div class="input-field">
             <input type="text" placeholder=" " name="contact-name" id="contact-name" required>
@@ -47,7 +47,13 @@ include("../php/functions.php");
             <label for="contact-message">Μήνυμα</label>
         </div>
         <!--------------------------------->
-
+	<?php if (isset($_POST["reset"])) {
+            if ($_POST["reset"] == "success") { ?>
+                <div class="information-text">
+                    <p class="info-text"><strong><center>Ευχαριστούμε για το μήνυμα σας.</center></strong></p>
+                </div>
+            <?php } ?>
+        <?php } ?>
         <!---------- SUBMIT BUTTON ----------->
         <div class="btn-space">
             <button name="submit-btn" type="submit" class="submit-btn">
@@ -60,7 +66,21 @@ include("../php/functions.php");
 <!---------------------------------------->
 
 
-<?php include("../php/footer.php") ?>
+<footer>
+    <div class="footer-content">
+        <h3><b>Composting</b></h3>
+        <p>You can also find us on our social media!</p>
+        <ul class="socials">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-bottom">
+        <p>copyright &copy;2022 composting</p>
+    </div>
+</footer>
 
 <script type="text/javascript" src="../javascript/script.js"></script>
 </body>
