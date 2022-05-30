@@ -25,15 +25,22 @@
     }
 
     if(isset($_POST['save-button'])){
-                
-        $update = "UPDATE user SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , city= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_SESSION['username']."' ";
+        if(isset($_GET['username'])){
+            $update = "UPDATE user SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , city= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_GET['username']."' ";
+        }else{
+            $update = "UPDATE user SET username= '".$_POST['username']."',  email= '" . $_POST['email'] . "' , city= '" . $_POST['address'] . "' , password= '" . $_POST['password'] . "' , telephone= '" . $_POST['telephone'] . "' WHERE username='" .$_SESSION['username']."' ";
+        }        
+        
         
         if(mysqli_query($conn, $update)){
-            $_SESSION['username']=$_POST['username'];
-            $_SESSION['email']=$_POST['email'];
-            $_SESSION['address']=$_POST['address'];
-            $_SESSION['password']=$_POST['password'];
-            $_SESSION['telephone']=$_POST['telephone'];
+            
+            // $_SESSION['username']=$_POST['username'];
+            // $_SESSION['email']=$_POST['email'];
+            // $_SESSION['address']=$_POST['address'];
+            // $_SESSION['password']=$_POST['password'];
+            // $_SESSION['telephone']=$_POST['telephone'];
+            header("Location: personal-info-page.php");
+            exit();
         }else{
             printf("error");
         }
