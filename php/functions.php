@@ -102,7 +102,6 @@ function addAccountToDB($conn, $username, $email, $city, $password, $telephone) 
         }
             
     }
-    echo "query error " . mysqli_error($conn);
     return false;
 }
 
@@ -160,10 +159,6 @@ function logIn($user, $conn) {
     return true;
 }
 /****************************** *****************************/
-
-function getCurrentUserData(){
-
-}
 
 function displayName(){
     if(isset($_SESSION['username'])){
@@ -440,7 +435,14 @@ function getAllFriends($conn, $userId) {
 }
 
 /**
+ * A function that finds and returns the image path of a user
+ * with username equal to $username
  * 
+ * 
+ * @param mysqli    $conn           the connection to the serever
+ * @param string    $userId         the id of the user
+ * 
+ * @return string           returns a string of the image path of a user
  */
 function getImagePath($conn, $username) {
     $id = getUserId($conn, $username);

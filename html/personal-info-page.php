@@ -17,8 +17,6 @@
                 
                 $_SESSION['imgpath']= "../images/usrimages/" .$_FILES['pic']['name']. "";
             }
-        }else{
-            echo 'not uploaded';
         }
         
       
