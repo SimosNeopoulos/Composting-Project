@@ -69,7 +69,7 @@ if(isset($_POST['saveComment'])){
                 <form method="post" action="#">
                     <tr>
                         <td>
-                        <input class="searchForum" name="search-tags" placeholder="Αναζήτηση χρηστών">
+                        <input class="searchForum" name="search-tags" placeholder="Αναζήτηση χρηστώνgit">
                         </td>
                         <td>
                         <button type="submit" name="search-for-tags" class="searchIconForum"><img src="../images/search-icon.png"
@@ -82,10 +82,23 @@ if(isset($_POST['saveComment'])){
             </div>
         </div>
          <div class="forum-posts">
-            <div class="userProfile">
-                    <img class="post-pic" src="../images/usrimages/1615827451488.jpg">
-                    <a id="username" href="../html/personal-info-page.php"> onoma xrhsth<? $_SESSION['username']; ?></a>
-            </div>
+             <?php if(isset($_POST['user-search'])){
+                $users = findUsers($conn, $_POST['user-search']);
+             }
+                if($users):
+                    foreach($users as $user ):
+                ?>
+                <div class="userProfile">
+                    <img class="post-pic" src="<?php echo $user['imgpath']; ?>">
+                    <a id="username" href="../html/personal-info-page.php"> <?php echo $user['username']; ?></a>
+                </div>
+                <?php
+                    endforeach;
+                endif;
+            
+            
+                 ?>
+            
            
             
             
