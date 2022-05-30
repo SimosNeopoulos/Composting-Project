@@ -26,7 +26,7 @@ do{
         }
         // The user was logged in succesffuly
         if($loggedIn)
-            header("Location: ../html/homepage.php");
+            header("Location: ../html/index.php");
     }
 }while(false)
 
