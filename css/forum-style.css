@@ -242,6 +242,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     padding: 3%;
+    margin: 5%;
 }
 
 #username{
