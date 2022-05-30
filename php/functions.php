@@ -214,7 +214,7 @@ function displayImg(){
 }
 
 
-/************* POSTS / COMMENTS / TAGS *************/
+/************* USERS / POSTS / COMMENTS / TAGS *************/
 
 /********* SEARCH QUERIES **********/
 
